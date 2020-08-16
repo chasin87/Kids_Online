@@ -1,0 +1,46 @@
+.ColorBox {
+  border: 3px solid black;
+  width: 1000px;
+
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 300px;
+  display: flex;
+}
+
+.ColorBoxRed {
+  background-color: red;
+  width: 300px;
+  height: 300px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ColorBoxBlue {
+  background-color: blue;
+  width: 300px;
+  height: 300px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ColorBoxYellow {
+  background-color: Yellow;
+  width: 300px;
+  height: 300px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ColorBoxGreen {
+  background-color: green;
+  width: 300px;
+  height: 300px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
