@@ -20,6 +20,8 @@ function Square(props) {
 function Board() {
   const [boardSquares, setBoardsquare] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
+  console.log("thisis", boardSquares);
+
   const handleClick = (index) => {
     const squares = [...boardSquares];
     if (calculateWinner(boardSquares) || squares[index]) return;
@@ -29,6 +31,13 @@ function Board() {
     setBoardsquare(squares);
 
     setXIsNext(!xIsNext);
+  };
+
+  const resetClick = (index) => {
+    const resets = Array(9).fill(null);
+    setBoardsquare(resets);
+    const resetPlayer = true;
+    setXIsNext(resetPlayer);
   };
 
   const renderSquare = (index) => {
@@ -60,6 +69,12 @@ function Board() {
         {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
+      </div>
+
+      <div className="butts">
+        <button className="resetButton" onClick={resetClick}>
+          Reset
+        </button>
       </div>
     </div>
   );

@@ -2,7 +2,6 @@
   font-family: "Rajdhani", sans-serif;
   font-size: 50px;
   margin: 20px 0px;
-
   text-align: center;
 }
 .square {
@@ -56,7 +55,7 @@
     left bottom,
     left top,
     color-stop(0, #1abc9c),
-    color-stop(1, rgb(#1f5967))
+    color-stop(1, (#1f5967))
   );
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -116,10 +115,32 @@
 }
 
 .game {
+  margin-top: 7%;
+  margin-bottom: 10%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   flex-direction: row;
-  margin: 0 auto;
+  padding: 30px;
+  background-color: #f5b120;
+  border-radius: 15px;
+}
+
+.resetButton {
+  background-color: tomato;
+  color: #fff;
+  padding: 1em;
+  width: 80%;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 25px;
+  font-family: "Rajdhani", sans-serif;
+
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+.butts {
+  display: flex;
+  justify-content: center;
 }
