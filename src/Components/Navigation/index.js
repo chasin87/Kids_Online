@@ -50,6 +50,9 @@ function Navigation() {
           <Nav.Link className="Links" href="#pricing">
             Pricing
           </Nav.Link>
+          <Nav.Link className="Links" href="TicTacToe">
+            TicTacToe
+          </Nav.Link>
         </Nav>
       </Navbar>
     </header>

@@ -4,6 +4,7 @@ import "./App.css";
 import Navigation from "./Components/Navigation";
 import Home from "./pages/Home/";
 import Kleuren from "./pages/Kleuren/";
+import TicTacToe from "./pages/TicTacToe/";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />;
         <Route path="/kleuren" component={Kleuren} />;
+        <Route path="/TicTacToe" component={TicTacToe} />;
       </Switch>
     </div>
   );
