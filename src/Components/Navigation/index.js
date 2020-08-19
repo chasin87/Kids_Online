@@ -53,6 +53,9 @@ function Navigation() {
           <Nav.Link className="Links" href="TicTacToe">
             TicTacToe
           </Nav.Link>
+          <Nav.Link className="Links" href="Memory">
+            Memory
+          </Nav.Link>
         </Nav>
       </Navbar>
     </header>
