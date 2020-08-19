@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   background: #f5b120;
   max-width: 90%;
-  padding: 2vh;
+  padding: 20px;
   margin: 10px;
   border-radius: 15px !important;
   margin-bottom: 50px;
@@ -11,11 +11,22 @@
   margin-right: auto;
 }
 
+.Cards {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Cards_In {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px;
+}
+
 .Front {
   float: left;
   margin: 10px;
-  margin-left: 20px;
-  margin-right: auto;
   width: 200px;
   height: 200px;
   padding: 10px;
