@@ -123,6 +123,11 @@ export default function Flip() {
     },
   ];
 
+  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }
+  shuffle(animals);
+
   return (
     <div className="container">
       <div className="Cards">

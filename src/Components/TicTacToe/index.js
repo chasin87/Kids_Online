@@ -20,7 +20,6 @@ function Square(props) {
 function Board() {
   const [boardSquares, setBoardsquare] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
-  console.log("thisis", boardSquares);
 
   const handleClick = (index) => {
     const squares = [...boardSquares];
