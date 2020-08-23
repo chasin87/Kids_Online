@@ -1,10 +1,6 @@
 import React from "react";
-import Game from "../../Components/Memory";
+import Flip from "../../Components/Memory/";
 
 export default function Memory() {
-  return (
-    <div>
-      <Game />
-    </div>
-  );
+  return <div>{<Flip />}</div>;
 }
