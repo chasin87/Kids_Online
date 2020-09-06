@@ -24,7 +24,10 @@
   margin: 20px;
 }
 
-.Front {
+.Back {
+  transition: 0.6s;
+  transform: rotateY(-180deg);
+  cursor: pointer;
   float: left;
   margin: 10px;
   width: 200px;
@@ -80,7 +83,8 @@
     inset 0px 0px 3px rgba(255, 255, 255, 0.5);
 }
 
-.Back {
+.Front {
+  cursor: pointer;
   float: left;
   margin: 10px;
   width: 200px;
@@ -135,6 +139,8 @@
   box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0, 0, 0, 0.4),
     inset 0px 1px 0px rgba(255, 255, 255, 0.3),
     inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  transition: 0.6s;
+  transform: rotateY(0deg);
 }
 
 .logo_image {

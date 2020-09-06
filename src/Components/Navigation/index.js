@@ -47,9 +47,9 @@ function Navigation() {
           <Nav.Link className="Links" href="Kleuren">
             Leer de Kleuren
           </Nav.Link>
-          <Nav.Link className="Links" href="#pricing">
+          {/* <Nav.Link className="Links" href="#pricing">
             Pricing
-          </Nav.Link>
+          </Nav.Link> */}
           <Nav.Link className="Links" href="TicTacToe">
             TicTacToe
           </Nav.Link>
