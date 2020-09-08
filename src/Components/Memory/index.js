@@ -6,130 +6,182 @@ const animals = [
     name: "Beer",
     id: 1,
     status: false,
+    match: false,
   },
   {
     name: "Beer",
     id: 2,
     status: false,
+    match: false,
   },
   {
     name: "Giraffe",
     id: 4,
     status: false,
+    match: false,
   },
   {
     name: "Giraffe",
     id: 5,
     status: false,
+    match: false,
   },
-  // {
-  //   name: "Hond",
-  //   id: 7,
-  //   status: false,
-  // },
-  // {
-  //   name: "Hond",
-  //   id: 8,
-  //   status: false,
-  // },
-  // {
-  //   name: "Koala",
-  //   id: 10,
-  // },
-  // {
-  //   name: "Koala",
-  //   id: 11,
-  // },
-  // {
-  //   name: "Konijn",
-  //   id: 13,
-  // },
-  // {
-  //   name: "Konijn",
-  //   id: 14,
-  // },
-  // {
-  //   name: "Leeuw",
-  //   id: 16,
-  // },
-  // {
-  //   name: "Leeuw",
-  //   id: 17,
-  // },
-  // {
-  //   name: "Nijlpaard",
-  //   id: 19,
-  // },
-  // {
-  //   name: "Nijlpaard",
-  //   id: 20,
-  // },
-  // {
-  //   name: "Olifant",
-  //   id: 22,
-  // },
-  // {
-  //   name: "Olifant",
-  //   id: 23,
-  // },
-  // {
-  //   name: "Panda",
-  //   id: 25,
-  // },
-  // {
-  //   name: "Panda",
-  //   id: 26,
-  // },
-  // {
-  //   name: "Pinguen",
-  //   id: 28,
-  // },
-  // {
-  //   name: "Pinguen",
-  //   id: 29,
-  // },
-  // {
-  //   name: "Poes",
-  //   id: 31,
-  // },
-  // {
-  //   name: "Poes",
-  //   id: 32,
-  // },
-  // {
-  //   name: "Tijger",
-  //   id: 34,
-  // },
-  // {
-  //   name: "Tijger",
-  //   id: 35,
-  // },
-  // {
-  //   name: "Vos",
-  //   id: 37,
-  // },
-  // {
-  //   name: "Vos",
-  //   id: 38,
-  // },
-  // {
-  //   name: "Wasbeer",
-  //   id: 40,
-  // },
-  // {
-  //   name: "Wasbeer",
-  //   id: 41,
-  // },
-  // {
-  //   name: "Zebra",
-  //   id: 43,
-  //   key: 1,
-  // },
-  // {
-  //   name: "Zebra",
-  //   id: 44,
-  //   key: 1,
-  // },
+  {
+    name: "Hond",
+    id: 7,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Hond",
+    id: 8,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Koala",
+    id: 10,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Koala",
+    id: 11,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Konijn",
+    id: 13,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Konijn",
+    id: 14,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Leeuw",
+    id: 16,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Leeuw",
+    id: 17,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Nijlpaard",
+    id: 19,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Nijlpaard",
+    id: 20,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Olifant",
+    id: 22,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Olifant",
+    id: 23,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Panda",
+    id: 25,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Panda",
+    id: 26,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Pinguen",
+    id: 28,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Pinguen",
+    id: 29,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Poes",
+    id: 31,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Poes",
+    id: 32,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Tijger",
+    id: 34,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Tijger",
+    id: 35,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Vos",
+    id: 37,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Vos",
+    id: 38,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Wasbeer",
+    id: 40,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Wasbeer",
+    id: 41,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Zebra",
+    id: 43,
+    status: false,
+    match: false,
+  },
+  {
+    name: "Zebra",
+    id: 44,
+    status: false,
+    match: false,
+  },
 ];
 
 export default function Flip() {
@@ -152,31 +204,33 @@ export default function Flip() {
   const Handle = (card) => {
     setMatchArray([
       ...matchArray,
-      { id: card.id, name: card.name, status: (card.status = true) },
+      {
+        id: card.id,
+        name: card.name,
+        status: (card.status = true),
+      },
     ]);
 
     if (firstCard.length < 1) {
       setFirstCard([
-        { id: card.id, name: card.name, status: (card.status = true) },
+        {
+          id: card.id,
+          name: card.name,
+          status: (card.status = true),
+        },
       ]);
     } else if (secondCard.length < 1) {
       setSecondCard([
-        { id: card.id, name: card.name, status: (card.status = true) },
+        {
+          id: card.id,
+          name: card.name,
+          status: (card.status = true),
+        },
       ]);
     }
   };
 
-  function handleRemover(card) {
-    setMatchArray([
-      { id: card.id, name: card.name, status: (card.status = false) },
-    ]);
-    setMatchArray([]);
-  }
-
   let set = 0;
-
-  console.log("FirstCard", firstCard);
-  console.log("SecondCard", secondCard);
 
   let firstt = firstCard.map((firsttt) => {
     return [{ name: firsttt.name, status: firsttt.status }];
@@ -188,18 +242,30 @@ export default function Flip() {
   });
 
   if (set === 1 && JSON.stringify(firstt) === JSON.stringify(secondd)) {
-    console.log("yes");
+    cards.filter((filt) => {
+      if (filt.status === true) {
+        return (filt.match = true);
+      }
+    });
+
     setFirstCard([]);
     setSecondCard([]);
+    setMatchArray([]);
   } else if (set === 1 && JSON.stringify(firstt) !== JSON.stringify(secondd)) {
     setTimeout(() => {
-      cards.map((card) => {
-        return { ...cards, status: (card.status = false) };
-      });
       setFirstCard([]);
       setSecondCard([]);
       setMatchArray([]);
-    }, 1000);
+      cards.filter((filt) => {
+        if (filt.match !== true) {
+          return {
+            id: filt.id,
+            name: filt.name,
+            status: (filt.status = false),
+          };
+        }
+      });
+    }, 600);
   }
 
   return (
@@ -209,14 +275,9 @@ export default function Flip() {
           <div className="Cards_In">
             {cards.map((card) => {
               return (
-                <div>
+                <div key={card.id}>
                   {card.status ? (
-                    <div
-                      className="Front"
-                      onClick={() => {
-                        handleRemover(card);
-                      }}
-                    >
+                    <div className="Front">
                       <img
                         className="image"
                         src={require(`./images/${card.name}.png`)}

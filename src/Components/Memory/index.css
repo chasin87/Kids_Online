@@ -6,6 +6,7 @@
   padding: 20px;
   margin: 10px;
   border-radius: 15px !important;
+  padding-top: 30px;
   margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -30,8 +31,8 @@
   cursor: pointer;
   float: left;
   margin: 10px;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   padding: 10px;
   border-radius: 15px !important;
   background-color: #1abc9c;
@@ -87,8 +88,8 @@
   cursor: pointer;
   float: left;
   margin: 10px;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   padding: 10px;
   border-radius: 15px !important;
   background-color: #fff;
