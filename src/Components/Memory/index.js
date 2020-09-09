@@ -243,16 +243,12 @@ export default function Flip() {
   });
 
   if (set === 1 && JSON.stringify(firstt) === JSON.stringify(secondd)) {
-    cards.filter((filt) => {
+    cards.forEach((filt) => {
       if (filt.status === true) {
         return (filt.match = true);
       }
     });
-    cards.map((car) => {
-      if (car.match === true) {
-        setTimeout(() => {}, 0);
-      }
-    });
+
     setMessage(["You got a Match"]);
 
     setFirstCard([]);
@@ -266,7 +262,7 @@ export default function Flip() {
       setSecondCard([]);
       setMatchArray([]);
 
-      cards.filter((filt) => {
+      cards.forEach((filt) => {
         if (filt.match !== true) {
           return {
             id: filt.id,
