@@ -14,8 +14,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />;
         <Route path="/kleuren" component={Kleuren} />;
-        <Route path="/TicTacToe" component={TicTacToe} />;
-        <Route path="/Memory" component={Memory} />;
+        <Route path="/tictactoe" component={TicTacToe} />;
+        <Route path="/memory" component={Memory} />;
       </Switch>
     </div>
   );
