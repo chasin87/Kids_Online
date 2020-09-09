@@ -5,7 +5,7 @@
   width: 100%;
   display: flex;
   background-color: #1f5967;
-  padding-bottom: 12px;
+  padding-bottom: 15px;
 }
 
 .information_area {
@@ -29,7 +29,7 @@
   text-align: center;
   list-style-type: none;
   float: right;
-  margin-top: -45px;
+  margin-top: -47px;
   position: relative;
   z-index: 100;
   margin-bottom: -45px;
@@ -82,13 +82,14 @@ ul {
   background-color: white;
   display: flex;
   width: 100%;
-  margin-top: -90px;
+  /* margin-top: -90px; */
   position: relative;
   z-index: 1;
 }
 
 .navbar-expand {
   padding-bottom: 0px !important ;
+  z-index: 1;
 }
 
 .Title {

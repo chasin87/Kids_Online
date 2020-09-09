@@ -16,38 +16,44 @@ export default function ColorBox() {
   const [playGreen] = useSound(Groen, { volume: 0.25 });
 
   return (
-    <div className="ColorBox">
-      <div
-        className="ColorBoxRed"
-        onClick={() => setIsChecked(!isChecked)}
-        onMouseUp={() => {
-          isChecked ? playRed() : playRed();
-        }}
-      />
+    <div>
+      <div className="container">
+        <div className="title">Color Box</div>
+        <div className="game_status"></div>
+        <div className="ColorBox">
+          <div
+            className="ColorBoxRed"
+            onClick={() => setIsChecked(!isChecked)}
+            onMouseUp={() => {
+              isChecked ? playRed() : playRed();
+            }}
+          />
 
-      <div
-        className="ColorBoxYellow"
-        onClick={() => setIsChecked(!isChecked)}
-        onMouseUp={() => {
-          isChecked ? playYellow() : playYellow();
-        }}
-      />
+          <div
+            className="ColorBoxYellow"
+            onClick={() => setIsChecked(!isChecked)}
+            onMouseUp={() => {
+              isChecked ? playYellow() : playYellow();
+            }}
+          />
 
-      <div
-        className="ColorBoxBlue"
-        onClick={() => setIsChecked(!isChecked)}
-        onMouseUp={() => {
-          isChecked ? playBlue() : playBlue();
-        }}
-      />
+          <div
+            className="ColorBoxBlue"
+            onClick={() => setIsChecked(!isChecked)}
+            onMouseUp={() => {
+              isChecked ? playBlue() : playBlue();
+            }}
+          />
 
-      <div
-        className="ColorBoxGreen"
-        onClick={() => setIsChecked(!isChecked)}
-        onMouseUp={() => {
-          isChecked ? playGreen() : playGreen();
-        }}
-      />
+          <div
+            className="ColorBoxGreen"
+            onClick={() => setIsChecked(!isChecked)}
+            onMouseUp={() => {
+              isChecked ? playGreen() : playGreen();
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 }
