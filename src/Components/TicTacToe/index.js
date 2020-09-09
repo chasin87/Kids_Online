@@ -53,6 +53,7 @@ function Board() {
 
   return (
     <div className="game">
+      <div className="title">TicTacToe</div>
       <div className="status">{status}</div>
       <div className="board-row">
         {renderSquare(0)}

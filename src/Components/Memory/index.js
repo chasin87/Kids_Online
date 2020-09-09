@@ -189,6 +189,7 @@ export default function Flip() {
   const [matchArray, setMatchArray] = useState([]);
   const [firstCard, setFirstCard] = useState([]);
   const [secondCard, setSecondCard] = useState([]);
+  const [message, setMessage] = useState(["Let's Play, Memory"]);
 
   useEffect(() => {
     const shuffle = (array) => {
@@ -247,15 +248,24 @@ export default function Flip() {
         return (filt.match = true);
       }
     });
+    cards.map((car) => {
+      if (car.match === true) {
+        setTimeout(() => {}, 0);
+      }
+    });
+    setMessage(["You got a Match"]);
 
     setFirstCard([]);
     setSecondCard([]);
     setMatchArray([]);
   } else if (set === 1 && JSON.stringify(firstt) !== JSON.stringify(secondd)) {
     setTimeout(() => {
+      setMessage(["oops!, thats not a Match"]);
+
       setFirstCard([]);
       setSecondCard([]);
       setMatchArray([]);
+
       cards.filter((filt) => {
         if (filt.match !== true) {
           return {
@@ -271,30 +281,34 @@ export default function Flip() {
   return (
     <div>
       <div className="container">
-        <div className="Cards">
-          <div className="Cards_In">
-            {cards.map((card) => {
-              return (
-                <div key={card.id}>
-                  {card.status ? (
-                    <div className="Front">
-                      <img
-                        className="image"
-                        src={require(`./images/${card.name}.png`)}
-                        alt="animals"
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      className="Back "
-                      onClick={() => {
-                        Handle(card);
-                      }}
-                    ></div>
-                  )}
-                </div>
-              );
-            })}
+        <div className="title">Memory</div>
+        <div className="game_status">
+          {message}
+          <div className="Cards">
+            <div className="Cards_In">
+              {cards.map((card) => {
+                return (
+                  <div key={card.id}>
+                    {card.status ? (
+                      <div className="Front">
+                        <img
+                          className="image"
+                          src={require(`./images/${card.name}.png`)}
+                          alt="animals"
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        className="Back "
+                        onClick={() => {
+                          Handle(card);
+                        }}
+                      ></div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

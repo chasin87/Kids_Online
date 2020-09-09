@@ -160,3 +160,38 @@
   margin: auto;
   background-color: #fff !important ;
 }
+
+.game_status {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 50px;
+  text-align: center;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+  background: tomato;
+  color: white;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+  padding-left: 100px;
+  padding-right: 100px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
