@@ -12,49 +12,49 @@
 
 .ColorBoxRed {
   background-color: #eb2d3a;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   justify-content: center;
   margin-left: auto;
   margin-right: 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
 }
 
 .ColorBoxBlue {
   background-color: #0a6fb6;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   justify-content: center;
   margin-left: auto;
   margin-right: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
 }
 
 .ColorBoxYellow {
   background-color: #ffff66;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   justify-content: center;
   margin-left: auto;
   margin-right: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
 }
 
 .ColorBoxGreen {
   background-color: #9bbd2f;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   justify-content: center;
   margin-left: auto;
   margin-right: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
 }

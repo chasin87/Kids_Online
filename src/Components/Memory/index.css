@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   background: #f5b120;
-  max-width: 90%;
+  max-width: 1268px;
   padding: 20px;
   margin: 10px;
   border-radius: 15px !important;
@@ -27,7 +27,7 @@
 
 .Back {
   transition: 0.6s;
-  transform: rotateY(-180deg);
+  transform: rotateY(180deg);
   cursor: pointer;
   float: left;
   margin: 10px;
@@ -85,6 +85,7 @@
 }
 
 .Front {
+  animation-delay: 22s;
   cursor: pointer;
   float: left;
   margin: 10px;
@@ -140,28 +141,31 @@
   box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0, 0, 0, 0.4),
     inset 0px 1px 0px rgba(255, 255, 255, 0.3),
     inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-  transition: 0.6s;
-  transform: rotateY(0deg);
+  transition: 2s;
+
+  transition-delay: -1s;
+  transform: rotateY(-0deg);
 }
 
-.logo_image {
+/* .logo_image {
   max-width: 80%;
   max-height: 90%;
   display: block;
   margin: auto;
   margin-top: 30%;
   align-items: center;
-}
+} */
 
 .image {
-  max-width: 80%;
-  max-height: 90%;
+  max-width: 100%;
+  max-height: 100%;
   display: block;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #fff !important ;
 }
 
-.game_status {
+.game_status_memory {
   font-family: "Rajdhani", sans-serif;
   font-size: 50px;
   text-align: center;

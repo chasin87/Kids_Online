@@ -8,6 +8,7 @@ import Blauw from "../../Sounds/Blauw.mp3";
 import Groen from "../../Sounds/Groen.mp3";
 
 export default function ColorBox() {
+  const [language, setLanguage] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
 
   const [playRed] = useSound(Rood, { volume: 0.25 });
@@ -19,6 +20,7 @@ export default function ColorBox() {
     <div>
       <div className="container">
         <div className="title">Color Box</div>
+
         <div className="game_status"></div>
         <div className="ColorBox">
           <div

@@ -146,42 +146,42 @@ const animals = [
     status: false,
     match: false,
   },
-  {
-    name: "Vos",
-    id: 37,
-    status: false,
-    match: false,
-  },
-  {
-    name: "Vos",
-    id: 38,
-    status: false,
-    match: false,
-  },
-  {
-    name: "Wasbeer",
-    id: 40,
-    status: false,
-    match: false,
-  },
-  {
-    name: "Wasbeer",
-    id: 41,
-    status: false,
-    match: false,
-  },
-  {
-    name: "Zebra",
-    id: 43,
-    status: false,
-    match: false,
-  },
-  {
-    name: "Zebra",
-    id: 44,
-    status: false,
-    match: false,
-  },
+  // {
+  //   name: "Vos",
+  //   id: 37,
+  //   status: false,
+  //   match: false,
+  // },
+  // {
+  //   name: "Vos",
+  //   id: 38,
+  //   status: false,
+  //   match: false,
+  // },
+  // {
+  //   name: "Wasbeer",
+  //   id: 40,
+  //   status: false,
+  //   match: false,
+  // },
+  // {
+  //   name: "Wasbeer",
+  //   id: 41,
+  //   status: false,
+  //   match: false,
+  // },
+  // {
+  //   name: "Zebra",
+  //   id: 43,
+  //   status: false,
+  //   match: false,
+  // },
+  // {
+  //   name: "Zebra",
+  //   id: 44,
+  //   status: false,
+  //   match: false,
+  // },
 ];
 
 export default function Flip() {
@@ -278,7 +278,7 @@ export default function Flip() {
     <div>
       <div className="container">
         <div className="title">Memory</div>
-        <div className="game_status">
+        <div className="game_status_memory">
           {message}
           <div className="Cards">
             <div className="Cards_In">
@@ -295,7 +295,7 @@ export default function Flip() {
                       </div>
                     ) : (
                       <div
-                        className="Back "
+                        className="Back"
                         onClick={() => {
                           Handle(card);
                         }}
