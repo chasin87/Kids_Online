@@ -149,7 +149,7 @@
   justify-content: center;
 }
 
-.title {
+.title_tictactoe {
   font-family: "Rajdhani", sans-serif;
   font-size: 50px;
   font-weight: 600;
@@ -172,6 +172,38 @@
   }
 
   .game {
-    top: 70%;
+    top: 100%;
+    max-width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+
+  .title_tictactoe {
+    /* padding-left: 30px;
+    padding-right: 30px; */
+    width: 70%;
+    font-size: 2em;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .square {
+    width: 60px;
+    height: 60px;
+  }
+  .board-row {
+    justify-content: center;
+    display: flex;
+  }
+
+  .resetButton {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px;
+  }
+
+  .status {
+    font-size: 30px;
   }
 }
