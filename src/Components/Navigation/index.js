@@ -33,13 +33,13 @@ function Navigation() {
         </div>
       </div>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Navbar.Brand className="Title" bg="red" href="/">
           Kids Online
           <p className="subTitle">Online school for our children</p>
         </Navbar.Brand>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarNavAltMarkup"
@@ -47,20 +47,20 @@ function Navigation() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">
-              Home <span class="sr-only">(current)</span>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav">
+            <a className="nav-item nav-link active" href="/">
+              Home <span className="sr-only">(current)</span>
             </a>
-            <a class="nav-item nav-link" href="Kleuren">
+            <a className="nav-item nav-link" href="Kleuren">
               Colors
             </a>
-            <a class="nav-item nav-link" href="TicTacToe">
+            <a className="nav-item nav-link" href="TicTacToe">
               TicTacToe
             </a>
-            <a class="nav-item nav-link" href="Memory">
+            <a className="nav-item nav-link" href="Memory">
               Memory
             </a>
           </div>
