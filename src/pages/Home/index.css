@@ -1,0 +1,74 @@
+.cards {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: #f6f6f6;
+}
+
+.card {
+  flex: 0 1 calc(33% - 1em);
+  border-radius: 8px;
+
+  max-width: 50%;
+  margin: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.card_image img {
+  margin-top: 15px;
+  width: 100%;
+  border-radius: 8px 8px 0px 0px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.card_header {
+  color: black;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 35px;
+}
+
+.card_text {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.card_button {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  margin: 4px;
+  margin-bottom: 7px;
+  border-radius: 3px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  background: tomato;
+  color: white;
+  border: none;
+}
+
+@media (max-width: 991px) {
+  .cards {
+    display: inline-block;
+    padding-top: 0px;
+    width: 100%;
+  }
+
+  .card {
+    flex: 0 1 calc(60% - 1em);
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .card_button {
+    font-size: 20px;
+    width: 90%;
+  }
+}
