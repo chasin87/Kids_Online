@@ -17,10 +17,24 @@
   justify-content: center;
   margin-left: auto;
   margin-right: 20px;
-  border: none;
-  border-radius: 10px;
+  border: 1px #eb2d3a solid;
+  border-radius: 15px;
   display: flex;
   justify-content: space-between;
+
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 6px 0px #eb2d3a, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #eb2d3a, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #eb2d3a, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
 }
 
 .ColorBoxBlue {
@@ -30,33 +44,76 @@
   justify-content: center;
   margin-left: auto;
   margin-right: 20px;
-  border-radius: 10px;
+  border: 1px #0a6fb6 solid;
+  border-radius: 15px;
   display: flex;
   justify-content: space-between;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 6px 0px #0a6fb6, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #0a6fb6, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #0a6fb6, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
 }
 
 .ColorBoxYellow {
-  background-color: #ffff66;
+  background-color: #ffff10;
   width: 200px;
   height: 200px;
   justify-content: center;
   margin-left: auto;
   margin-right: 20px;
-  border-radius: 10px;
+  border: 2px #ffff10 solid;
+  border-radius: 15px;
   display: flex;
   justify-content: space-between;
+
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 6px 0px #ffff10, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #ffff10, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #ffff10, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
 }
 
 .ColorBoxGreen {
-  background-color: #9bbd2f;
+  background-color: #acd426;
   width: 200px;
   height: 200px;
   justify-content: center;
   margin-left: auto;
   margin-right: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   display: flex;
   justify-content: space-between;
+
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 6px 0px #acd426, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #acd426, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #acd426, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
 }
 
 .container {

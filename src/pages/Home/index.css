@@ -8,9 +8,9 @@
 }
 
 .card {
-  flex: 0 1 calc(33% - 1em);
+  flex: 0 1 calc(30% - 1em);
   border-radius: 8px;
-
+  border: none;
   max-width: 50%;
   margin: 0px;
   margin-left: auto;
@@ -22,6 +22,7 @@
 .card_image img {
   margin-top: 15px;
   width: 100%;
+  padding: 20px;
   border-radius: 8px 8px 0px 0px;
   overflow-y: hidden;
   overflow-x: hidden;
@@ -43,6 +44,7 @@
   font-family: "Rajdhani", sans-serif;
   font-weight: 700;
   font-size: 25px;
+  padding: 10px;
   margin: 4px;
   margin-bottom: 7px;
   border-radius: 3px;
@@ -63,6 +65,7 @@
 
   .card {
     flex: 0 1 calc(60% - 1em);
+    max-width: 80%;
     margin-top: 30px;
     margin-bottom: 30px;
   }

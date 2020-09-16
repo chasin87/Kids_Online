@@ -1,8 +1,9 @@
 import React from "react";
 import "./index.css";
 import HeaderImage from "../../Components/HeaderImage";
-import MemorySCS from "../../Images/MemorySCS.png";
-
+import Memory_logo_card from "../../Images/Memory_logo_card.png";
+import TicTacToe_logo_card from "../../Images/TicTacToe_logo_card.png";
+import Colors_logo_card from "../../Images/Colors_logo_card.png";
 export default function Home() {
   return (
     <div>
@@ -11,7 +12,7 @@ export default function Home() {
       <div className="cards">
         <div className="card">
           <div className="card_image">
-            <img src={MemorySCS} alt="background" />
+            <img src={Colors_logo_card} alt="background" />
           </div>
           <div className="card_header">Colors</div>
           <div className="card_text">
@@ -25,7 +26,7 @@ export default function Home() {
 
         <div className="card">
           <div className="card_image">
-            <img src={MemorySCS} alt="background" />
+            <img src={TicTacToe_logo_card} alt="background" />
           </div>
           <div className="card_header">TicTacToe</div>
           <div className="card_text">
@@ -39,7 +40,7 @@ export default function Home() {
 
         <div className="card">
           <div className="card_image">
-            <img src={MemorySCS} alt="background" />
+            <img src={Memory_logo_card} alt="background" />
           </div>
           <div className="card_header">Memory</div>
           <div className="card_text">
