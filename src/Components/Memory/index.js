@@ -249,7 +249,7 @@ export default function Flip() {
       }
     });
 
-    setMessage(["You got a Match"]);
+    setMessage(["You've got a match,"]);
 
     setFirstCard([]);
     setSecondCard([]);

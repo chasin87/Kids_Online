@@ -36,9 +36,10 @@ export default function HeaderImage() {
         alt="girl_tablet"
         style={{}}
       />
-
-      <h1 className="header_text">De leukste quizen en spelletjes</h1>
       <div className="header-img">
+        <h1 className="header_text">
+          Learn and have fun playing on Kids online
+        </h1>
         <img src={bg} alt="background" style={{ width: "100%" }} />
       </div>
     </div>

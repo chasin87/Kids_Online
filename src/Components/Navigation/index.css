@@ -5,7 +5,8 @@
   width: 100%;
   display: flex;
   background-color: #1f5967;
-  padding-bottom: 15px;
+  /* padding-bottom: 1.7vw; */
+  padding: 10px;
 }
 
 .information_area {
@@ -14,7 +15,7 @@
   font-family: "Rajdhani", sans-serif;
   font-size: 18px;
   color: #fff;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .information_area a {
@@ -29,10 +30,11 @@
   text-align: center;
   list-style-type: none;
   float: right;
-  margin-top: -47px;
+  /* margin-top: 17px; */
   position: relative;
   z-index: 100;
   margin-bottom: -45px;
+  margin-top: -20px;
 }
 
 ul {
@@ -43,25 +45,31 @@ ul {
 .register,
 .login {
   background-color: tomato;
-  padding: 1em;
-  margin-top: 10px;
+  padding: 1.7vw;
+  /* margin-top: 10px; */
   border-radius: 0 0 5px 5px;
-  line-height: 50px;
-  font-size: 18px;
+  line-height: 70px;
+  font-size: 1.4vw;
   margin-left: 8px;
   font-weight: 500;
   font-family: "Rajdhani", sans-serif;
   position: relative;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  vertical-align: top;
 }
 
 .login {
   background-color: #f5b120;
 }
 
-.register:hover,
+.register:hover {
+  background-color: #2bb24c;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+}
+
 .login:hover {
-  background-color: #2ee59d;
+  background-color: #2bb24c;
   box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
   color: #fff;
 }
@@ -69,7 +77,6 @@ ul {
 .login_area a {
   text-decoration: none !important;
   color: white !important;
-  margin-top: 10px;
 }
 
 .icon_lock,
@@ -78,18 +85,25 @@ ul {
   margin-top: -5px;
 }
 
-.Navbar {
-  background-color: white;
-  display: flex;
-  width: 100%;
-  /* margin-top: -90px; */
-  position: relative;
-  z-index: 1;
+.navbar-expand-lg .navbar-nav .nav-link {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 1.7vw;
 }
 
-.navbar-expand {
-  padding-bottom: 0px !important ;
+.navbar {
   z-index: 1;
+  background-color: white !important;
+}
+
+.navbar-nav a:hover {
+  color: whitesmoke !important;
+  background-color: #f5b120 !important;
+  border-radius: 5px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  text-align: center;
 }
 
 .Title {
@@ -112,24 +126,49 @@ ul {
   margin-left: 8px;
 }
 
-.mr-auto .Links {
-  margin: 5px;
-  display: block;
-  margin-top: 30px;
-  float: left;
+@media (max-width: 991px) {
+  .login_area {
+    display: none;
+  }
+  .login_area_nav {
+    text-align: center;
+    color: white;
+    text-decoration: none;
+  }
+  .information_area {
+    width: 100%;
+  }
+
+  .register,
+  .login {
+    /* padding: 1.2vw; */
+    font-size: 1.4vw;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .navbar-dark .navbar-nav .nav-link {
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .Navbar {
+    padding: 0;
+    vertical-align: middle;
+  }
+  .information_area {
+    font-size: 10px;
+  }
 }
 
-.Links {
-  font-size: 20px;
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 600;
-  color: black !important;
-  align-items: center;
-  padding: 10px;
+@media (min-width: 992px) {
+  .login_area_nav {
+    display: none;
+  }
 }
 
-.Links:hover {
-  color: whitesmoke !important;
-  background-color: #f5b120;
-  border-radius: 5px;
+@media (min-width: 1300px) {
+  .login_area {
+    margin-top: -12px;
+  }
 }

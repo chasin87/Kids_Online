@@ -1,3 +1,8 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 .header-img {
   background-color: #1abc9c !important;
   background-repeat: no-repeat;
@@ -15,24 +20,46 @@
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
 }
 
+.navbar-dark .navbar-nav .nav-link {
+  font-size: 20px;
+}
+
+.information_area {
+  font-size: 1.6vw;
+}
+
+.rocket {
+  position: absolute;
+  margin-left: 58%;
+  width: 4%;
+  margin-top: 6%;
+}
+
 .wolken1 {
-  margin-left: 300px;
-  margin-top: 70px;
+  margin-left: 10%;
+  margin-top: 1%;
+  max-width: 12%;
+  height: auto;
   position: absolute;
   animation: rot 3s ease-in-out infinite;
   z-index: 1;
 }
+
 .wolken2 {
-  margin-left: 800px;
-  margin-top: 30px;
+  margin-left: 40%;
+  margin-top: 2%;
+  max-width: 12%;
+  height: auto;
   position: absolute;
   animation: rot2 3s ease-in-out infinite;
   z-index: 1;
 }
 
 .wolken3 {
-  margin-left: 1200px;
-  margin-top: 70px;
+  margin-left: 68%;
+  margin-top: 6%;
+  max-width: 12%;
+  height: auto;
   position: absolute;
   animation: rot 3s ease-in-out infinite;
   z-index: 1;
@@ -57,50 +84,58 @@
 }
 
 .star {
-  margin-left: 200px;
-  margin-top: -160px;
+  margin-left: 2%;
+  margin-top: 0%;
+  /* max-height: 20%; */
+
   position: absolute;
   animation: stars 6s ease-in-out infinite;
 }
 
 .star2 {
-  margin-left: 400px;
-  margin-top: -0px;
+  margin-left: 15%;
+  margin-top: -5%;
+  /* max-height: 20%; */
   position: absolute;
   animation: stars 3s ease-in-out infinite;
 }
 
 .star3 {
-  margin-left: 600px;
-  margin-top: -120px;
+  margin-left: 30%;
+  margin-top: -3%;
+  /* max-height: 20%; */
   position: absolute;
   animation: stars 3s ease-in-out infinite;
 }
 
 .star4 {
-  margin-left: 800px;
-  margin-top: -50px;
+  margin-left: 40%;
+  margin-top: -7%;
+  /* max-height: 20%; */
   position: absolute;
   animation: stars 5s ease-in-out infinite;
 }
 
 .star5 {
-  margin-left: 1000px;
-  margin-top: -190px;
+  margin-left: 55%;
+  margin-top: -5%;
+  /* max-height: 20%; */
   position: absolute;
   animation: stars 2s ease-in-out infinite;
 }
 
 .star6 {
-  margin-left: 1300px;
-  margin-top: -140px;
+  margin-left: 78%;
+  margin-top: -2%;
+  /* max-height: 20%; */
   position: absolute;
   animation: stars 7s ease-in-out infinite;
 }
 
 .star7 {
-  margin-left: 1500px;
-  margin-top: -80px;
+  margin-left: 95%;
+  margin-top: -7%;
+  /* max-height: 20%; */
   position: absolute;
   animation: stars 6s ease-in-out infinite;
 }
@@ -114,25 +149,19 @@
   }
 }
 
-.rocket {
-  margin-left: 1140px;
-  margin-top: 60px;
-  position: absolute;
-}
-
 .boy_tablet {
-  margin-left: 30px;
-  margin-top: 300px;
-  width: 500px;
+  margin: 0;
+  margin-top: 20%;
+  width: 30%;
   height: auto;
   position: absolute;
   transform: scaleX(-1);
 }
 
 .girl_tablet {
-  margin-left: 1150px;
-  margin-top: 260px;
-  width: 550px;
+  margin-left: 70%;
+  margin-top: 20%;
+  width: 30%;
   height: auto;
   position: absolute;
   transform: scaleX(-1);
@@ -190,11 +219,79 @@
 .header_text,
 h1 {
   font-family: "Rajdhani", sans-serif;
-  font-size: 60px;
+  font-size: 3.5vw;
   font-weight: 700;
   color: white;
   position: absolute;
   width: 100%;
   text-align: center;
-  margin-top: 250px;
+  vertical-align: middle;
+  margin-top: 20%;
+}
+
+@media (max-width: 991px) {
+  .Title {
+    font-size: 35px !important;
+    margin: 0;
+    vertical-align: middle;
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-bottom: -1%;
+  }
+
+  .star {
+    margin-top: 0%;
+    max-width: 2%;
+  }
+
+  .star2 {
+    margin-top: -5%;
+    max-width: 2%;
+  }
+
+  .star3 {
+    margin-top: -2%;
+    max-width: 2%;
+  }
+
+  .star4 {
+    margin-top: -7%;
+    max-width: 2%;
+  }
+
+  .star5 {
+    margin-top: -2%;
+    max-width: 2%;
+  }
+
+  .star6 {
+    margin-top: -5%;
+    max-width: 2%;
+  }
+
+  .star7 {
+    margin-top: -1%;
+    max-width: 2%;
+  }
+}
+
+@media (max-width: 600px) {
+  .Title {
+    font-size: 35px !important;
+    margin: 0;
+    vertical-align: middle;
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-bottom: -1%;
+    /* margin-right: auto; */
+  }
+  .subTitle {
+    line-height: 25px;
+    font-size: 0.3em !important;
+    /* position: fixed; */
+  }
+
+  .header-img {
+    width: 100%;
+  }
 }
