@@ -14,6 +14,7 @@
 .Cards {
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 }
 
 .Cards_In {
@@ -29,9 +30,9 @@
   transform: rotateY(180deg);
   cursor: pointer;
   float: left;
-  margin: 10px;
-  width: 12vw;
-  height: 12vw;
+  margin: 7px;
+  width: 13vw;
+  height: 13vw;
   padding: 6px;
   border-radius: 15px !important;
   background-color: #1abc9c;
@@ -86,9 +87,9 @@
 .Front {
   cursor: pointer;
   float: left;
-  margin: 10px;
-  width: 12vw;
-  height: 12vw;
+  margin: 7px;
+  width: 13vw;
+  height: 13vw;
   padding: 6px;
   border-radius: 15px !important;
   background-color: #fff;
@@ -196,5 +197,22 @@
   }
   .game_status_memory {
     font-size: 7vw;
+  }
+
+  .Back {
+    margin: 4px;
+    width: 13vw;
+    height: 13vw;
+  }
+
+  .Front {
+    margin: 4px;
+    width: 13vw;
+    height: 13vw;
+  }
+  .Cards {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
   }
 }

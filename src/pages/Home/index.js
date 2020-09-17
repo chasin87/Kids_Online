@@ -12,7 +12,9 @@ export default function Home() {
       <div className="cards">
         <div className="card">
           <div className="card_image">
-            <img src={Colors_logo_card} alt="background" />
+            <a href="/kleuren">
+              <img src={Colors_logo_card} alt="background" />
+            </a>
           </div>
           <div className="card_header">Colors</div>
           <div className="card_text">
@@ -26,7 +28,9 @@ export default function Home() {
 
         <div className="card">
           <div className="card_image">
-            <img src={TicTacToe_logo_card} alt="background" />
+            <a href="/tictactoe">
+              <img src={TicTacToe_logo_card} alt="background" />
+            </a>
           </div>
           <div className="card_header">TicTacToe</div>
           <div className="card_text">
@@ -40,7 +44,9 @@ export default function Home() {
 
         <div className="card">
           <div className="card_image">
-            <img src={Memory_logo_card} alt="background" />
+            <a href="/memory">
+              <img src={Memory_logo_card} alt="background" />
+            </a>
           </div>
           <div className="card_header">Memory</div>
           <div className="card_text">
