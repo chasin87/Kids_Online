@@ -84,7 +84,6 @@
 }
 
 .Front {
-  animation-delay: 22s;
   cursor: pointer;
   float: left;
   margin: 10px;
@@ -140,20 +139,7 @@
   box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0, 0, 0, 0.4),
     inset 0px 1px 0px rgba(255, 255, 255, 0.3),
     inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-  /* transition: 2s; */
-
-  /* transition-delay: -1s;
-  transform: rotateY(-0deg); */
 }
-
-/* .logo_image {
-  max-width: 80%;
-  max-height: 90%;
-  display: block;
-  margin: auto;
-  margin-top: 30%;
-  align-items: center;
-} */
 
 .image {
   max-width: 100%;
@@ -177,7 +163,6 @@
 .title {
   background-color: tomato;
   color: #fff;
-  /* padding: 1em; */
   width: 50%;
   margin-top: 20px;
   border-radius: 5px;
