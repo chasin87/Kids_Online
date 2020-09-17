@@ -11,7 +11,7 @@
 .square {
   background: #fff;
   border: 15px solid #999;
-  float: left;
+  /* float: left; */
   font-size: 70px;
   font-family: "Rajdhani", sans-serif;
   font-weight: bold;
@@ -112,8 +112,9 @@
   );
 }
 .board-row {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 /* Board */
@@ -126,10 +127,13 @@
 .game {
   margin-top: 10%;
   margin-bottom: 10%;
-  position: absolute;
-  top: 50%;
+  /* position: absolute; */
+  /* top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
   flex-direction: row;
   padding: 30px;
   background-color: #f5b120;
@@ -145,7 +149,7 @@
   border-radius: 5px;
   font-size: 25px;
   font-family: "Rajdhani", sans-serif;
-
+  font-weight: 600;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
   border: none;
 }
@@ -164,10 +168,20 @@
   margin-left: auto;
   margin-right: auto;
   border-radius: 4px;
+  width: 50%;
   padding-left: 100px;
   padding-right: 100px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
   border: none;
+}
+
+@media (max-width: 375px) {
+  .game {
+    /* margin-top: 32%; */
+    /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  }
 }
 
 @media (max-width: 991px) {
@@ -177,15 +191,10 @@
   }
 
   .game {
-    top: 100%;
     max-width: 94%;
-    margin-left: 3%;
-    margin-right: 3%;
   }
 
   .title_tictactoe {
-    /* padding-left: 30px;
-    padding-right: 30px; */
     width: 70%;
     font-size: 2em;
     text-align: center;
@@ -196,6 +205,8 @@
   .square {
     width: 60px;
     height: 60px;
+    font-size: 40px;
+    line-height: inherit;
   }
   .board-row {
     justify-content: center;
