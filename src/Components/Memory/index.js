@@ -276,7 +276,7 @@ export default function Flip() {
 
   return (
     <div>
-      <div className="container">
+      <div className="container_memory">
         <div className="title">Memory</div>
         <div className="game_status_memory">
           {message}
