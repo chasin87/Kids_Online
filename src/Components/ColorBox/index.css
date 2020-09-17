@@ -1,134 +1,11 @@
-.ColorBox {
-  border: 3px solid black;
-
+.title {
+  width: 70%;
+  font-size: 2em;
+  text-align: center;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
   display: flex;
-  border: none;
-  justify-content: space-between;
 }
 
-.ColorBoxRed {
-  background-color: #eb2d3a;
-  width: 200px;
-  height: 200px;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: 20px;
-  border: 1px #eb2d3a solid;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0px 6px 0px #eb2d3a, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-  -moz-box-shadow: 0px 6px 0px #eb2d3a, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 6px 0px #eb2d3a, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-}
-
-.ColorBoxBlue {
-  background-color: #0a6fb6;
-  width: 200px;
-  height: 200px;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: 20px;
-  border: 1px #0a6fb6 solid;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0px 6px 0px #0a6fb6, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-  -moz-box-shadow: 0px 6px 0px #0a6fb6, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 6px 0px #0a6fb6, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-}
-
-.ColorBoxYellow {
-  background-color: #ffff10;
-  width: 200px;
-  height: 200px;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: 20px;
-  border: 2px #ffff10 solid;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0px 6px 0px #ffff10, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-  -moz-box-shadow: 0px 6px 0px #ffff10, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 6px 0px #ffff10, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-}
-
-.ColorBoxGreen {
-  background-color: #acd426;
-  width: 200px;
-  height: 200px;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: 20px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0px 6px 0px #acd426, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-  -moz-box-shadow: 0px 6px 0px #acd426, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 6px 0px #acd426, 0px 3px 15px rgba(0, 0, 0, 0),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
-}
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  background: #f5b120;
-  max-width: 90%;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 15px !important;
-  padding-top: 30px;
-  margin-bottom: 50px;
-  margin-left: auto;
-  margin-right: auto;
-}
 .game_status {
   font-family: "Rajdhani", sans-serif;
   font-size: 50px;
@@ -139,19 +16,184 @@
   display: none;
 }
 
-.title {
-  font-family: "Rajdhani", sans-serif;
-  font-size: 50px;
-  font-weight: 600;
-  background: tomato;
-  color: white;
-  text-align: center;
+.container {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  justify-content: center;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 4px;
-  width: 50%;
-  padding-left: 100px;
-  padding-right: 100px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  flex-direction: row;
+  padding: 10px;
+  padding-bottom: 20px;
+  background-color: #f5b120;
+  border-radius: 15px;
+}
+
+.ColorBox {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  display: flex;
   border: none;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ColorBoxRed,
+.ColorBoxBlue,
+.ColorBoxYellow,
+.ColorBoxGreen,
+.ColorBoxBrown,
+.ColorBoxOrange,
+.ColorBoxPurple,
+.ColorBoxPink,
+.ColorBoxWhite,
+.ColorBoxBlack {
+  width: 15.7vw;
+  height: 15.7vw;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+
+.ColorBoxRed {
+  background-color: #eb2d3a;
+  border: 1px #eb2d3a solid;
+  -webkit-box-shadow: 0px 6px 0px #eb2d3a, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #eb2d3a, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #eb2d3a, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+}
+.ColorBoxBlue {
+  background-color: #0a6fb6;
+  border: 1px #0a6fb6 solid;
+  -webkit-box-shadow: 0px 6px 0px #0a6fb6, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #0a6fb6, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #0a6fb6, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+}
+.ColorBoxYellow {
+  background-color: #ffff10;
+  border: 2px #ffff10 solid;
+  -webkit-box-shadow: 0px 6px 0px #ffff10, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #ffff10, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #ffff10, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+}
+.ColorBoxGreen {
+  background-color: #acd426;
+  border: 2px #acd426 solid;
+  -webkit-box-shadow: 0px 6px 0px #acd426, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #acd426, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #acd426, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+}
+.ColorBoxBrown {
+  background-color: #8b4513;
+  border: 2px #8b4513 solid;
+  -webkit-box-shadow: 0px 6px 0px #8b4513, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #8b4513, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #8b4513, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+}
+.ColorBoxOrange {
+  background-color: #ffa500;
+  border: 2px #ffa500 solid;
+  -webkit-box-shadow: 0px 6px 0px #ffa500, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #ffa500, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #ffa500, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+}
+.ColorBoxPurple {
+  background-color: #800080;
+  border: 2px #800080 solid;
+  -webkit-box-shadow: 0px 6px 0px #800080, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #800080, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #800080, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+}
+.ColorBoxPink {
+  background-color: #ffc0cb;
+  border: 2px #ffc0cb solid;
+  -webkit-box-shadow: 0px 6px 0px #ffc0cb, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #ffc0cb, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #ffc0cb, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+}
+.ColorBoxWhite {
+  background-color: #ffffff;
+  border: 2px #ffffff solid;
+  -webkit-box-shadow: 0px 6px 0px #ffffff, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #ffffff, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #ffffff, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+}
+.ColorBoxBlack {
+  background-color: #000000;
+  border: 2px #000000 solid;
+  -webkit-box-shadow: 0px 6px 0px #000000, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 6px 0px #000000, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 6px 0px #000000, 0px 3px 15px rgba(0, 0, 0, 0),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 3px rgba(255, 255, 255, 0.5);
 }
