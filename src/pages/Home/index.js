@@ -16,8 +16,8 @@ export default function Home() {
           </div>
           <div className="card_header">Colors</div>
           <div className="card_text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
+            Learn the colors by pressing them, as soon as you press you will
+            hear the color.
           </div>
           <a href="/kleuren">
             <button className="card_button">Play Colors</button>
@@ -30,8 +30,8 @@ export default function Home() {
           </div>
           <div className="card_header">TicTacToe</div>
           <div className="card_text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
+            a game in which two players seek in alternate turns to complete a
+            row, a column, or a diagonal.
           </div>
           <a href="/tictactoe">
             <button className="card_button">Play TicTacToe</button>
@@ -44,8 +44,8 @@ export default function Home() {
           </div>
           <div className="card_header">Memory</div>
           <div className="card_text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
+            Train your brain! Play this game every day. Keep your brain in
+            shape! Find pairs of images.
           </div>
           <a href="/memory">
             <button className="card_button">Play Memory</button>
