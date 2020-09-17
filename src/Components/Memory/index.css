@@ -1,16 +1,3 @@
-.container_memory {
-  margin-top: 10%;
-  margin-bottom: 10%;
-  justify-content: center;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  flex-direction: row;
-  padding: 10px;
-  background-color: #f5b120;
-  border-radius: 15px;
-}
-
 .Cards {
   margin-left: auto;
   margin-right: auto;

@@ -126,25 +126,9 @@
   display: table;
 }
 
-.game {
-  margin-top: 10%;
-  margin-bottom: 10%;
-  justify-content: center;
-  max-width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  flex-direction: row;
-  padding: 10px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #f5b120;
-  border-radius: 15px;
-}
-
 .resetButton {
   background-color: tomato;
   color: #fff;
-  /* padding: 1em; */
   width: 50%;
   margin-top: 20px;
   border-radius: 5px;
