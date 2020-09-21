@@ -190,6 +190,7 @@ export default function Flip() {
   const [firstCard, setFirstCard] = useState([]);
   const [secondCard, setSecondCard] = useState([]);
   const [message, setMessage] = useState(["Let's Play, Memory"]);
+  const [click, setClick] = useState(true);
 
   useEffect(() => {
     const shuffle = (array) => {
@@ -218,8 +219,6 @@ export default function Flip() {
     });
   };
 
-  console.log(cards);
-
   useEffect(() => {
     setCards(animals);
   }, [cards]);
@@ -243,6 +242,7 @@ export default function Flip() {
         },
       ]);
     } else if (secondCard.length < 1) {
+      setClick(false);
       setSecondCard([
         {
           id: card.id,
@@ -276,6 +276,7 @@ export default function Flip() {
     setFirstCard([]);
     setSecondCard([]);
     setMatchArray([]);
+    setClick(true);
   } else if (set === 1 && JSON.stringify(firstt) !== JSON.stringify(secondd)) {
     setTimeout(() => {
       setMessage(["oops!, thats not a Match"]);
@@ -293,7 +294,10 @@ export default function Flip() {
           };
         }
       });
-    }, 600);
+      setTimeout(() => {
+        setClick(true);
+      }, 500);
+    }, 500);
   }
 
   return (
@@ -319,7 +323,9 @@ export default function Flip() {
                       <div
                         className="Back"
                         onClick={() => {
-                          Handle(card);
+                          if (click === true) {
+                            Handle(card);
+                          }
                         }}
                       ></div>
                     )}
