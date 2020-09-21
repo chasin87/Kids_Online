@@ -201,21 +201,22 @@ export default function Flip() {
 
   const resetClick = () => {
     cards.map((test) => {
-      setCards([
-        ...cards,
-        {
-          status: (test.status = false),
-          match: (test.match = false),
-        },
-      ]);
-
-      setTimeout(() => {
-        const shuffle = (array) => {
-          array.sort(() => Math.random() - 0.5);
-        };
-        shuffle(animals);
-        setMessage(["Let's Play, Memory"]);
-      }, 300);
+      return (
+        setCards([
+          ...cards,
+          {
+            status: (test.status = false),
+            match: (test.match = false),
+          },
+        ]),
+        setTimeout(() => {
+          const shuffle = (array) => {
+            array.sort(() => Math.random() - 0.5);
+          };
+          shuffle(animals);
+          setMessage(["Let's Play, Memory"]);
+        }, 300)
+      );
     });
   };
 
