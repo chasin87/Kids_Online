@@ -198,9 +198,31 @@ export default function Flip() {
     shuffle(animals);
   }, []);
 
+  const resetClick = () => {
+    cards.map((test) => {
+      setCards([
+        ...cards,
+        {
+          status: (test.status = false),
+          match: (test.match = false),
+        },
+      ]);
+
+      setTimeout(() => {
+        const shuffle = (array) => {
+          array.sort(() => Math.random() - 0.5);
+        };
+        shuffle(animals);
+        setMessage(["Let's Play, Memory"]);
+      }, 300);
+    });
+  };
+
+  console.log(cards);
+
   useEffect(() => {
     setCards(animals);
-  }, []);
+  }, [cards]);
 
   const Handle = (card) => {
     setMatchArray([
@@ -306,6 +328,16 @@ export default function Flip() {
               })}
             </div>
           </div>
+        </div>
+        <div className="butts">
+          <button
+            className="resetButton"
+            onClick={() => {
+              resetClick();
+            }}
+          >
+            Reset
+          </button>
         </div>
       </div>
     </div>

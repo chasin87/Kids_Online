@@ -200,6 +200,10 @@
     display: flex;
   }
 
+  .resetButton:focus {
+    outline: 0;
+  }
+
   .status {
     font-size: 9vw;
   }
