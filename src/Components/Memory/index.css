@@ -203,3 +203,38 @@
     width: 80%;
   }
 }
+
+.modal-header {
+  display: block;
+  text-align: center;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  background: #1f5967;
+}
+.modal-title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  color: #fff;
+}
+
+.modal-body {
+  text-align: center;
+  background: #fff;
+  color: tomato;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  font-size: 1.6em;
+}
+
+.modal-footer {
+  display: block;
+  text-align: center;
+  background: #f5b120;
+}
+
+.btn:not(:disabled):not(.disabled) {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  background: tomato;
+  border-color: tomato;
+}

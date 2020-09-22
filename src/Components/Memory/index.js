@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
+import Modal from "react-bootstrap/Modal";
+import { Button } from "react-bootstrap";
 
 const animals = [
   {
@@ -191,6 +193,19 @@ export default function Flip() {
   const [secondCard, setSecondCard] = useState([]);
   const [message, setMessage] = useState(["Let's Play, Memory"]);
   const [click, setClick] = useState(true);
+  const [show, setShow] = useState(false);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (count === 12) {
+      setShow(true);
+    }
+  }, [count]);
+  console.log(count);
+
+  const handleClose = () => {
+    return [setShow(false), resetClick(), setCount(0)];
+  };
 
   useEffect(() => {
     const shuffle = (array) => {
@@ -200,13 +215,13 @@ export default function Flip() {
   }, []);
 
   const resetClick = () => {
-    cards.map((test) => {
+    cards.map((reset) => {
       return (
         setCards([
           ...cards,
           {
-            status: (test.status = false),
-            match: (test.match = false),
+            status: (reset.status = false),
+            match: (reset.match = false),
           },
         ]),
         setTimeout(() => {
@@ -273,15 +288,15 @@ export default function Flip() {
     });
 
     setMessage(["You've got a match,"]);
-
+    setCount(count + 1);
     setFirstCard([]);
     setSecondCard([]);
     setMatchArray([]);
+
     setClick(true);
   } else if (set === 1 && JSON.stringify(firstt) !== JSON.stringify(secondd)) {
     setTimeout(() => {
       setMessage(["oops!, thats not a Match"]);
-
       setFirstCard([]);
       setSecondCard([]);
       setMatchArray([]);
@@ -309,12 +324,25 @@ export default function Flip() {
           {message}
           <div className="Cards">
             <div className="Cards_In">
+              <Modal centered show={show} onHide={handleClose}>
+                <Modal.Header>
+                  <Modal.Title>Winner!!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Woohoo, you won the game!!</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Play again
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+
               {cards.map((card) => {
                 return (
                   <div key={card.id}>
                     {card.status ? (
-                      <div className="Front">
+                      <div className="Front" key={card.id}>
                         <img
+                          key={card.id}
                           className="image"
                           src={require(`./images/${card.name}.png`)}
                           alt="animals"

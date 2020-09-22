@@ -130,6 +130,14 @@ ul {
 }
 
 @media (max-width: 991px) {
+  li {
+    width: auto;
+  }
+  ul {
+    list-style-type: none;
+    display: inline-flex;
+  }
+
   .login_area {
     display: none;
   }
