@@ -1,4 +1,4 @@
-## Link to the app[Kids Online](https://kids-online.netlify.app/).
+## Link to the app [Kids Online](https://kids-online.netlify.app/).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

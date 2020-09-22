@@ -182,6 +182,7 @@
     justify-content: center;
     display: flex;
   }
+
   .game_status_memory {
     font-size: 7vw;
   }

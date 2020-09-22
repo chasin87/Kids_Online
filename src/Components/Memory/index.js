@@ -201,7 +201,7 @@ export default function Flip() {
       setShow(true);
     }
   }, [count]);
-  console.log(count);
+  // console.log(count);
 
   const handleClose = () => {
     return [setShow(false), resetClick(), setCount(0)];
