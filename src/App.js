@@ -8,6 +8,7 @@ import TicTacToe from "./pages/TicTacToe/";
 import Memory from "./pages/Memory/";
 import QuizFunc from "./pages/Quiz/";
 import AdminLog from "./pages/Admin/";
+import QuizDash from "./pages/QuizDashboard/";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/memory" component={Memory} />;
         <Route path="/Quiz" component={QuizFunc} />;
         <Route path="/Admin" component={AdminLog} />;
+        <Route path="/QuizDashboard" component={QuizDash} />;
       </Switch>
     </div>
   );

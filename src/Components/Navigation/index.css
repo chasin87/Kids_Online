@@ -39,7 +39,7 @@
 }
 
 li {
-  width: 10vw;
+  width: 13.5vw;
 }
 ul {
   list-style-type: none;
@@ -92,7 +92,7 @@ ul {
 .navbar-expand-lg .navbar-nav .nav-link {
   margin-left: 20px;
   margin-right: 20px;
-  font-size: 1.7vw;
+  font-size: 1.5vw;
 }
 
 .navbar {
