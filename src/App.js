@@ -6,6 +6,8 @@ import Home from "./pages/Home/";
 import Kleuren from "./pages/Kleuren/";
 import TicTacToe from "./pages/TicTacToe/";
 import Memory from "./pages/Memory/";
+import QuizFunc from "./pages/Quiz/";
+import AdminLog from "./pages/Admin/";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/kleuren" component={Kleuren} />;
         <Route path="/tictactoe" component={TicTacToe} />;
         <Route path="/memory" component={Memory} />;
+        <Route path="/Quiz" component={QuizFunc} />;
+        <Route path="/Admin" component={AdminLog} />;
       </Switch>
     </div>
   );

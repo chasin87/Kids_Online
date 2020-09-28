@@ -47,7 +47,8 @@ ul {
 }
 
 .register,
-.login {
+.login,
+.admin {
   background-color: tomato;
   padding: 1.7vw;
   /* margin-top: 10px; */
@@ -65,13 +66,13 @@ ul {
   background-color: #f5b120;
 }
 
-.register:hover {
-  background-color: #2bb24c;
-  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-  color: #fff;
+.admin {
+  background-color: #3906ee;
 }
 
-.login:hover {
+.register:hover,
+.login:hover,
+.admin:hover {
   background-color: #2bb24c;
   box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
   color: #fff;
@@ -155,7 +156,8 @@ ul {
   }
 
   .register,
-  .login {
+  .login,
+  .admin {
     /* padding: 1.2vw; */
     font-size: 4vw;
     border-radius: 5px;

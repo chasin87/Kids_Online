@@ -13,20 +13,26 @@ function Navigation() {
       <div className="top-bar">
         <div className="information_area">
           Contact us on 012345678 or
-          <a href="contacts.html"> info@kidsonline.nl</a>
+          <a href="contacts"> info@kidsonline.nl</a>
         </div>
         <div className="login_area">
           <ul>
             <li>
-              <a className="register" href="contacts.html">
+              <a className="register" href="contacts">
                 <img className="icon_reg" src={reg} alt="Lock" />
                 Register
               </a>
             </li>
             <li>
-              <a className="login" href="login.html">
+              <a className="login" href="login">
                 <img className="icon_lock" src={lock} alt="Lock" />
                 Login
+              </a>
+            </li>
+            <li>
+              <a className="admin" href="admin">
+                <img className="icon_lock" src={lock} alt="Lock" />
+                Admin
               </a>
             </li>
           </ul>
@@ -63,6 +69,9 @@ function Navigation() {
             <a className="nav-item nav-link" href="Memory">
               Memory
             </a>
+            <a className="nav-item nav-link" href="Quiz">
+              Quiz
+            </a>
           </div>
           <div className="login_area_nav">
             <ul>
@@ -76,6 +85,12 @@ function Navigation() {
                 <a className="login" href="login.html">
                   <img className="icon_lock" src={lock} alt="Lock" />
                   Login
+                </a>
+              </li>
+              <li>
+                <a className="admin" href="admin.html">
+                  <img className="icon_lock" src={lock} alt="Lock" />
+                  Admin
                 </a>
               </li>
             </ul>
