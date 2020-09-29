@@ -71,7 +71,7 @@ export default function Admin() {
             id="email"
             label="Email Address"
             name="email"
-            autoComplete="email"
+            // autoComplete="email"
             autoFocus
             value={email}
             onChange={(event) => setEmail(event.target.value)}
@@ -86,7 +86,7 @@ export default function Admin() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            // autoComplete="current-password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
