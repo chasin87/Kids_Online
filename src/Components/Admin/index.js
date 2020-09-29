@@ -21,15 +21,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
-  avatar: {
-    margin: theme.spacing(1),
-  },
   form: {
     width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    background: "Tomato !important",
   },
 }));
 
@@ -60,6 +58,7 @@ export default function Admin() {
 
   return (
     <Container component="main" maxWidth="xs">
+      <div className="title_admin">Admin Login </div>
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5"></Typography>

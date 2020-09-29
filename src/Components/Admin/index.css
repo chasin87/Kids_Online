@@ -1,8 +1,12 @@
-.makeStyles-avatar-2 {
-  margin: 8px;
-  background-color: tomato !important;
-}
-
-.MuiButton-containedPrimary {
-  background-color: tomato !important;
+.title_admin {
+  color: tomato;
+  width: 70%;
+  margin-top: 20px;
+  font-size: 50px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 300;
+  border: none;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
