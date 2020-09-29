@@ -50,6 +50,7 @@ export default function Admin() {
     dispatch(login(email, password));
 
     setEmail("");
+    setPassword("");
   }
 
   const handleChange = (event) => setEmail(event.target.value);
