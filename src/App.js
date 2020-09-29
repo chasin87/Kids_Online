@@ -7,7 +7,7 @@ import Kleuren from "./pages/Kleuren/";
 import TicTacToe from "./pages/TicTacToe/";
 import Memory from "./pages/Memory/";
 import QuizFunc from "./pages/Quiz/";
-import AdminLog from "./pages/Admin/";
+import AdminLog from "./pages/Admin";
 import QuizDash from "./pages/QuizDashboard/";
 
 function App() {

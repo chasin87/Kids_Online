@@ -50,10 +50,9 @@ export default function Admin() {
     dispatch(login(email, password));
 
     setEmail("");
-    setPassword("");
-    console.log("event", event.preventDefault());
-    console.log("history", history);
   }
+
+  const handleChange = (event) => setEmail(event.target.value);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -71,7 +70,8 @@ export default function Admin() {
             name="email"
             autoComplete="email"
             autoFocus
-            onChange={(event) => setEmail(event.target.value)}
+            value={email}
+            onChange={handleChange}
             type="email"
           />
           <TextField

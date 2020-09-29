@@ -164,7 +164,7 @@
   margin-right: auto;
 }
 
-* {
+.game_status_memory {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
