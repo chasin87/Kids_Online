@@ -1,7 +1,7 @@
-
-## I'am still working on the app, you can find the published version in the below this line.
+## I'am still working on the app, you can find the published version below this line.
 
 ## Link to the app [Kids Online](https://kids-online.netlify.app/).
+
 ## Link to the backend repo [Kids Online Backend](https://github.com/chasin87/Kids_Online_be).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -9,13 +9,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### App ScreenShots:
 
 ![](src/ScreenShot/home-1.png)
+
 ![](src/ScreenShot/home-2.png)
+
 ![](src/ScreenShot/colors.png)
+
 ![](src/ScreenShot/tictactoe.png)
+
 ![](src/ScreenShot/memory.png)
+
 ![](src/ScreenShot/admin_login.png)
-
-
 
 ## Available Scripts
 
