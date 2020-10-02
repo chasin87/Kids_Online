@@ -52,7 +52,7 @@ function Board() {
     : `Next player: ${xIsNext ? "X" : "O"}`;
 
   return (
-    <div className="container">
+    <div className="container_ttt">
       <div className="title_tictactoe">TicTacToe</div>
       <div className="status">{status}</div>
       <div className="board-row">

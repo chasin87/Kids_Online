@@ -1,3 +1,14 @@
+.container_ttt {
+  margin: 5% auto;
+  justify-content: center;
+  max-width: 600px;
+  flex-direction: row;
+  padding: 10px;
+  padding-bottom: 20px;
+  background-color: #f5b120;
+  border-radius: 15px;
+}
+
 .status {
   font-family: "Rajdhani", sans-serif;
   font-size: 50px;
@@ -20,9 +31,9 @@
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 100px;
+  width: 110px;
   line-height: 80px;
-  height: 100px;
+  height: 110px;
   /* display: inline-block; */
   text-decoration: none;
   color: #fff;
@@ -130,7 +141,7 @@
   background-color: tomato;
   color: #fff;
   width: 50%;
-  margin-top: 20px;
+  margin: 20px auto;
   border-radius: 5px;
   font-size: 50px;
   font-family: "Rajdhani", sans-serif;
@@ -138,8 +149,6 @@
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
   border: none;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
 }
 .butts {
   display: flex;
@@ -164,6 +173,10 @@
 }
 
 @media (max-width: 991px) {
+  .container_ttt {
+    max-width: 70%;
+  }
+
   .board-row {
     margin-left: 15px;
     margin-right: 15px;
