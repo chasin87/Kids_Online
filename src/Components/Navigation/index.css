@@ -85,7 +85,7 @@ ul {
 
 .icon_lock,
 .icon_reg {
-  width: 15%;
+  width: 8%;
   margin-top: -5px;
 }
 
@@ -132,7 +132,7 @@ ul {
 
 @media (max-width: 991px) {
   li {
-    width: auto;
+    width: 30vw;
   }
   ul {
     list-style-type: none;
@@ -159,7 +159,7 @@ ul {
   .login,
   .admin {
     /* padding: 1.2vw; */
-    font-size: 4vw;
+    font-size: 3vw;
     border-radius: 5px;
     color: white;
   }
