@@ -11,9 +11,11 @@ import hond from "../Quiz/Sounds/hond.m4a";
 import olifant from "../Quiz/Sounds/olifant.m4a";
 import poes from "../Quiz/Sounds/poes.m4a";
 
-const questions = [
+export const questions = [
   {
-    quistion_id: 1,
+    question_id: 1,
+    question_text: "Wat rijmt er op huis?",
+    question_category: "Rijmen",
     question: "huis",
     question_sound: "huis",
     answer_a: "hond",
@@ -21,15 +23,17 @@ const questions = [
     answer_c: "muis",
     answer_d: "olifant",
   },
-  // {
-  //   quistion_id: 2,
-  //   question: "",
-  //   question_sound: "",
-  //   answer_a: "",
-  //   answer_b: "",
-  //   answer_c: "",
-  //   answer_d: "",
-  // },
+  {
+    question_id: 2,
+    question_text: "Wat rijmt er op deur?",
+    question_category: "Rijmen",
+    question: "deur",
+    question_sound: "deur",
+    answer_a: "geur",
+    answer_b: "dak",
+    answer_c: "raam",
+    answer_d: "kraan",
+  },
 ];
 
 export default function Quiz() {
