@@ -1,3 +1,14 @@
+.container_memory {
+  margin: 5% auto;
+  justify-content: center;
+  max-width: 1200px;
+  flex-direction: row;
+  padding: 10px;
+  padding-bottom: 20px;
+  background-color: #f5b120;
+  border-radius: 15px;
+}
+
 .Cards {
   margin-left: auto;
   margin-right: auto;
@@ -18,8 +29,8 @@
   cursor: pointer;
   float: left;
   margin: 7px;
-  width: 12vw;
-  height: 12vw;
+  width: 121px;
+  height: 121px;
   padding: 6px;
   border-radius: 15px !important;
   background-color: #1abc9c;
@@ -75,8 +86,8 @@
   cursor: pointer;
   float: left;
   margin: 7px;
-  width: 12vw;
-  height: 12vw;
+  width: 121px;
+  height: 121px;
   padding: 6px;
   border-radius: 15px !important;
   background-color: #fff;
@@ -175,6 +186,18 @@
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+@media (max-width: 1215px) {
+  .container_memory {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 1094px) {
+  .container_memory {
+    max-width: 90%;
+  }
+}
+
 @media (max-width: 991px) {
   .title {
     width: 70%;
@@ -203,6 +226,12 @@
     margin-left: auto;
     margin-right: auto;
     width: 80%;
+  }
+
+  .container_memory {
+    margin: 5% auto;
+    justify-content: center;
+    max-width: 90%;
   }
 }
 
