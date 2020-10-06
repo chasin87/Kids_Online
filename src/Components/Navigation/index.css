@@ -132,11 +132,13 @@ ul {
 
 @media (max-width: 991px) {
   li {
-    width: 30vw;
+    width: 100%;
+    display: flex;
+    margin-bottom: 5px;
   }
   ul {
     list-style-type: none;
-    display: inline-flex;
+    display: inline-block;
   }
 
   .login_area {
@@ -159,9 +161,11 @@ ul {
   .login,
   .admin {
     /* padding: 1.2vw; */
-    font-size: 3vw;
+    font-size: 20px;
     border-radius: 5px;
     color: white;
+    line-height: 40px;
+    box-shadow: none;
   }
 
   .navbar-light .navbar-nav .nav-link.active {
