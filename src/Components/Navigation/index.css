@@ -90,8 +90,8 @@ ul {
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
-  margin-left: 20px;
-  margin-right: 20px;
+  /* margin-left: 20px;
+  margin-right: 20px; */
   font-size: 1.5vw;
 }
 
@@ -102,7 +102,7 @@ ul {
 
 .navbar-nav a:hover {
   color: whitesmoke !important;
-  background-color: #f5b120 !important;
+  background-color: #1f5967 !important;
   border-radius: 5px;
 }
 
@@ -117,7 +117,7 @@ ul {
   font-family: "Rajdhani", sans-serif;
   margin-right: auto;
   margin-left: 130px;
-  width: 50%;
+  width: 40%;
   margin-top: 30px;
   float: left;
 }
@@ -130,10 +130,24 @@ ul {
   margin-left: 8px;
 }
 
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.7);
+  margin-left: 10px;
+  /* border: 0.5px solid; */
+
+  border-radius: 3px;
+}
+
 @media (max-width: 991px) {
+  .icon_lock,
+  .icon_reg {
+    width: 20px;
+    margin-top: -5px;
+  }
+
   li {
     width: 100%;
-    display: flex;
+    display: inline-grid;
     margin-bottom: 5px;
   }
   ul {
@@ -175,6 +189,9 @@ ul {
   .navbar-light .navbar-nav .nav-link {
     font-size: 4vw;
   }
+  .navbar-nav {
+    margin-bottom: 10px;
+  }
 }
 @media (max-width: 600px) {
   .Navbar {
@@ -183,6 +200,14 @@ ul {
   }
   .information_area {
     font-size: 10px;
+  }
+
+  .navbar-light .navbar-nav .nav-link.active {
+    font-size: 6vw;
+  }
+
+  .navbar-light .navbar-nav .nav-link {
+    font-size: 6vw;
   }
 }
 

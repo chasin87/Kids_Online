@@ -89,6 +89,11 @@ export default function QuizQuestions() {
                     <Accordion.Collapse eventKey="0">
                       <Card.Body>
                         <p>Question details</p>
+                        <p>{quest.question_text}</p>
+                        <p>{quest.answer_a}</p>
+                        <p>{quest.answer_b}</p>
+                        <p>{quest.answer_c}</p>
+                        <p>{quest.answer_d}</p>
                         <svg
                           width="1.5em"
                           height="1.5em"
