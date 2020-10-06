@@ -1,3 +1,46 @@
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+.navigation_to_dashboard {
+  display: flex;
+}
+
+.back_to {
+  display: flex;
+
+  width: 50%;
+  line-height: 1;
+  margin-top: 5px;
+  font-size: 30px;
+  padding: 3px;
+  justify-content: center;
+}
+.next_to {
+  display: flex;
+
+  width: 50%;
+  line-height: 1;
+  margin-top: 5px;
+  font-size: 30px;
+  padding: 3px;
+  justify-content: center;
+}
+
+.back_to svg {
+  margin-left: 0px;
+}
+
+.next_to svg {
+  margin-left: 0px;
+}
+
 .Titles {
   font-size: 30px;
   color: red;
@@ -65,6 +108,7 @@
   /* justify-content: center; */
   display: flex;
   background: #fff;
+  justify-content: center;
 }
 
 svg {
@@ -91,7 +135,19 @@ svg {
 
 @media (max-width: 991px) {
   .container_quiz_dashboard {
-    font-size: 25px;
+    font-size: 29px;
+  }
+  .back_to {
+    width: 50%;
+  }
+
+  .back_to,
+  .next_to {
+    font-size: 20px;
+  }
+
+  .accordion {
+    margin-top: -20px;
   }
 
   .id {
@@ -99,6 +155,7 @@ svg {
     margin-left: 0px;
     width: 98%;
   }
+
   .category {
     font-size: 25px;
     margin-left: 0px;

@@ -3,8 +3,12 @@
   margin-left: auto;
   margin-right: auto;
 }
+.tegels_all {
+  display: flex;
+  justify-content: center;
+}
 
-.tegels {
+.tegels_question {
   width: 200px;
   height: 200px;
   background-color: green;
@@ -13,15 +17,46 @@
   color: white;
   margin: 10px;
   border-radius: 5px;
+  text-align: center;
+  border: none;
 }
 
-.tegels a {
+.tegels_question a {
   color: white;
-  margin: 10px;
-  justify-content: center;
 }
 
-.tegels a:hover {
+.tegels_question a:hover {
   color: white;
   text-decoration: none;
+}
+
+.tegels_add_question {
+  width: 200px;
+  height: 200px;
+  background-color: #3906ee;
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: center;
+  border: none;
+}
+
+.tegels_add_question a {
+  color: white;
+}
+
+.tegels_add_question a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+  .tegels_add_question,
+  .tegels_question {
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
+  }
 }

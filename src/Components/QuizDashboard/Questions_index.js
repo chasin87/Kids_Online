@@ -2,8 +2,7 @@ import React from "react";
 import "./Question_index.css";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
-// import { bi-arrow-down-square-fill } from "react-bootstrap-icons";
-
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../Store/user/selectors";
 import { useHistory } from "react-router-dom";
@@ -19,6 +18,44 @@ export default function QuizQuestions() {
   return (
     <div>
       <div className="container_quiz_dashboard">
+        <div className="navigation_to_dashboard">
+          <div className="back_to">
+            <Link className="link_back" to="/QuizDashboard">
+              <svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-caret-left"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"
+                />
+              </svg>
+              Back to dashboard
+            </Link>
+          </div>
+          <div className="next_to">
+            <Link className="link_next" to="/Add_Question">
+              Go to Add Question
+              <svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-caret-right"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"
+                />
+              </svg>
+            </Link>
+          </div>
+        </div>
         <div className="container_title">Quiz Questions</div>
         <div>
           {questions.map((quest) => {
