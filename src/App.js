@@ -13,6 +13,7 @@ import AdminLog from "./pages/Admin/";
 import QuizDash from "./pages/QuizDashboard/";
 import MessageBox from "./Components/MessageBox";
 import Loading from "./Components/Loading";
+import QuizQuestions from "./Components/QuizDashboard/Questions_index";
 
 function App() {
   const isLoading = useSelector(selectAppLoading);
@@ -30,6 +31,7 @@ function App() {
         <Route path="/Quiz" component={QuizFunc} />;
         <Route path="/Admin" component={AdminLog} />;
         <Route path="/QuizDashboard" component={QuizDash} />;
+        <Route path="/QuizQuestions" component={QuizQuestions} />;
       </Switch>
     </div>
   );
