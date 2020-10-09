@@ -1,20 +1,52 @@
+.container_quiz {
+  margin: 5% auto;
+  justify-content: center;
+  max-width: 600px;
+  flex-direction: row;
+  padding: 10px;
+  padding-bottom: 20px;
+  background-color: #16caaf;
+  border-radius: 15px;
+}
+
+.title_quiz {
+  background-color: tomato;
+  color: #fff;
+  /* padding: 1em; */
+  width: 50%;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 50px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  border: none;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .image_question_header {
   display: flex;
   margin-left: auto;
   margin-right: auto;
   margin-top: 7px;
   height: auto;
-  width: 300px;
+  width: 200px;
 }
 
 .header_button {
   text-align: center;
 }
 
+.MuiSvgIcon-root {
+  margin: 0px;
+}
+
 .sound_question_header {
   background-color: tomato;
   color: #fff;
-  width: 30%;
+  width: 50%;
   margin-top: 20px;
   border-radius: 5px;
   font-size: 50px;
@@ -27,35 +59,41 @@
 }
 
 .question_answers {
-  background: #f5b120;
+  background: #16caaf;
   display: flex;
   margin-top: 20px;
-  width: 50%;
+  /* width: 50%; */
   margin-left: auto;
   margin-right: auto;
+  justify-content: space-around;
 }
 
 .answer {
   display: flex;
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   text-align: center;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 10px;
+  background: none;
+  border: none;
+}
+button:focus {
+  outline: 0;
 }
 
 .single_answer {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  margin-top: 20px;
 }
 
 .sound_answer_header {
   background-color: tomato;
   color: #fff;
-  width: 90%;
+  width: 50%;
   margin-top: 20px;
   border-radius: 5px;
   font-size: 50px;
@@ -65,4 +103,29 @@
   border: none;
   margin-left: auto;
   margin-right: auto;
+}
+
+.secsec {
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .container_quiz {
+    max-width: 90%;
+  }
+
+  .title_quiz {
+    width: 70%;
+    font-size: 2em;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .sound_question_header {
+    width: 70%;
+    font-size: 2em;
+    text-align: center;
+    justify-content: center;
+  }
 }

@@ -7,9 +7,9 @@ import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 //Import Sounds
 import huis from "../Quiz/Sounds/huis.m4a";
 import muis from "../Quiz/Sounds/muis.m4a";
-import hond from "../Quiz/Sounds/hond.m4a";
+import vogel from "../Quiz/Sounds/vogel.m4a";
 import olifant from "../Quiz/Sounds/olifant.m4a";
-import poes from "../Quiz/Sounds/poes.m4a";
+import paard from "../Quiz/Sounds/paard.m4a";
 
 export const questions = [
   {
@@ -18,8 +18,8 @@ export const questions = [
     question_category: "Rijmen",
     question: "huis",
     question_sound: "huis",
-    answer_a: "hond",
-    answer_b: "poes",
+    answer_a: "vogel",
+    answer_b: "paard",
     answer_c: "muis",
     answer_d: "olifant",
   },
@@ -41,14 +41,14 @@ export default function Quiz() {
 
   const [playhuis] = useSound(huis, { volume: 2.0 });
   const [playmuis] = useSound(muis, { volume: 2.0 });
-  const [playhond] = useSound(hond, { volume: 2.0 });
+  const [playvogel] = useSound(vogel, { volume: 2.0 });
   const [playolifant] = useSound(olifant, { volume: 2.0 });
-  const [playpoes] = useSound(poes, { volume: 2.0 });
+  const [playpaard] = useSound(paard, { volume: 2.0 });
 
   return (
     <div>
-      <div className="container">
-        <div className="title">Quiz</div>
+      <div className="container_quiz">
+        <div className="title_quiz">Quiz</div>
         <div className="question_header">
           {questions.map((quest) => {
             return (
@@ -74,105 +74,108 @@ export default function Quiz() {
         </div>
 
         <div className="question_answers">
-          <div className="single_answer">
-            {questions.map((quest) => {
-              return (
-                <button className="answer">
-                  <img
-                    className="answer"
-                    key={quest.quistion_id}
-                    src={require(`./images/${quest.answer_a}.png`)}
-                    alt="question_1"
-                  />
-                </button>
-              );
-            })}
+          <section className="secsec">
+            <div className="single_answer">
+              {questions.map((quest) => {
+                return (
+                  <button className="answer">
+                    <img
+                      className="answer"
+                      key={quest.quistion_id}
+                      src={require(`./images/${quest.answer_a}.png`)}
+                      alt="question_1"
+                    />
+                  </button>
+                );
+              })}
 
-            <button
-              className="sound_answer_header"
-              onClick={() => setIsChecked(!isChecked)}
-              onMouseUp={() => {
-                isChecked ? playhond() : playhond();
-              }}
-            >
-              <VolumeUpIcon />
-            </button>
-          </div>
+              <button
+                className="sound_answer_header"
+                onClick={() => setIsChecked(!isChecked)}
+                onMouseUp={() => {
+                  isChecked ? playvogel() : playvogel();
+                }}
+              >
+                <VolumeUpIcon />
+              </button>
+            </div>
 
-          <div className="single_answer">
-            {questions.map((quest) => {
-              return (
-                <button className="answer">
-                  <img
-                    className="answer"
-                    key={quest.quistion_id}
-                    src={require(`./images/${quest.answer_b}.png`)}
-                    alt="question_1"
-                  />
-                </button>
-              );
-            })}
+            <div className="single_answer">
+              {questions.map((quest) => {
+                return (
+                  <button className="answer">
+                    <img
+                      className="answer"
+                      key={quest.quistion_id}
+                      src={require(`./images/${quest.answer_b}.png`)}
+                      alt="question_1"
+                    />
+                  </button>
+                );
+              })}
 
-            <button
-              className="sound_answer_header"
-              onClick={() => setIsChecked(!isChecked)}
-              onMouseUp={() => {
-                isChecked ? playpoes() : playpoes();
-              }}
-            >
-              <VolumeUpIcon />
-            </button>
-          </div>
+              <button
+                className="sound_answer_header"
+                onClick={() => setIsChecked(!isChecked)}
+                onMouseUp={() => {
+                  isChecked ? playpaard() : playpaard();
+                }}
+              >
+                <VolumeUpIcon />
+              </button>
+            </div>
+          </section>
+          <section className="secsec">
+            <div className="single_answer">
+              {questions.map((quest) => {
+                return (
+                  <button className="answer">
+                    <img
+                      className="answer"
+                      key={quest.quistion_id}
+                      src={require(`./images/${quest.answer_c}.png`)}
+                      alt="question_1"
+                    />
+                  </button>
+                );
+              })}
 
-          <div className="single_answer">
-            {questions.map((quest) => {
-              return (
-                <button className="answer">
-                  <img
-                    className="answer"
-                    key={quest.quistion_id}
-                    src={require(`./images/${quest.answer_c}.png`)}
-                    alt="question_1"
-                  />
-                </button>
-              );
-            })}
+              <button
+                className="sound_answer_header"
+                onClick={() => setIsChecked(!isChecked)}
+                onMouseUp={() => {
+                  isChecked ? playmuis() : playmuis();
+                }}
+              >
+                <VolumeUpIcon />
+              </button>
+            </div>
 
-            <button
-              className="sound_answer_header"
-              onClick={() => setIsChecked(!isChecked)}
-              onMouseUp={() => {
-                isChecked ? playmuis() : playmuis();
-              }}
-            >
-              <VolumeUpIcon />
-            </button>
-          </div>
+            <div className="single_answer">
+              {questions.map((quest) => {
+                return (
+                  <button className="answer">
+                    <img
+                      className="answer"
+                      key={quest.quistion_id}
+                      src={require(`./images/${quest.answer_d}.png`)}
+                      alt="question_1"
+                    />
+                  </button>
+                );
+              })}
 
-          <div className="single_answer">
-            {questions.map((quest) => {
-              return (
-                <button className="answer">
-                  <img
-                    className="answer"
-                    key={quest.quistion_id}
-                    src={require(`./images/${quest.answer_d}.png`)}
-                    alt="question_1"
-                  />
-                </button>
-              );
-            })}
-
-            <button
-              className="sound_answer_header"
-              onClick={() => setIsChecked(!isChecked)}
-              onMouseUp={() => {
-                isChecked ? playolifant() : playolifant();
-              }}
-            >
-              <VolumeUpIcon />
-            </button>
-          </div>
+              <button
+                className="sound_answer_header"
+                onClick={() => setIsChecked(!isChecked)}
+                onMouseUp={() => {
+                  isChecked ? playolifant() : playolifant();
+                }}
+              >
+                <VolumeUpIcon />
+              </button>
+            </div>
+          </section>
         </div>
       </div>
     </div>
