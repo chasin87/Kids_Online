@@ -11,7 +11,7 @@ export default function Home() {
       {<HeaderImage />}
 
       <div className="cards">
-        <div className="card">
+        <div className="cardd">
           <div className="card_image">
             <a href="/kleuren">
               <img src={Colors_logo_card} alt="background" />
@@ -22,12 +22,14 @@ export default function Home() {
             Learn the colors by pressing them, as soon as you press you will
             hear the color.
           </div>
-          <a href="/kleuren">
-            <button className="card_button">Play Colors</button>
-          </a>
+          <div>
+            <a href="/kleuren">
+              <button className="card_button">Play Colors</button>
+            </a>
+          </div>
         </div>
 
-        <div className="card">
+        <div className="cardd">
           <div className="card_image">
             <a href="/tictactoe">
               <img src={TicTacToe_logo_card} alt="background" />
@@ -43,7 +45,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="card">
+        <div className="cardd">
           <div className="card_image">
             <a href="/memory">
               <img src={Memory_logo_card} alt="background" />
