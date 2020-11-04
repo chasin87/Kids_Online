@@ -55,13 +55,13 @@ export default function Flip() {
   useEffect(() => {
     setCards(animals);
     animals.map((card) => {
-      card.status = true;
+      return (card.status = true);
     });
   }, [cards]);
 
   useEffect(() => {
     animals.map((card) => {
-      card.status = false;
+      return (card.status = false);
     });
   }, [cards]);
 
