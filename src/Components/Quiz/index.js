@@ -23,17 +23,7 @@ export const questions = [
     answer_c: "muis",
     answer_d: "olifant",
   },
-  // {
-  //   question_id: 2,
-  //   question_text: "Wat rijmt er op deur?",
-  //   question_category: "Rijmen",
-  //   question: "deur",
-  //   question_sound: "deur",
-  //   answer_a: "geur",
-  //   answer_b: "dak",
-  //   answer_c: "raam",
-  //   answer_d: "kraan",
-  // },
+
 ];
 
 export default function Quiz() {

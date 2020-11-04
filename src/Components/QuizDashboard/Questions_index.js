@@ -25,7 +25,7 @@ export default function QuizQuestions() {
                 width="1em"
                 height="1em"
                 viewBox="0 0 16 16"
-                class="bi bi-caret-left"
+                className="bi bi-caret-left"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -44,7 +44,7 @@ export default function QuizQuestions() {
                 width="1em"
                 height="1em"
                 viewBox="0 0 16 16"
-                class="bi bi-caret-right"
+                className="bi bi-caret-right"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
               >
