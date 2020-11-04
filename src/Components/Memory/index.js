@@ -54,6 +54,15 @@ export default function Flip() {
 
   useEffect(() => {
     setCards(animals);
+    animals.map((card) => {
+      card.status = true;
+    });
+  }, [cards]);
+
+  useEffect(() => {
+    animals.map((card) => {
+      card.status = false;
+    });
   }, [cards]);
 
   const Handle = (card) => {
