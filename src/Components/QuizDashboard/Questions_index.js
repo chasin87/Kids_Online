@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Question_index.css";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
+import { useDispatch, useSelector } from "react-redux";
+import { selectquizzes } from "../../Store/quizlist/selectors";
+import { fetchQuizList } from "../../Store/quizlist/actions";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { selectUser } from "../../Store/user/selectors";
 import { useHistory } from "react-router-dom";
-import { questions } from "../Quiz";
+// import { questions } from "../Quiz";
 
 export default function QuizQuestions() {
   const { token } = useSelector(selectUser);
@@ -14,7 +16,15 @@ export default function QuizQuestions() {
   if (token === null) {
     history.push("/");
   }
+  const dispatch = useDispatch();
+  const Quizzes = useSelector(selectquizzes);
 
+  useEffect(() => {
+    dispatch(fetchQuizList());
+    console.log("Quizes1", Quizzes);
+  }, [dispatch]);
+
+  console.log("Quizes2", Quizzes);
   return (
     <div>
       <div className="container_quiz_dashboard">
@@ -56,20 +66,21 @@ export default function QuizQuestions() {
             </Link>
           </div>
         </div>
+
         <div className="container_title">Quiz Questions</div>
         <div>
-          {questions.map((quest) => {
+          {Quizzes.map((quest) => {
             return (
               <div className="question_part">
                 <Accordion>
                   <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="0">
-                      <div className="id"> Id: {quest.question_id}</div>
+                      <div className="id"> Id: {quest.id}</div>
                       <div className="category">
                         Category: {quest.question_category}
                       </div>
                       <div className="question_in_text">
-                        Question: {quest.question_text}
+                        Question: {quest.question}
                       </div>
                       <svg
                         className="iconArr"
@@ -89,7 +100,7 @@ export default function QuizQuestions() {
                     <Accordion.Collapse eventKey="0">
                       <Card.Body>
                         <p>Question details</p>
-                        <p>{quest.question_text}</p>
+                        <p>{quest.question}</p>
                         <p>{quest.answer_a}</p>
                         <p>{quest.answer_b}</p>
                         <p>{quest.answer_c}</p>
