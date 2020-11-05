@@ -15,6 +15,10 @@ export default function Flip() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    setCards(animals);
+  }, [cards]);
+
+  useEffect(() => {
     if (count === 12) {
       setShow(true);
     }
@@ -52,18 +56,12 @@ export default function Flip() {
     });
   };
 
-  useEffect(() => {
-    setCards(animals);
-    animals.map((card) => {
-      return (card.status = true);
-    });
-  }, [cards]);
-
-  useEffect(() => {
-    animals.map((card) => {
-      return (card.status = false);
-    });
-  }, [cards]);
+  // useEffect(() => {
+  //   setCards(animals);
+  //   animals.map((card) => {
+  //     return (card.status = false);
+  //   });
+  // }, [cards]);
 
   const Handle = (card) => {
     setMatchArray([
@@ -166,9 +164,8 @@ export default function Flip() {
                 return (
                   <div key={card.id}>
                     {card.status ? (
-                      <div className="Front" key={card.id}>
+                      <div className="Front">
                         <img
-                          key={card.id}
                           className="image"
                           src={require(`./images/${card.name}.png`)}
                           alt="animals"
@@ -182,7 +179,14 @@ export default function Flip() {
                             Handle(card);
                           }
                         }}
-                      ></div>
+                      >
+                        {" "}
+                        <img
+                          className="image-back"
+                          src={require(`./images/${card.name}.png`)}
+                          alt="animals"
+                        />
+                      </div>
                     )}
                   </div>
                 );

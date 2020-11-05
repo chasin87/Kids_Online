@@ -146,37 +146,37 @@ export const animals = [
   // {
   //   name: "Vos",
   //   id: 37,
-  //   status: false,
+  // status: false,
   //   match: false,
   // },
   // {
   //   name: "Vos",
   //   id: 38,
-  //   status: false,
+  // status: false,
   //   match: false,
   // },
   // {
   //   name: "Wasbeer",
   //   id: 40,
-  //   status: false,
+  // status: false,
   //   match: false,
   // },
   // {
   //   name: "Wasbeer",
   //   id: 41,
-  //   status: false,
+  // status: false,
   //   match: false,
   // },
   // {
   //   name: "Zebra",
   //   id: 43,
-  //   status: false,
+  // status: false,
   //   match: false,
   // },
   // {
   //   name: "Zebra",
   //   id: 44,
-  //   status: false,
+  // status: false,
   //   match: false,
   // },
 ];
