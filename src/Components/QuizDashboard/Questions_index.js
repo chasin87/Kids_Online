@@ -21,10 +21,8 @@ export default function QuizQuestions() {
 
   useEffect(() => {
     dispatch(fetchQuizList());
-    console.log("Quizes1", Quizzes);
   }, [dispatch]);
 
-  console.log("Quizes2", Quizzes);
   return (
     <div>
       <div className="container_quiz_dashboard">

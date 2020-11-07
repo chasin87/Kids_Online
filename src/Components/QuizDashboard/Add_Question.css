@@ -21,11 +21,13 @@ a:hover {
 .back_to,
 .next_to {
   display: flex;
-  max-width: 50%;
+  width: 300px;
   line-height: 1;
-  margin: 15px;
+  /* margin: 15px;  */
   font-size: 30px;
-  /* padding: 5px; */
+  padding: 15px;
+  text-align: center;
+  justify-content: center;
 
   background-color: tomato;
   border-radius: 3px;
@@ -56,18 +58,97 @@ label {
   font-size: 20px;
 }
 
-.form-group {
-  width: 40%;
+.Form {
+  width: 50%;
 }
 
-.form-control-file,
-.form-control-range {
-  font-size: 20px;
-  text-align: center;
+.custom-file-label {
+  text-align: left;
+  height: 48px;
+  line-height: 1.6;
+  margin-bottom: -300px !important;
+}
+
+.custom-file-label::after {
+  height: 47px;
+  border-bottom: 1px solid #ced4da;
+  line-height: 1.6;
 }
 
 hr {
   border-top: 2px solid tomato;
+}
+
+.form-group {
+  margin-bottom: 0px;
+}
+
+.button_upload {
+  width: 200px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+progress {
+  vertical-align: baseline;
+  width: 90%;
+  height: 25px;
+}
+
+.uploaded_file {
+  font-weight: 600;
+}
+
+.input-group > .custom-file:not(:first-child) .custom-file-label {
+  text-align: left;
+  cursor: pointer;
+}
+
+.input-group-text {
+  font-size: 20px;
+  border-radius: 2px;
+}
+
+.custom-file-label {
+  border-radius: 2px !important;
+}
+.custom-file-label::after {
+  border-radius: unset;
+}
+
+.button_Add {
+  /* float: left; */
+  background-color: #1f5967 !important;
+  color: white;
+  border-color: #1f5967 !important;
+  width: 200px;
+}
+
+.button_Add:hover {
+  color: white;
+}
+
+.dropdown_container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.input-group > .custom-select:not(:last-child),
+.input-group > .form-control:not(:last-child) {
+  height: 48px;
+  font-size: 1.25rem;
+  min-height: 38px;
+}
+.custom-select {
+  border-radius: 2px;
+}
+
+#question_main {
+  font-size: 1.25rem;
+  font-weight: 400;
+  height: 48px;
+  margin-bottom: 30px;
 }
 
 @media (max-width: 991px) {
@@ -75,8 +156,12 @@ hr {
     font-size: 29px;
   }
 
-  .form-group {
+  .Form {
     width: 90%;
+  }
+
+  .button_upload {
+    width: 50%;
   }
 
   .back_to,
@@ -84,6 +169,7 @@ hr {
     font-size: 15px;
     display: flex;
     font-weight: 500;
+    width: 200px;
   }
 
   .accordion {
