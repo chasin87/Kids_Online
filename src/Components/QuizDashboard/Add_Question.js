@@ -9,12 +9,13 @@ import firebase from "firebase";
 import Axios from "axios";
 
 export default function Add_Question() {
-  const [question, setQuestion] = useState();
+  const [question, setQuestion] = useState("");
   const [images, setImages] = useState([]);
   const [imageUp, setImageUp] = useState(" ");
   const [progress, setProgress] = useState(0);
   const [show, setShow] = useState(false);
-  const [cat, setCat] = useState(null);
+
+  const [cat, setCat] = useState("");
   const [level, setLevel] = useState(null);
   const [uploadedText, setUploadedText] = useState(false);
 
@@ -24,58 +25,49 @@ export default function Add_Question() {
 
   //quesion text and imageUrl post to Db
   const send = (event) => {
-    console.log(question);
-    console.log(imageUp);
-
-    if (question === undefined || imageUp === " ") {
-      return (
-        setShow(true), alert("Please fill all questions and upload all files")
-      );
+    if (question === "" || imageUp === " " || cat === "" || level === null) {
+      return alert("Please fill all questions and upload all files");
     } else {
-      const data = new FormData();
-      data.append("question", question);
-      data.append("questionImage", images);
-      console.log("this is question", question);
+      if (images.length === 0) {
+        return alert("Please upload all files");
+      } else {
+        const data = new FormData();
+        data.append("question", question);
+        data.append("questionImage", images);
+        data.append("questionCategory", cat);
+        data.append("questionLevel", level);
+        console.log("this is question", question);
 
-      const options = {
-        onUploadProgress: (progressEvent) => {
-          setProgress(
-            parseInt(
-              Math.round((progressEvent.loaded * 100) / progressEvent.total)
-            )
-          );
-        },
-      };
-      Axios.post("http://localhost:8888/upload", data, options)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-
-      setTimeout(() => {
-        setProgress(0);
-        setImageUp(null);
-        setQuestion();
+        const options = {
+          onUploadProgress: (progressEvent) => {
+            setProgress(
+              parseInt(
+                Math.round((progressEvent.loaded * 100) / progressEvent.total)
+              )
+            );
+          },
+        };
+        Axios.post("http://localhost:8888/upload", data, options)
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
         setShow(true);
-        // alert("Upload completed");
-      }, 1000);
+
+        setTimeout(() => {
+          setProgress(0);
+          setImageUp(" ");
+          setQuestion();
+          setUploadedText(false);
+          // alert("Upload completed");
+        }, 1000);
+      }
     }
   };
-
-  console.log("cat", cat);
-  console.log("level", level);
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImageUp(e.target.files[0]);
     }
   };
-
-  // const test = () => {
-  //   if (uploadedText) {
-  //     return <p>`Image with file name ${imageUp.name} is uploaded`</p>;
-  //   } else {
-  //     return <p>"no file uplaoded yet.."</p>;
-  //   }
-  // };
 
   //image upload to firebase
   const handleUpload = () => {
@@ -173,10 +165,14 @@ export default function Add_Question() {
           <Form.Group>
             <label>Question in text</label>
             <Input
-              type="email"
-              name="email"
+              type="text"
+              name="text"
               id="question_main"
               placeholder="Enter your question in text"
+              onChange={(event) => {
+                const { value } = event.target;
+                setQuestion(value);
+              }}
             />
 
             <div className="imageUpload">

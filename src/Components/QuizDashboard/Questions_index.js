@@ -73,17 +73,24 @@ export default function QuizQuestions() {
                 <Accordion>
                   <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="0">
-                      <div className="id"> Id: {quest.id}</div>
+                      <div className="id">
+                        {" "}
+                        <p>Id: {quest.id}</p>
+                      </div>
                       <div className="category">
-                        Category: {quest.question_category}
+                        <p> Category: {quest.questionCategory}</p>
+                      </div>
+                      <div className="level">
+                        {" "}
+                        <p>level: {quest.questionLevel}</p>
                       </div>
                       <div className="question_in_text">
-                        Question: {quest.question}
+                        <p>Question: {quest.question}</p>
                       </div>
                       <svg
                         className="iconArr"
-                        width="61px"
-                        height="61px"
+                        width="66px"
+                        height="66px"
                         viewBox="0 0 16 16"
                         class="bi bi-arrow-down-square-fill"
                         fill="tomato"

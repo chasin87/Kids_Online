@@ -54,36 +54,58 @@ a:hover {
   border-radius: none;
 }
 
-.id {
-  font-size: 30px;
+.level {
+  font-size: 25px;
   background-color: #3906ee;
   padding: 8px;
   color: #fff;
   border-radius: 5px;
   margin-bottom: 10px;
   width: 10vw;
+  line-height: 2;
+}
+
+.level p,
+.id p,
+.category p,
+.question_in_text p {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.id {
+  font-size: 25px;
+  background-color: #3906ee;
+  padding: 8px;
+  color: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 10vw;
+  line-height: 2;
 }
 
 .category {
-  font-size: 30px;
-  margin-left: 10px;
+  font-size: 25px;
   background-color: #f5b120;
   padding: 7px;
   color: #fff;
   border-radius: 5px;
   margin-bottom: 10px;
-  width: 20vw;
+  width: 12vw;
+  line-height: 2;
 }
 
 .question_in_text {
-  font-size: 30px;
-  margin-left: 10px;
+  font-size: 25px;
   background-color: #1f5967;
   padding: 7px;
   color: #fff;
   border-radius: 5px;
   margin-bottom: 10px;
   width: 50vw;
+  line-height: 2;
 }
 
 .card {
@@ -94,16 +116,14 @@ a:hover {
 }
 
 .card-header {
-  /* justify-content: center; */
   display: flex;
   background: #fff;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 svg {
   overflow: hidden;
   vertical-align: middle;
-  margin-left: 10px;
   border-radius: 0px;
   cursor: pointer;
 }
@@ -139,6 +159,12 @@ svg {
   }
 
   .id {
+    font-size: 25px;
+    margin-left: 0px;
+    width: 98%;
+  }
+
+  .level {
     font-size: 25px;
     margin-left: 0px;
     width: 98%;
