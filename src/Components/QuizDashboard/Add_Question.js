@@ -15,10 +15,12 @@ export default function Add_Question() {
   const [imageUp, setImageUp] = useState(" ");
   const [soundUp, setSoundUp] = useState(" ");
   const [progress, setProgress] = useState(0);
+  const [progressSound, setProgressSound] = useState(0);
   const [show, setShow] = useState(false);
   const [cat, setCat] = useState("");
   const [level, setLevel] = useState(null);
   const [uploadedText, setUploadedText] = useState(false);
+  const [uploadedTextSound, setUploadedTextSound] = useState(false);
 
   const handleClose = () => {
     return [setShow(false)];
@@ -126,7 +128,7 @@ export default function Add_Question() {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-        setProgress(progress);
+        setProgressSound(progress);
       },
       (error) => {
         //ERROR fucntion..
@@ -135,7 +137,7 @@ export default function Add_Question() {
       },
 
       () => {
-        setUploadedText(true);
+        setUploadedTextSound(true);
         //complete function...
         storage
           .ref("sounds")
@@ -149,7 +151,7 @@ export default function Add_Question() {
               soundUrl: url,
             });
 
-            setProgress(0);
+            setProgressSound(0);
           });
       }
     );
@@ -222,6 +224,7 @@ export default function Add_Question() {
               }}
             />
 
+            {/* ImageUpload */}
             <div className="imageUpload">
               <FormGroup>
                 <label>Question Image</label>
@@ -229,7 +232,8 @@ export default function Add_Question() {
                   type="file"
                   id="exampleCustomFileBrowser"
                   name="customFile"
-                  label="Choose File...."
+                  label="Choose Image File...."
+                  accept=".png, .jpg, .jpeg"
                   onChange={handleChange}
                 />
               </FormGroup>
@@ -255,6 +259,7 @@ export default function Add_Question() {
               </Button>
             </div>
 
+            {/* SoundUpload */}
             <div className="imageUpload">
               <FormGroup>
                 <label>Question Sound</label>
@@ -262,17 +267,18 @@ export default function Add_Question() {
                   type="file"
                   id="exampleCustomFileBrowser"
                   name="customFile"
-                  label="Choose File...."
+                  label="Choose Sound File...."
+                  accept=".m4a, .mp3"
                   onChange={handleChangeSound}
                 />
               </FormGroup>
               <progress
                 className="imageuplaod__progress"
-                value={progress}
+                value={progressSound}
                 max="100"
               />
               <div className="uploaded_text">
-                {uploadedText ? (
+                {uploadedTextSound ? (
                   <p>
                     sound with file name
                     <span className="uploaded_file">{` ${soundUp.name} `}</span>
