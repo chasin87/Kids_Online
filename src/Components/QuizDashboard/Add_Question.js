@@ -11,10 +11,11 @@ import Axios from "axios";
 export default function Add_Question() {
   const [question, setQuestion] = useState("");
   const [images, setImages] = useState([]);
+  const [sounds, setSounds] = useState([]);
   const [imageUp, setImageUp] = useState(" ");
+  const [soundUp, setSoundUp] = useState(" ");
   const [progress, setProgress] = useState(0);
   const [show, setShow] = useState(false);
-
   const [cat, setCat] = useState("");
   const [level, setLevel] = useState(null);
   const [uploadedText, setUploadedText] = useState(false);
@@ -28,14 +29,16 @@ export default function Add_Question() {
     if (question === "" || imageUp === " " || cat === "" || level === null) {
       return alert("Please fill all questions and upload all files");
     } else {
-      if (images.length === 0) {
+      if (images.length === 0 || sounds.length === 0) {
         return alert("Please upload all files");
       } else {
         const data = new FormData();
         data.append("question", question);
         data.append("questionImage", images);
+        data.append("questionSound", sounds);
         data.append("questionCategory", cat);
         data.append("questionLevel", level);
+
         console.log("this is question", question);
 
         const options = {
@@ -66,6 +69,11 @@ export default function Add_Question() {
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImageUp(e.target.files[0]);
+    }
+  };
+  const handleChangeSound = (e) => {
+    if (e.target.files[0]) {
+      setSoundUp(e.target.files[0]);
     }
   };
 
@@ -100,6 +108,45 @@ export default function Add_Question() {
             db.collection("images").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               imageUrl: url,
+            });
+
+            setProgress(0);
+          });
+      }
+    );
+  };
+
+  //sound upload to firebase
+  const handleUploadSound = () => {
+    const uploadTask = storage.ref(`sounds/${soundUp.name}`).put(soundUp);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        //progress function ...
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progress);
+      },
+      (error) => {
+        //ERROR fucntion..
+        console.log(error);
+        alert(error.message);
+      },
+
+      () => {
+        setUploadedText(true);
+        //complete function...
+        storage
+          .ref("sounds")
+          .child(soundUp.name)
+          .getDownloadURL()
+          .then((url) => {
+            setSounds(url);
+            //post image inside db....
+            db.collection("sounds").add({
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              soundUrl: url,
             });
 
             setProgress(0);
@@ -176,8 +223,8 @@ export default function Add_Question() {
             />
 
             <div className="imageUpload">
-              {/* <input type="file" onChange={handleChange} /> */}
               <FormGroup>
+                <label>Question Image</label>
                 <CustomInput
                   type="file"
                   id="exampleCustomFileBrowser"
@@ -204,6 +251,39 @@ export default function Add_Question() {
               </div>
 
               <Button onClick={handleUpload} className="button_upload">
+                Upload
+              </Button>
+            </div>
+
+            <div className="imageUpload">
+              <FormGroup>
+                <label>Question Sound</label>
+                <CustomInput
+                  type="file"
+                  id="exampleCustomFileBrowser"
+                  name="customFile"
+                  label="Choose File...."
+                  onChange={handleChangeSound}
+                />
+              </FormGroup>
+              <progress
+                className="imageuplaod__progress"
+                value={progress}
+                max="100"
+              />
+              <div className="uploaded_text">
+                {uploadedText ? (
+                  <p>
+                    sound with file name
+                    <span className="uploaded_file">{` ${soundUp.name} `}</span>
+                    is uploaded.
+                  </p>
+                ) : (
+                  <p></p>
+                )}
+              </div>
+
+              <Button onClick={handleUploadSound} className="button_upload">
                 Upload
               </Button>
             </div>
