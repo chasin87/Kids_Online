@@ -12,18 +12,37 @@ export default function Add_Question() {
   const [question, setQuestion] = useState("");
   const [images, setImages] = useState([]);
   const [sounds, setSounds] = useState([]);
-  const [imageUp, setImageUp] = useState(" ");
-  const [soundUp, setSoundUp] = useState(" ");
+  const [imageUp, setImageUp] = useState("");
+  const [soundUp, setSoundUp] = useState([]);
   const [progress, setProgress] = useState(0);
   const [progressSound, setProgressSound] = useState(0);
   const [show, setShow] = useState(false);
   const [cat, setCat] = useState("");
-  const [level, setLevel] = useState(null);
+  const [level, setLevel] = useState(" ");
   const [uploadedText, setUploadedText] = useState(false);
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
 
-  const handleClose = () => {
-    return [setShow(false)];
+  const inputChange = (event) => {
+    setQuestion(event.target.value);
+  };
+
+  const catChange = (event) => {
+    setCat(event.target.value);
+  };
+
+  const levelChange = (event) => {
+    setLevel(event.target.value);
+  };
+
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      setImageUp(e.target.files[0]);
+    }
+  };
+  const handleChangeSound = (e) => {
+    if (e.target.files[0]) {
+      setSoundUp(e.target.files[0]);
+    }
   };
 
   //quesion text and imageUrl post to Db
@@ -41,120 +60,98 @@ export default function Add_Question() {
         data.append("questionCategory", cat);
         data.append("questionLevel", level);
 
-        console.log("this is question", question);
-
-        const options = {
-          onUploadProgress: (progressEvent) => {
-            setProgress(
-              parseInt(
-                Math.round((progressEvent.loaded * 100) / progressEvent.total)
-              )
-            );
-          },
-        };
-        Axios.post("http://localhost:8888/upload", data, options)
+        Axios.post("http://localhost:8888/upload", data)
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
         setShow(true);
-
-        setTimeout(() => {
-          setProgress(0);
-          setImageUp(" ");
-          setQuestion();
-          setUploadedText(false);
-          // alert("Upload completed");
-        }, 1000);
       }
-    }
-  };
-
-  const handleChange = (e) => {
-    if (e.target.files[0]) {
-      setImageUp(e.target.files[0]);
-    }
-  };
-  const handleChangeSound = (e) => {
-    if (e.target.files[0]) {
-      setSoundUp(e.target.files[0]);
     }
   };
 
   //image upload to firebase
   const handleUpload = () => {
-    const uploadTask = storage.ref(`images/${imageUp.name}`).put(imageUp);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        //progress function ...
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress(progress);
-      },
-      (error) => {
-        //ERROR fucntion..
-        console.log(error);
-        alert(error.message);
-      },
+    if (imageUp.length === 0) {
+      alert("Please choose a image file...");
+    } else {
+      const uploadTask = storage.ref(`images/${imageUp.name}`).put(imageUp);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          //progress function ...
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progress);
+        },
+        (error) => {
+          //ERROR fucntion..
+          console.log(error);
+          alert(error.message);
+        },
 
-      () => {
-        setUploadedText(true);
-        //complete function...
-        storage
-          .ref("images")
-          .child(imageUp.name)
-          .getDownloadURL()
-          .then((url) => {
-            setImages(url);
-            //post image inside db....
-            db.collection("images").add({
-              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              imageUrl: url,
+        () => {
+          setUploadedText(true);
+          //complete function...
+          storage
+            .ref("images")
+            .child(imageUp.name)
+            .getDownloadURL()
+            .then((url) => {
+              setImages(url);
+              //post image inside db....
+              db.collection("images").add({
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                imageUrl: url,
+              });
+
+              setProgress(0);
             });
-
-            setProgress(0);
-          });
-      }
-    );
+        }
+      );
+    }
   };
 
   //sound upload to firebase
   const handleUploadSound = () => {
-    const uploadTask = storage.ref(`sounds/${soundUp.name}`).put(soundUp);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        //progress function ...
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgressSound(progress);
-      },
-      (error) => {
-        //ERROR fucntion..
-        console.log(error);
-        alert(error.message);
-      },
+    if (soundUp.length === 0) {
+      alert("Please choose a sound file...");
+    } else {
+      const uploadTask = storage.ref(`sounds/${soundUp.name}`).put(soundUp);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          //progress function ...
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgressSound(progress);
+        },
+        (error) => {
+          //ERROR fucntion..
+          console.log(error);
+          alert(error.message);
+        },
 
-      () => {
-        setUploadedTextSound(true);
-        //complete function...
-        storage
-          .ref("sounds")
-          .child(soundUp.name)
-          .getDownloadURL()
-          .then((url) => {
-            setSounds(url);
-            //post image inside db....
-            db.collection("sounds").add({
-              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              soundUrl: url,
+        () => {
+          setUploadedTextSound(true);
+          //complete function...
+          storage
+            .ref("sounds")
+            .child(soundUp.name)
+            .getDownloadURL()
+            .then((url) => {
+              setSounds(url);
+              //post image inside db....
+              db.collection("sounds").add({
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                soundUrl: url,
+              });
+
+              setProgressSound(0);
             });
-
-            setProgressSound(0);
-          });
-      }
-    );
+        }
+      );
+    }
   };
 
   return (
@@ -198,14 +195,14 @@ export default function Add_Question() {
         </div>
       </div>
       <div className="container_title">Add Questions</div>
-      <Modal centered show={show} onHide={handleClose}>
+      <Modal centered show={show}>
         <Modal.Header className="header_modal">
           <Modal.Title>Question Uploaded!</Modal.Title>
         </Modal.Header>
         <Modal.Body>All your text and files are uploaded</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="secondary">
+            <Link to="/QuizQuestions">Go to Questions</Link>
           </Button>
         </Modal.Footer>
       </Modal>
@@ -218,10 +215,8 @@ export default function Add_Question() {
               name="text"
               id="question_main"
               placeholder="Enter your question in text"
-              onChange={(event) => {
-                const { value } = event.target;
-                setQuestion(value);
-              }}
+              onChange={inputChange}
+              value={question}
             />
 
             {/* ImageUpload */}
@@ -232,7 +227,6 @@ export default function Add_Question() {
                   type="file"
                   id="exampleCustomFileBrowser"
                   name="customFile"
-                  label="Choose Image File...."
                   accept=".png, .jpg, .jpeg"
                   onChange={handleChange}
                 />
@@ -267,7 +261,7 @@ export default function Add_Question() {
                   type="file"
                   id="exampleCustomFileBrowser"
                   name="customFile"
-                  label="Choose Sound File...."
+                  label="Choose sound file..."
                   accept=".m4a, .mp3"
                   onChange={handleChangeSound}
                 />
@@ -296,48 +290,46 @@ export default function Add_Question() {
 
             <div className="row">
               <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
-                <div class="input-group mb-3">
+                <div className="input-group mb-3">
                   <select
-                    class="custom-select"
+                    className="custom-select"
                     id="inputGroupSelect02"
-                    onChange={(event) => {
-                      const { value } = event.target;
-                      setCat(value);
-                    }}
+                    value={cat}
+                    onChange={catChange}
                   >
-                    <option selected value=" ">
-                      Category
-                    </option>
+                    <option defaultValue=" ">Category</option>
                     <option value="Rijmen">Rijmen</option>
                     <option value="Rekenen">Rekenen</option>
                     <option value="Kleuren">Kleuren</option>
                   </select>
-                  <div class="input-group-append">
-                    <label class="input-group-text" for="inputGroupSelect02">
+                  <div className="input-group-append">
+                    <label
+                      className="input-group-text"
+                      htmlFor="inputGroupSelect02"
+                    >
                       Options
                     </label>
                   </div>
                 </div>
               </div>
               <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
-                <div class="input-group mb-3">
+                <div className="input-group mb-3">
                   <select
-                    class="custom-select"
+                    className="custom-select"
                     id="inputGroupSelect02"
-                    onChange={(event) => {
-                      const { value } = event.target;
-                      setLevel(value);
-                    }}
+                    value={level}
+                    onChange={levelChange}
                   >
-                    <option selected value=" ">
-                      Level
-                    </option>
+                    <option defaultValue=" ">Level</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                   </select>
-                  <div class="input-group-append">
-                    <label class="input-group-text" for="inputGroupSelect02">
+                  <div className="input-group-append">
+                    <label
+                      className="input-group-text"
+                      htmlFor="inputGroupSelect02"
+                    >
                       Options
                     </label>
                   </div>
@@ -412,7 +404,9 @@ export default function Add_Question() {
           <Form.File id="exampleFormControlFile1" label="4th Answer Image" />
           <Form.File id="exampleFormControlFile1" label="4th Answer Sound" />
           <hr /> */}
+
             <Button
+              type="submit"
               className="button_upload"
               variant="primary"
               onClick={() => {
