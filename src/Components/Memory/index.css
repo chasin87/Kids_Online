@@ -186,8 +186,12 @@
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-.image-back {
-  display: none;
+.displayNonImages {
+  position: fixed;
+}
+
+.NonImages {
+  opacity: 0;
 }
 
 @media (max-width: 1215px) {

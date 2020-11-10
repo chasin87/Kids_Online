@@ -179,14 +179,7 @@ export default function Flip() {
                             Handle(card);
                           }
                         }}
-                      >
-                        {" "}
-                        <img
-                          className="image-back"
-                          src={require(`./images/${card.name}.png`)}
-                          alt="animals"
-                        />
-                      </div>
+                      ></div>
                     )}
                   </div>
                 );
@@ -204,6 +197,17 @@ export default function Flip() {
             Reset
           </button>
         </div>
+      </div>
+      <div className="displayNonImages">
+        {animals.map((ani) => {
+          return (
+            <img
+              className="NonImages"
+              src={require(`./images/${ani.name}.png`)}
+              alt="AnimalNonImages"
+            />
+          );
+        })}
       </div>
     </div>
   );
