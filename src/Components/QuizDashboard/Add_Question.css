@@ -59,6 +59,15 @@ label {
   display: block;
 }
 
+.uploaded_text p {
+  font-size: 20px;
+  text-decoration: underline;
+  color: tomato;
+}
+.finals {
+  width: 100%;
+}
+
 .Form {
   width: 50%;
 }
@@ -96,6 +105,19 @@ progress {
   height: 25px;
 }
 
+.MuiLinearProgress-colorPrimary {
+  vertical-align: baseline;
+  width: 90%;
+  height: 6px !important;
+  border-radius: 3px;
+  margin: auto;
+  background-color: rgba(255, 99, 71, 0.3) !important;
+}
+
+.MuiLinearProgress-barColorPrimary {
+  background-color: tomato !important;
+}
+
 .uploaded_file {
   font-weight: 600;
 }
@@ -130,9 +152,11 @@ progress {
 }
 
 .dropdown_container {
-  margin-top: 20px;
-  display: flex;
+  margin-top: 10px;
   justify-content: center;
+}
+.row {
+  margin-top: 10px;
 }
 
 .input-group > .custom-select:not(:last-child),
@@ -149,7 +173,7 @@ progress {
   font-size: 1.25rem;
   font-weight: 400;
   height: 48px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 @media (max-width: 991px) {

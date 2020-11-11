@@ -5,6 +5,8 @@ import Modal from "react-bootstrap/Modal";
 import { CustomInput, FormGroup, Input } from "reactstrap";
 import { Form, Button } from "react-bootstrap";
 import { storage, db } from "../../firebase";
+
+import LinearProgress from "@material-ui/core/LinearProgress";
 import firebase from "firebase";
 import Axios from "axios";
 
@@ -15,7 +17,6 @@ export default function Add_Question() {
   const [imageUp, setImageUp] = useState("");
   const [soundUp, setSoundUp] = useState([]);
   const [progress, setProgress] = useState(0);
-  const [progressSound, setProgressSound] = useState(0);
   const [show, setShow] = useState(false);
   const [cat, setCat] = useState("");
   const [level, setLevel] = useState(" ");
@@ -47,12 +48,15 @@ export default function Add_Question() {
 
   //quesion text and imageUrl post to Db
   const send = (event) => {
+    console.log("this is", event);
     if (question === "" || imageUp === " " || cat === "" || level === null) {
       return alert("Please fill all questions and upload all files");
     } else {
       if (images.length === 0 || sounds.length === 0) {
         return alert("Please upload all files");
       } else {
+        // const progress = Math.round((100 * event.loaded) / event.total);
+        // setProgress(progress);
         const data = new FormData();
         data.append("question", question);
         data.append("questionImage", images);
@@ -103,7 +107,7 @@ export default function Add_Question() {
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                 imageUrl: url,
               });
-
+              handleUploadSound();
               setProgress(0);
             });
         }
@@ -124,7 +128,7 @@ export default function Add_Question() {
           const progress = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
-          setProgressSound(progress);
+          setProgress(progress);
         },
         (error) => {
           //ERROR fucntion..
@@ -147,7 +151,7 @@ export default function Add_Question() {
                 soundUrl: url,
               });
 
-              setProgressSound(0);
+              setProgress(0);
             });
         }
       );
@@ -220,76 +224,91 @@ export default function Add_Question() {
             />
 
             {/* ImageUpload */}
-            <div className="imageUpload">
-              <FormGroup>
-                <label>Question Image</label>
-                <CustomInput
-                  type="file"
-                  id="exampleCustomFileBrowser"
-                  name="customFile"
-                  accept=".png, .jpg, .jpeg"
-                  onChange={handleChange}
-                />
-              </FormGroup>
-              <progress
-                className="imageuplaod__progress"
-                value={progress}
-                max="100"
-              />
-              <div className="uploaded_text">
-                {uploadedText ? (
-                  <p>
-                    image with file name
-                    <span className="uploaded_file">{` ${imageUp.name} `}</span>
-                    is uploaded.
-                  </p>
-                ) : (
-                  <p></p>
-                )}
+            <div className="row">
+              <div className="imageUpload col-sm-12 col-md-6 col-lg-6">
+                <FormGroup>
+                  <label>Question Image</label>
+                  <CustomInput
+                    type="file"
+                    id="exampleCustomFileBrowser"
+                    name="customFile"
+                    accept=".png, .jpg, .jpeg"
+                    onChange={handleChange}
+                  />
+                </FormGroup>
+                {/* ----- */}
+                <div className="uploaded_text">
+                  {uploadedText ? (
+                    <p>
+                      image with file name
+                      <span className="uploaded_file">{` ${imageUp.name} `}</span>
+                      is uploaded.
+                    </p>
+                  ) : (
+                    <p></p>
+                  )}
+                </div>
+
+                {/* <Button onClick={handleUpload} className="button_upload">
+                Upload
+              </Button> */}
               </div>
 
-              <Button onClick={handleUpload} className="button_upload">
-                Upload
-              </Button>
-            </div>
-
-            {/* SoundUpload */}
-            <div className="imageUpload">
-              <FormGroup>
-                <label>Question Sound</label>
-                <CustomInput
-                  type="file"
-                  id="exampleCustomFileBrowser"
-                  name="customFile"
-                  label="Choose sound file..."
-                  accept=".m4a, .mp3"
-                  onChange={handleChangeSound}
-                />
-              </FormGroup>
-              <progress
+              {/* SoundUpload */}
+              <div className="soundUpload col-sm-12 col-md-6 col-lg-6">
+                <FormGroup>
+                  <label>Question Sound</label>
+                  <CustomInput
+                    type="file"
+                    id="exampleCustomFileBrowser"
+                    name="customFile"
+                    label="Choose sound file..."
+                    accept=".m4a, .mp3"
+                    onChange={handleChangeSound}
+                  />
+                </FormGroup>
+                {/* <progress
                 className="imageuplaod__progress"
                 value={progressSound}
                 max="100"
-              />
-              <div className="uploaded_text">
-                {uploadedTextSound ? (
-                  <p>
-                    sound with file name
-                    <span className="uploaded_file">{` ${soundUp.name} `}</span>
-                    is uploaded.
-                  </p>
-                ) : (
-                  <p></p>
-                )}
-              </div>
+                
+              /> */}
 
-              <Button onClick={handleUploadSound} className="button_upload">
-                Upload
-              </Button>
+                <div className="uploaded_text">
+                  {uploadedTextSound ? (
+                    <p>
+                      sound with file name
+                      <span className="uploaded_file">{` ${soundUp.name} `}</span>
+                      is uploaded.
+                    </p>
+                  ) : (
+                    <p></p>
+                  )}
+                </div>
+              </div>
+              <div className="finals">
+                {/* <progress
+                  className="imageuplaod__progress"
+                  value={progress}
+                  max="100"
+                /> */}
+                <LinearProgress
+                  variant="determinate"
+                  value={progress}
+                ></LinearProgress>
+
+                <Button onClick={handleUpload} className="button_upload">
+                  Upload
+                </Button>
+              </div>
             </div>
 
             <div className="row">
               <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
+                <div>
+                  {" "}
+                  <label>Question Category</label>
+                </div>
                 <div className="input-group mb-3">
                   <select
                     className="custom-select"
@@ -313,6 +332,10 @@ export default function Add_Question() {
                 </div>
               </div>
               <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
+                <div>
+                  {" "}
+                  <label>Question Level</label>
+                </div>
                 <div className="input-group mb-3">
                   <select
                     className="custom-select"
@@ -351,7 +374,7 @@ export default function Add_Question() {
             const file = event.target.files[0]
             setQuestionSound(file)
           }}/> */}
-            <hr />
+            {/* <hr /> */}
             {/* <label>Main image name</label>
           <Form.Control
             size="lg"

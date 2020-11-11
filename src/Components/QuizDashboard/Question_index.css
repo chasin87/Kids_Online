@@ -105,19 +105,20 @@ a:hover {
 
 .question_in_text_right {
   display: flex;
-  width: 15%;
+  width: 20%;
   align-items: center;
 }
 
 .iconn {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .iconArrow {
   background-color: #fff;
   border-radius: 8px;
+  margin-left: 2px;
 }
 
 .card {
