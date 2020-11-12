@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import "./Question_index.css";
-import { Card, Accordion } from "react-bootstrap";
+import { Card, Accordion, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
+import { selectanswers } from "../../Store/answerlist/selectors";
+import { fetchAnswerList } from "../../Store/answerlist/actions";
 import { Link } from "react-router-dom";
 import { selectUser } from "../../Store/user/selectors";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 
 // import { questions } from "../Quiz";
 
@@ -19,6 +23,7 @@ export default function QuizQuestions() {
   }
   const dispatch = useDispatch();
   const Quizzes = useSelector(selectquizzes);
+  const Answers = useSelector(selectanswers);
 
   const delete_question = (id, e) => {
     Axios.delete(`http://localhost:8888/upload/${id}`).then((res) => {
@@ -30,6 +35,10 @@ export default function QuizQuestions() {
 
   useEffect(() => {
     dispatch(fetchQuizList());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchAnswerList());
   }, [dispatch]);
 
   return (
@@ -115,6 +124,7 @@ export default function QuizQuestions() {
                                 />
                               </svg>
                             </div>
+
                             <div className="iconDelete">
                               <svg
                                 width="40px"
@@ -140,30 +150,32 @@ export default function QuizQuestions() {
                     <Accordion.Collapse eventKey="0">
                       <Card.Body>
                         <div className="headers_part">
-                          <div className="question_headers">
-                            Question details
-                          </div>
-                          <div className="question_info">{quest.question}</div>
-                        </div>
-                        <div className="headers_part">
-                          <div className="question_headers">Question Image</div>
                           <img
                             className="question_image_format question_info"
                             src={quest.questionImage}
                             alt="questionImage"
                           />
-                        </div>
-                        <div className="headers_part">
-                          <div className="question_headers">Question Sound</div>
-                          <audio controls>
-                            <source src={quest.questionSound}></source>
-                          </audio>
+                          <div className="question_headers">
+                            Question
+                            <div className="question_info">
+                              {quest.question}
+                            </div>
+                          </div>
+                          <AudioPlayer
+                            header="Question Sound"
+                            src={quest.questionSound}
+                            showJumpControls={false}
+                            customAdditionalControls={[]}
+                            showDownloadProgress={false}
+                            layout="horizontal"
+                            customVolumeControls={[]}
+                          />
+                          <div className="question_footer">
+                            <Button className="answer_button">Answers</Button>
+                          </div>
                         </div>
 
-                        <p>{quest.answer_b}</p>
-                        <p>{quest.answer_c}</p>
-                        <p>{quest.answer_d}</p>
-                        <div className="edit_icons">
+                        {/* <div className="edit_icons">
                           <svg
                             width="40px"
                             height="40px"
@@ -194,7 +206,28 @@ export default function QuizQuestions() {
                               d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
                             />
                           </svg>
-                        </div>
+                        </div> */}
+                        {Answers.map((answer) => {
+                          if (quest.id === answer.quizId) {
+                            return (
+                              <div>
+                                <p>{answer.answer}</p>
+                                <img
+                                  className="question_image_format question_info"
+                                  src={answer.answerImage}
+                                  alt="answerImage"
+                                />
+                                <audio controls>
+                                  <source src={answer.answerSound}></source>
+                                </audio>
+                                <p>{answer.quizId}</p>
+                                <p>{answer.isCorrect.toString()}</p>
+                              </div>
+                            );
+                          } else {
+                            return console.log("nooo");
+                          }
+                        })}
                       </Card.Body>
                     </Accordion.Collapse>
                   </Card>
