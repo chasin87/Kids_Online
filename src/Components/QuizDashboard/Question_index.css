@@ -169,7 +169,7 @@ svg {
 }
 
 .headers_part {
-  background-color: rgba(245, 233, 217, 0.611);
+  background-color: #fffcf8;
   width: 100%;
   margin-bottom: 15px;
   border-radius: 3px;
@@ -222,6 +222,51 @@ svg {
   width: 20%;
   margin: auto;
   padding-top: 15px;
+}
+
+.answer_id {
+  font-size: 20px;
+}
+
+.answer_text,
+.answer_quizId,
+.answer_isCorrect {
+  width: 100%;
+  color: #000;
+  font-size: 20px;
+}
+
+.answer_text_value {
+  font-size: 20px;
+}
+
+.answer_isCorrect_value {
+  font-size: 20px;
+}
+
+.answer_isCorrect_value_correct {
+  font-size: 20px;
+  color: #1f5967;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.answer_isCorrect_value_false {
+  font-size: 20px;
+  color: #f43f5a;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.answer_image {
+  width: 100%;
+}
+
+.question_image_answer {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 2px;
 }
 
 @media (max-width: 991px) {

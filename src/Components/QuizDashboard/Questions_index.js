@@ -38,8 +38,7 @@ export default function QuizQuestions() {
     });
   };
 
-  const showAnswers = (id) => {
-    console.log(id);
+  const showAnswers = () => {
     setShow(true);
   };
 
@@ -191,7 +190,7 @@ export default function QuizQuestions() {
                               className="answer_button"
                               // onClick={showAnswers}
                               onClick={(id, question) => {
-                                showAnswers(quest.id);
+                                showAnswers();
                                 setIds(quest.id);
                                 setQuestion(quest.question);
                               }}
@@ -233,50 +232,76 @@ export default function QuizQuestions() {
                             />
                           </svg>
                         </div> */}
-
-                        <Modal centered show={show} onHide={handleClose}>
-                          <Modal.Header className="header_modal">
-                            <Modal.Title>
-                              Answers for
-                              <br />
-                              {question}
-                            </Modal.Title>
-                          </Modal.Header>
-
-                          {Answers.map((answer) => {
-                            if (ids === answer.quizId) {
-                              return (
-                                <Modal.Body>
-                                  <div key={answer.id}>
-                                    <p>Answer in text:{answer.answer}</p>
-                                    <img
-                                      className="question_image_format question_info"
-                                      src={answer.answerImage}
-                                      alt="answerImage"
-                                    />
-                                    <audio controls>
-                                      <source src={answer.answerSound}></source>
-                                    </audio>
-                                    <p>{answer.quizId}</p>
-                                    <p>{answer.isCorrect.toString()}</p>
-                                  </div>
-                                </Modal.Body>
-                              );
-                            } else {
-                              return null;
-                            }
-                          })}
-
-                          <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                              Close
-                            </Button>
-                          </Modal.Footer>
-                        </Modal>
                       </Card.Body>
                     </Accordion.Collapse>
                   </Card>
                 </Accordion>
+
+                <Modal centered show={show} onHide={handleClose}>
+                  <Modal.Header className="header_modal">
+                    <Modal.Title>
+                      Answers for
+                      <br />
+                      {question}
+                    </Modal.Title>
+                  </Modal.Header>
+
+                  {Answers.map((answer) => {
+                    if (ids === answer.quizId) {
+                      return (
+                        <Modal.Body>
+                          <div key={answer.id}>
+                            <div className="row">
+                              <div className="answer_image col-sm-6">
+                                <img
+                                  className="question_image_answer question_info"
+                                  src={answer.answerImage}
+                                  alt="answerImage"
+                                />
+                              </div>
+                              <div className=" col-sm-6">
+                                <div className="answer_id">ID: {answer.id}</div>
+                                <div className="answer_text">Answer</div>
+                                <div className="answer_text_value">
+                                  {answer.answer}
+                                </div>
+                                <div className="answer_isCorrect">Correct</div>
+                                {answer.isCorrect ? (
+                                  <div className="answer_isCorrect_value_correct">
+                                    {answer.isCorrect.toString()}
+                                  </div>
+                                ) : (
+                                  <div className="answer_isCorrect_value_false">
+                                    {answer.isCorrect.toString()}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+
+                            <AudioPlayer
+                              header="Question Sound"
+                              src={answer.answerSound}
+                              showJumpControls={false}
+                              customAdditionalControls={[]}
+                              showDownloadProgress={false}
+                              layout="horizontal"
+                              customVolumeControls={[]}
+                            />
+                          </div>
+                        </Modal.Body>
+                      );
+                    } else {
+                      return false;
+                    }
+                  })}
+
+                  <Modal.Footer>
+                    {" "}
+                    <Button variant="secondary" onClick={handleClose}>
+                      Close
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
               </div>
             );
           })}
