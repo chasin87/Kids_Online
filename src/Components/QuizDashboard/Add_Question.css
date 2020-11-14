@@ -177,9 +177,9 @@ progress {
 }
 
 @media (max-width: 991px) {
-  .container_quiz_dashboard {
+  /* .container_quiz_dashboard {
     font-size: 29px;
-  }
+  } */
 
   .Form {
     width: 90%;
@@ -194,9 +194,9 @@ progress {
     font-size: 15px;
     display: flex;
     font-weight: 500;
-    width: 200px;
+    width: 160px;
   }
-
+  /* 
   .accordion {
     margin-top: -20px;
   }
@@ -204,19 +204,19 @@ progress {
   .id {
     font-size: 25px;
     margin-left: 0px;
-    width: 98%;
+    width: 100%;
   }
 
   .category {
     font-size: 25px;
     margin-left: 0px;
-    width: 98%;
+    width: 100%;
   }
 
   .question_in_text {
     font-size: 25px;
     margin-left: 0px;
-    width: 98%;
+    width: 100%;
   }
 
   .card-header {
@@ -224,5 +224,5 @@ progress {
 
     margin-left: auto;
     margin-right: auto;
-  }
+  } */
 }

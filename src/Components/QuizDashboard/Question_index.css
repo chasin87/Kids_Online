@@ -273,6 +273,17 @@ svg {
   .container_quiz_dashboard {
     font-size: 29px;
   }
+  .container_title {
+    margin: 20px;
+  }
+
+  .level p,
+  .id p,
+  .category p,
+  .question_in_text p {
+    top: unset;
+    transform: unset;
+  }
 
   .card-body {
     width: 90%;
@@ -289,38 +300,49 @@ svg {
     font-weight: 500;
   }
 
-  .accordion {
-    margin-top: -20px;
-  }
-
   .id {
-    font-size: 20px;
+    font-size: 25px;
     margin-left: 0px;
-    width: 98%;
+    width: 100%;
   }
 
   .level {
-    font-size: 20px;
+    font-size: 25px;
     margin-left: 0px;
-    width: 98%;
+    width: 100%;
   }
 
   .category {
-    font-size: 20px;
+    font-size: 25px;
     margin-left: 0px;
-    width: 98%;
+    width: 100%;
   }
 
   .question_in_text {
-    font-size: 20px;
-    margin-left: 0px;
-    width: 98%;
+    font-size: 25px;
+    width: 100%;
+    display: inline-block;
+    line-height: normal;
+  }
+
+  .question_in_text_left {
+    width: 100%;
+  }
+
+  .question_in_text_right {
+    width: 100%;
   }
 
   .card-header {
     display: inline-block;
+  }
 
+  .iconn {
+    width: 40%;
+    justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
   }
 }
