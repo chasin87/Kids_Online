@@ -36,6 +36,11 @@ export default function QuizQuestions() {
       console.log(res.data);
       dispatch(fetchQuizList());
     });
+    Axios.delete(`http://localhost:8888/answer/${id}`).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      dispatch(fetchAnswerList());
+    });
   };
 
   const showAnswers = () => {
