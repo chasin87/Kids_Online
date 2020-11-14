@@ -64,7 +64,7 @@ export default function Add_Question() {
         data.append("questionCategory", cat);
         data.append("questionLevel", level);
 
-        Axios.post("http://localhost:8888/upload", data)
+        Axios.post("https://kids-online.herokuapp.com/upload", data)
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
         setShow(true);
