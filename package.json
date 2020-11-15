@@ -17,6 +17,7 @@
     "react-bootstrap-icons": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-flippy": "^0.1.5",
+    "react-ga": "^3.2.1",
     "react-h5-audio-player": "^3.4.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",

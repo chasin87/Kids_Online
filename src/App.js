@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import { selectAppLoading } from "./Store/appState/selectors";
+import ReactGA from "react-ga";
 import "./App.css";
 import Navigation from "./Components/Navigation";
 import Home from "./pages/Home/";
@@ -17,6 +18,10 @@ import QuizQuestions from "./Components/QuizDashboard/Questions_index";
 import Add_Question from "./Components/QuizDashboard/Add_Question";
 function App() {
   const isLoading = useSelector(selectAppLoading);
+
+  useEffect(() => {
+    ReactGA.initialize("G-KHRLSCPPN2");
+  });
 
   return (
     <div className="App">
