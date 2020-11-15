@@ -2,8 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import { selectAppLoading } from "./Store/appState/selectors";
-import ReactGA from "react-ga";
-import { createBrowserHistory } from "history";
 import "./App.css";
 import Navigation from "./Components/Navigation";
 import Home from "./pages/Home/";
@@ -17,16 +15,9 @@ import MessageBox from "./Components/MessageBox";
 import Loading from "./Components/Loading";
 import QuizQuestions from "./Components/QuizDashboard/Questions_index";
 import Add_Question from "./Components/QuizDashboard/Add_Question";
+
 function App() {
   const isLoading = useSelector(selectAppLoading);
-
-  const history = createBrowserHistory();
-
-  history.listen((location) => {
-    ReactGA.initialize("G-KHRLSCPPN2");
-    ReactGA.set({ page: location.pathname }); // Update the user's current page
-    ReactGA.pageview(location.pathname); // Record a pageview for the given page
-  });
 
   return (
     <div className="App">

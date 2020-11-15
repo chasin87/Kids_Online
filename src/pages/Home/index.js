@@ -4,8 +4,18 @@ import HeaderImage from "../../Components/HeaderImage";
 import Memory_logo_card from "../../Images/Memory_logo_card.png";
 import TicTacToe_logo_card from "../../Images/TicTacToe_logo_card.png";
 import Colors_logo_card from "../../Images/Colors_logo_card.png";
+import ReactGA from "react-ga";
+import { createBrowserHistory } from "history";
 
 export default function Home() {
+  const history = createBrowserHistory();
+
+  history.listen((location) => {
+    ReactGA.initialize("G-ZTWBKEKE4M");
+    ReactGA.set({ page: location.pathname }); // Update the user's current page
+    ReactGA.pageview(location.pathname); // Record a pageview for the given page
+  });
+
   return (
     <div>
       {<HeaderImage />}
