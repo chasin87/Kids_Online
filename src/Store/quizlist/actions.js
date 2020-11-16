@@ -10,8 +10,14 @@ export const fetchQuiz = (quizzes) => ({
 
 export function fetchQuizList() {
   return async (dispatch, getState) => {
-    const response = await axios.get(`${apiUrl}/upload`);
+    try {
+      const response = await axios.get(`${apiUrl}/upload`);
 
-    dispatch(fetchQuiz(response.data));
+      dispatch(fetchQuiz(response.data));
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+      }
+    }
   };
 }

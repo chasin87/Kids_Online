@@ -6,6 +6,7 @@ import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
 import { selectanswers } from "../../Store/answerlist/selectors";
 import { fetchAnswerList } from "../../Store/answerlist/actions";
+import Loading from "../Loading";
 import { Link } from "react-router-dom";
 import { selectUser } from "../../Store/user/selectors";
 import { useHistory } from "react-router-dom";
@@ -46,7 +47,6 @@ export default function QuizQuestions() {
       }
     );
   };
-
   const showAnswers = () => {
     setShow(true);
   };
@@ -55,7 +55,6 @@ export default function QuizQuestions() {
     setShow(false);
     setIds();
   };
-
   useEffect(() => {
     dispatch(fetchQuizList());
   }, [dispatch]);
@@ -107,109 +106,109 @@ export default function QuizQuestions() {
         </div>
 
         <div className="container_title">Quiz Questions</div>
-
-        <div>
-          {Quizzes.map((quest) => {
-            return (
-              <div className="question_part" key={quest.id}>
-                <Accordion>
-                  <Card>
-                    <Accordion.Toggle as={Card.Header} eventKey="0">
-                      <div className="id">
-                        {" "}
-                        <p>Id: {quest.id}</p>
-                      </div>
-                      <div className="category">
-                        <p> Category: {quest.questionCategory}</p>
-                      </div>
-                      <div className="level">
-                        {" "}
-                        <p>level: {quest.questionLevel}</p>
-                      </div>
-                      <div className="question_in_text">
-                        <div className="question_in_text_left">
-                          <p>Question: {quest.question}</p>
+        {Quizzes.length < 1 ? (
+          <Loading />
+        ) : (
+          <div>
+            {Quizzes.map((quest) => {
+              return (
+                <div className="question_part" key={quest.id}>
+                  <Accordion>
+                    <Card>
+                      <Accordion.Toggle as={Card.Header} eventKey="0">
+                        <div className="id">
+                          {" "}
+                          <p>Id: {quest.id}</p>
                         </div>
-                        <div className="question_in_text_right">
-                          <div className="iconn">
-                            <div className="iconArrow">
-                              <svg
-                                className="iconArr bi bi-arrow-down-square-fill"
-                                width="40px"
-                                height="40px"
-                                viewBox="0 0 16 16"
-                                fill="tomato"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
-                                />
-                              </svg>
+                        <div className="category">
+                          <p> Category: {quest.questionCategory}</p>
+                        </div>
+                        <div className="level">
+                          {" "}
+                          <p>level: {quest.questionLevel}</p>
+                        </div>
+                        <div className="question_in_text">
+                          <div className="question_in_text_left">
+                            <p>Question: {quest.question}</p>
+                          </div>
+                          <div className="question_in_text_right">
+                            <div className="iconn">
+                              <div className="iconArrow">
+                                <svg
+                                  width="30px"
+                                  height="30px"
+                                  viewBox="0 0 16 12"
+                                  class="bi bi-caret-down-fill iconArr"
+                                  fill="currentColor"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                              </div>
+
+                              <div className="iconDelete">
+                                <svg
+                                  width="40px"
+                                  height="40px"
+                                  viewBox="0 0 16 16"
+                                  className="bi bi-x"
+                                  fill="currentColor"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  onClick={(e) => {
+                                    delete_question(quest.id, e);
+                                  }}
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Accordion.Toggle>
+
+                      <Accordion.Collapse eventKey="0">
+                        <Card.Body>
+                          <div className="headers_part">
+                            <img
+                              className="question_image_format question_info"
+                              src={quest.questionImage}
+                              alt="questionImage"
+                            />
+                            <div className="question_headers">
+                              Question
+                              <div className="question_info">
+                                {quest.question}
+                              </div>
                             </div>
 
-                            <div className="iconDelete">
-                              <svg
-                                width="40px"
-                                height="40px"
-                                viewBox="0 0 16 16"
-                                className="bi bi-x"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                                onClick={(e) => {
-                                  delete_question(quest.id, e);
+                            <AudioPlayer
+                              header="Question Sound"
+                              src={quest.questionSound}
+                              showJumpControls={false}
+                              customAdditionalControls={[]}
+                              showDownloadProgress={false}
+                              layout="horizontal"
+                              customVolumeControls={[]}
+                            />
+                            <div className="question_footer">
+                              <Button
+                                className="answer_button"
+                                // onClick={showAnswers}
+                                onClick={(id, question) => {
+                                  showAnswers();
+                                  setIds(quest.id);
+                                  setQuestion(quest.question);
                                 }}
                               >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                                />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Accordion.Toggle>
-                    <Accordion.Collapse eventKey="0">
-                      <Card.Body>
-                        <div className="headers_part">
-                          <img
-                            className="question_image_format question_info"
-                            src={quest.questionImage}
-                            alt="questionImage"
-                          />
-                          <div className="question_headers">
-                            Question
-                            <div className="question_info">
-                              {quest.question}
+                                Answers
+                              </Button>
                             </div>
                           </div>
 
-                          <AudioPlayer
-                            header="Question Sound"
-                            src={quest.questionSound}
-                            showJumpControls={false}
-                            customAdditionalControls={[]}
-                            showDownloadProgress={false}
-                            layout="horizontal"
-                            customVolumeControls={[]}
-                          />
-                          <div className="question_footer">
-                            <Button
-                              className="answer_button"
-                              // onClick={showAnswers}
-                              onClick={(id, question) => {
-                                showAnswers();
-                                setIds(quest.id);
-                                setQuestion(quest.question);
-                              }}
-                            >
-                              Answers
-                            </Button>
-                          </div>
-                        </div>
-
-                        {/* <div className="edit_icons">
+                          {/* <div className="edit_icons">
                           <svg
                             width="40px"
                             height="40px"
@@ -241,80 +240,84 @@ export default function QuizQuestions() {
                             />
                           </svg>
                         </div> */}
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                </Accordion>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                  </Accordion>
 
-                <Modal centered show={show} onHide={handleClose}>
-                  <Modal.Header className="header_modal">
-                    <Modal.Title>
-                      Answers for
-                      <br />
-                      {question}
-                    </Modal.Title>
-                  </Modal.Header>
+                  <Modal centered show={show} onHide={handleClose}>
+                    <Modal.Header className="header_modal">
+                      <Modal.Title>
+                        Answers for
+                        <br />
+                        {question}
+                      </Modal.Title>
+                    </Modal.Header>
 
-                  {Answers.map((answer) => {
-                    if (ids === answer.quizId) {
-                      return (
-                        <Modal.Body>
-                          <div key={answer.id}>
-                            <div className="row">
-                              <div className="answer_image col-sm-6">
-                                <img
-                                  className="question_image_answer question_info"
-                                  src={answer.answerImage}
-                                  alt="answerImage"
-                                />
-                              </div>
-                              <div className=" col-sm-6">
-                                <div className="answer_id">ID: {answer.id}</div>
-                                <div className="answer_text">Answer</div>
-                                <div className="answer_text_value">
-                                  {answer.answer}
+                    {Answers.map((answer) => {
+                      if (ids === answer.quizId) {
+                        return (
+                          <Modal.Body>
+                            <div key={answer.id}>
+                              <div className="row">
+                                <div className="answer_image col-sm-6">
+                                  <img
+                                    className="question_image_answer question_info"
+                                    src={answer.answerImage}
+                                    alt="answerImage"
+                                  />
                                 </div>
-                                <div className="answer_isCorrect">Correct</div>
-                                {answer.isCorrect ? (
-                                  <div className="answer_isCorrect_value_correct">
-                                    {answer.isCorrect.toString()}
+                                <div className=" col-sm-6">
+                                  <div className="answer_id">
+                                    ID: {answer.id}
                                   </div>
-                                ) : (
-                                  <div className="answer_isCorrect_value_false">
-                                    {answer.isCorrect.toString()}
+                                  <div className="answer_text">Answer</div>
+                                  <div className="answer_text_value">
+                                    {answer.answer}
                                   </div>
-                                )}
+                                  <div className="answer_isCorrect">
+                                    Correct
+                                  </div>
+                                  {answer.isCorrect ? (
+                                    <div className="answer_isCorrect_value_correct">
+                                      {answer.isCorrect.toString()}
+                                    </div>
+                                  ) : (
+                                    <div className="answer_isCorrect_value_false">
+                                      {answer.isCorrect.toString()}
+                                    </div>
+                                  )}
+                                </div>
                               </div>
+
+                              <AudioPlayer
+                                header="Question Sound"
+                                src={answer.answerSound}
+                                showJumpControls={false}
+                                customAdditionalControls={[]}
+                                showDownloadProgress={false}
+                                layout="horizontal"
+                                customVolumeControls={[]}
+                              />
                             </div>
-
-                            <AudioPlayer
-                              header="Question Sound"
-                              src={answer.answerSound}
-                              showJumpControls={false}
-                              customAdditionalControls={[]}
-                              showDownloadProgress={false}
-                              layout="horizontal"
-                              customVolumeControls={[]}
-                            />
-                          </div>
-                        </Modal.Body>
-                      );
-                    } else {
-                      return false;
-                    }
-                  })}
-
-                  <Modal.Footer>
-                    {" "}
-                    <Button variant="secondary" onClick={handleClose}>
-                      Close
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
-              </div>
-            );
-          })}
-        </div>
+                          </Modal.Body>
+                        );
+                      } else {
+                        return false;
+                      }
+                    })}
+                    <Modal.Footer>
+                      {" "}
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

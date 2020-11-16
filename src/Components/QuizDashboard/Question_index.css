@@ -116,9 +116,10 @@ a:hover {
 }
 
 .iconArrow {
-  border-radius: 20px;
-
-  background-color: #fff;
+  background-color: tomato;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
 }
 
 .card {
