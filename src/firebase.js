@@ -1,14 +1,14 @@
 import firebase from "firebase";
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyB1t4IZ3gKrHefqzvEzBmGeRmM7SBgeh_c",
-  authDomain: "kids-online-image.firebaseapp.com",
-  databaseURL: "https://kids-online-image.firebaseio.com",
-  projectId: "kids-online-image",
-  storageBucket: "kids-online-image.appspot.com",
-  messagingSenderId: "359809280749",
-  appId: "1:359809280749:web:8012eb3609eb162647bae4",
-  measurementId: "G-NK3P8NH02T",
+  apiKey: "AIzaSyCI0vK8wTY4SJnWz23Gn1KZb2il0zC17EU",
+  authDomain: "kids-online-2.firebaseapp.com",
+  databaseURL: "https://kids-online-2.firebaseio.com",
+  projectId: "kids-online-2",
+  storageBucket: "kids-online-2.appspot.com",
+  messagingSenderId: "39856716853",
+  appId: "1:39856716853:web:dec983646e05084ae3457c",
+  measurementId: "G-PMVYNPJZ5M",
 });
 
 const db = firebaseApp.firestore();
