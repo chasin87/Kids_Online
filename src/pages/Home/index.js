@@ -11,7 +11,7 @@ export default function Home() {
   const history = createBrowserHistory();
 
   history.listen((location) => {
-    ReactGA.initialize("G-ZTWBKEKE4M");
+    ReactGA.initialize("UA-183228876-1");
     ReactGA.set({ page: location.pathname }); // Update the user's current page
     ReactGA.pageview(location.pathname); // Record a pageview for the given page
   });
