@@ -15,6 +15,7 @@ import MessageBox from "./Components/MessageBox";
 import Loading from "./Components/Loading";
 import QuizQuestions from "./Components/QuizDashboard/Questions_index";
 import Add_Question from "./Components/QuizDashboard/Add_Question";
+import Answers from "./Components/QuizDashboard/Answers";
 
 function App() {
   const isLoading = useSelector(selectAppLoading);
@@ -34,6 +35,7 @@ function App() {
         <Route path="/QuizDashboard" component={QuizDash} />;
         <Route path="/QuizQuestions" component={QuizQuestions} />;
         <Route path="/Add_Question" component={Add_Question} />;
+        <Route path="/Answers" component={Answers} />;
       </Switch>
     </div>
   );

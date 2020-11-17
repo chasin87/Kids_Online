@@ -32,20 +32,16 @@ export default function QuizQuestions() {
   const Answers = useSelector(selectanswers);
 
   const delete_question = (id, e) => {
-    Axios.delete(`https://kids-online.herokuapp.com/upload/${id}`).then(
-      (res) => {
-        console.log(res);
-        console.log(res.data);
-        dispatch(fetchQuizList());
-      }
-    );
-    Axios.delete(`https://kids-online.herokuapp.com/answer/${id}`).then(
-      (res) => {
-        console.log(res);
-        console.log(res.data);
-        dispatch(fetchAnswerList());
-      }
-    );
+    Axios.delete(`http://localhost:8888/upload/${id}`).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      dispatch(fetchQuizList());
+    });
+    Axios.delete(`http://localhost:8888/answer/${id}`).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      dispatch(fetchAnswerList());
+    });
   };
   const showAnswers = () => {
     setShow(true);
@@ -138,7 +134,7 @@ export default function QuizQuestions() {
                                   width="30px"
                                   height="30px"
                                   viewBox="0 0 16 12"
-                                  class="bi bi-caret-down-fill iconArr"
+                                  className="bi bi-caret-down-fill iconArr"
                                   fill="currentColor"
                                   xmlns="http://www.w3.org/2000/svg"
                                 >
