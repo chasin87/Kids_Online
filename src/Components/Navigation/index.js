@@ -88,8 +88,7 @@ function Navigation() {
             <ul>
               <li>
                 <a className="register" href="register">
-                  <img className="icon_reg" src={reg} alt="Lock" />
-                  Register
+                  <img className="icon_reg" src={reg} alt="Lock" /> Register
                 </a>
               </li>
               <li>

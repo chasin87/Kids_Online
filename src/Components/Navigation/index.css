@@ -116,9 +116,9 @@ ul {
   color: #f43f5a !important;
   font-family: "Rajdhani", sans-serif;
   margin-right: auto;
-  margin-left: 130px;
-  width: 40%;
-  margin-top: 30px;
+  margin-left: 50px;
+  width: 35%;
+  /* margin-top: 30px; */
   float: left;
 }
 
