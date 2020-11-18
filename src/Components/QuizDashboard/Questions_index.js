@@ -21,6 +21,8 @@ export default function QuizQuestions() {
   const [show, setShow] = useState(false);
   const [ids, setIds] = useState();
   const [question, setQuestion] = useState("");
+  const [confirm, setConfirm] = useState(false);
+  const [idToDelete, setIdToDelete] = useState();
 
   const { token } = useSelector(selectUser);
   const history = useHistory();
@@ -31,17 +33,23 @@ export default function QuizQuestions() {
   const Quizzes = useSelector(selectquizzes);
   const Answers = useSelector(selectanswers);
 
-  const delete_question = (id, e) => {
-    Axios.delete(`http://localhost:8888/upload/${id}`).then((res) => {
+  const delete_confirm = (id, e) => {
+    setConfirm(true);
+    setIdToDelete(id);
+  };
+
+  const delete_question = () => {
+    Axios.delete(`http://localhost:8888/upload/${idToDelete}`).then((res) => {
       console.log(res);
       console.log(res.data);
       dispatch(fetchQuizList());
     });
-    Axios.delete(`http://localhost:8888/answer/${id}`).then((res) => {
+    Axios.delete(`http://localhost:8888/answer/${idToDelete}`).then((res) => {
       console.log(res);
       console.log(res.data);
       dispatch(fetchAnswerList());
     });
+    setConfirm(false);
   };
   const showAnswers = () => {
     setShow(true);
@@ -151,7 +159,7 @@ export default function QuizQuestions() {
                                   fill="currentColor"
                                   xmlns="http://www.w3.org/2000/svg"
                                   onClick={(e) => {
-                                    delete_question(quest.id, e);
+                                    delete_confirm(quest.id, e);
                                   }}
                                 >
                                   <path
@@ -163,6 +171,33 @@ export default function QuizQuestions() {
                             </div>
                           </div>
                         </div>
+                        <Modal centered show={confirm}>
+                          <Modal.Header className="header_modal">
+                            <Modal.Title>Delete question</Modal.Title>
+                          </Modal.Header>
+                          <Modal.Body>
+                            Are you sure you want to delete it?
+                          </Modal.Body>
+                          <Modal.Footer>
+                            <Button
+                              variant="secondary"
+                              onClick={(e) => {
+                                delete_question(quest.id, e);
+                              }}
+                            >
+                              Yes
+                            </Button>
+
+                            <Button
+                              variant="secondary"
+                              onClick={() => {
+                                setConfirm(false);
+                              }}
+                            >
+                              No
+                            </Button>
+                          </Modal.Footer>
+                        </Modal>
                       </Accordion.Toggle>
 
                       <Accordion.Collapse eventKey="0">
