@@ -226,7 +226,7 @@ svg {
 .question_image_format {
   margin-top: 20px;
   width: 60%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 
   border-radius: 2px;
