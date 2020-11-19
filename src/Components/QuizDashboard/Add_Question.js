@@ -207,7 +207,7 @@ export default function Add_Question() {
         <Modal.Body>All your text and files are uploaded</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary">
-            <Link to="/QuizQuestions">Go to Questions</Link>
+            <Link to="/answers">Go to add Answers</Link>
           </Button>
         </Modal.Footer>
       </Modal>
