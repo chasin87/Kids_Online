@@ -117,9 +117,9 @@ export default function QuizQuestions() {
             {Quizzes.map((quest) => {
               return (
                 <div className="question_part" key={quest.id}>
-                  <Accordion>
+                  <Accordion defaultActiveKey="1">
                     <Card>
-                      <Accordion.Toggle as={Card.Header} eventKey="0">
+                      <Card.Header>
                         <div className="id">
                           {" "}
                           <p>Id: {quest.id}</p>
@@ -132,42 +132,26 @@ export default function QuizQuestions() {
                           <p>level: {quest.questionLevel}</p>
                         </div>
                         <div className="question_in_text">
-                          <div className="question_in_text_left">
+                          <div className="question_in_text_left col-sm-12 col-md-9 col-lg-9">
                             <p>Question: {quest.question}</p>
                           </div>
-                          <div className="question_in_text_right">
-                            <div className="iconn">
-                              <div className="iconArrow">
-                                <svg
-                                  width="30px"
-                                  height="30px"
-                                  viewBox="0 0 16 12"
-                                  className="bi bi-caret-down-fill iconArr"
-                                  fill="currentColor"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                                </svg>
-                              </div>
 
-                              <div className="iconDelete">
-                                <svg
-                                  width="40px"
-                                  height="40px"
-                                  viewBox="0 0 16 16"
-                                  className="bi bi-x"
-                                  fill="currentColor"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  onClick={(e) => {
-                                    delete_confirm(quest.id, e);
-                                  }}
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                                  />
-                                </svg>
-                              </div>
+                          <div className="question_in_text_right col-7 col-sm-5 col-md-3 col-lg-3  ">
+                            <div className="iconn">
+                              <Accordion.Toggle as={"iconArrow"} eventKey="0">
+                                <div className="iconArrow">
+                                  <svg
+                                    width="30px"
+                                    height="30px"
+                                    viewBox="0 0 16 12"
+                                    className="bi bi-caret-down-fill iconArr"
+                                    fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                  </svg>
+                                </div>
+                              </Accordion.Toggle>
                             </div>
                           </div>
                         </div>
@@ -198,81 +182,71 @@ export default function QuizQuestions() {
                             </Button>
                           </Modal.Footer>
                         </Modal>
-                      </Accordion.Toggle>
+                      </Card.Header>
 
-                      <Accordion.Collapse eventKey="0">
-                        <Card.Body>
-                          <div className="headers_part">
-                            <img
-                              className="question_image_format question_info"
-                              src={quest.questionImage}
-                              alt="questionImage"
-                            />
-                            <div className="question_headers">
-                              Question
-                              <div className="question_info">
-                                {quest.question}
+                      <Accordion.Toggle as={"iconArrow"} eventKey="0">
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <div className="headers_part">
+                              <div className="head_card">
+                                <div className="col-2"></div>
+                                <img
+                                  className="question_image_format question_info col-8"
+                                  src={quest.questionImage}
+                                  alt="questionImage"
+                                />
+                                <div className="iconDelete col-2 ">
+                                  <svg
+                                    width="40px"
+                                    height="40px"
+                                    viewBox="0 0 16 16"
+                                    className="bi bi-x"
+                                    fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    onClick={(e) => {
+                                      delete_confirm(quest.id, e);
+                                    }}
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                                    />
+                                  </svg>
+                                </div>
+                              </div>
+                              <div className="question_headers">
+                                Question
+                                <div className="question_info">
+                                  {quest.question}
+                                </div>
+                              </div>
+
+                              <AudioPlayer
+                                header="Question Sound"
+                                src={quest.questionSound}
+                                showJumpControls={false}
+                                customAdditionalControls={[]}
+                                showDownloadProgress={false}
+                                layout="horizontal"
+                                customVolumeControls={[]}
+                              />
+                              <div className="question_footer">
+                                <Button
+                                  className="answer_button"
+                                  // onClick={showAnswers}
+                                  onClick={(id, question) => {
+                                    showAnswers();
+                                    setIds(quest.id);
+                                    setQuestion(quest.question);
+                                  }}
+                                >
+                                  Answers
+                                </Button>
                               </div>
                             </div>
-
-                            <AudioPlayer
-                              header="Question Sound"
-                              src={quest.questionSound}
-                              showJumpControls={false}
-                              customAdditionalControls={[]}
-                              showDownloadProgress={false}
-                              layout="horizontal"
-                              customVolumeControls={[]}
-                            />
-                            <div className="question_footer">
-                              <Button
-                                className="answer_button"
-                                // onClick={showAnswers}
-                                onClick={(id, question) => {
-                                  showAnswers();
-                                  setIds(quest.id);
-                                  setQuestion(quest.question);
-                                }}
-                              >
-                                Answers
-                              </Button>
-                            </div>
-                          </div>
-
-                          {/* <div className="edit_icons">
-                          <svg
-                            width="40px"
-                            height="40px"
-                            viewBox="0 0 16 16"
-                            className="bi bi-pencil"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"
-                            />
-                          </svg>
-
-                          <svg
-                            width="40px"
-                            height="40px"
-                            viewBox="0 0 16 16"
-                            className="bi bi-x"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                            onClick={(e) => {
-                              delete_question(quest.id, e);
-                            }}
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                            />
-                          </svg>
-                        </div> */}
-                        </Card.Body>
-                      </Accordion.Collapse>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Accordion.Toggle>
                     </Card>
                   </Accordion>
 
