@@ -280,18 +280,22 @@ export default function QuizQuestions() {
                                   <div className="answer_text_value">
                                     {answer.answer}
                                   </div>
-                                  <div className="answer_isCorrect">
-                                    Correct
+
+                                  <div className="correct_box">
+                                    <div className="answer_isCorrect">
+                                      Correct
+                                    </div>
+
+                                    {answer.isCorrect ? (
+                                      <div className="answer_isCorrect_value_correct">
+                                        {answer.isCorrect.toString()}
+                                      </div>
+                                    ) : (
+                                      <div className="answer_isCorrect_value_false">
+                                        {answer.isCorrect.toString()}
+                                      </div>
+                                    )}
                                   </div>
-                                  {answer.isCorrect ? (
-                                    <div className="answer_isCorrect_value_correct">
-                                      {answer.isCorrect.toString()}
-                                    </div>
-                                  ) : (
-                                    <div className="answer_isCorrect_value_false">
-                                      {answer.isCorrect.toString()}
-                                    </div>
-                                  )}
                                 </div>
                               </div>
 

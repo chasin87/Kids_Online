@@ -245,10 +245,14 @@ svg {
 }
 
 .answer_text,
-.answer_quizId,
-.answer_isCorrect {
+.answer_quizId {
   width: 100%;
   color: #000;
+  font-size: 20px;
+}
+.answer_isCorrect {
+  width: 100%;
+  color: whitesmoke;
   font-size: 20px;
 }
 
@@ -260,11 +264,25 @@ svg {
   font-size: 20px;
 }
 
+.correct_box {
+  background-color: rgb(71 83 80 / 80%);
+  padding: 5px;
+  width: 60%;
+  margin: auto;
+  padding-bottom: 10px;
+  border-radius: 3px;
+}
+
 .answer_isCorrect_value_correct {
   font-size: 20px;
-  color: #1f5967;
+  color: #5bff2a;
   font-weight: 800;
   text-transform: capitalize;
+  background: black;
+  width: 60%;
+  border-radius: 3px;
+  padding: 5px;
+  margin: auto;
 }
 
 .answer_isCorrect_value_false {
@@ -272,6 +290,11 @@ svg {
   color: #f43f5a;
   font-weight: 800;
   text-transform: capitalize;
+  background: black;
+  width: 60%;
+  border-radius: 3px;
+  padding: 5px;
+  margin: auto;
 }
 
 .answer_image {
