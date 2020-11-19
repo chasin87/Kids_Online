@@ -271,6 +271,7 @@ svg {
   margin: auto;
   padding-bottom: 10px;
   border-radius: 3px;
+  margin-bottom: 20px;
 }
 
 .answer_isCorrect_value_correct {
@@ -324,6 +325,10 @@ svg {
   justify-content: center;
 
   background-color: red !important;
+}
+
+.modal-backdrop {
+  background: #00000061 !important;
 }
 
 @media (max-width: 991px) {
