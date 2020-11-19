@@ -9,6 +9,10 @@ import { storage, db } from "../../firebase";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import firebase from "firebase";
 import Axios from "axios";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../Store/user/selectors";
+import { useHistory } from "react-router-dom";
+
 // import Answers from "./Answers";
 
 export default function Add_Question() {
@@ -23,6 +27,12 @@ export default function Add_Question() {
   const [level, setLevel] = useState(" ");
   const [uploadedText, setUploadedText] = useState(false);
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
+
+  const { token } = useSelector(selectUser);
+  const history = useHistory();
+  if (token === null) {
+    history.push("/");
+  }
 
   const inputChange = (event) => {
     setQuestion(event.target.value);

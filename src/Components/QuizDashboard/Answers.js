@@ -11,7 +11,15 @@ import "./Add_Question.css";
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
 
+import { selectUser } from "../../Store/user/selectors";
+import { useHistory } from "react-router-dom";
+
 function Answers() {
+  const { token } = useSelector(selectUser);
+  const history = useHistory();
+  if (token === null) {
+    history.push("/");
+  }
   const [answer, setAnswer] = useState("");
 
   const [images, setImages] = useState([]);
