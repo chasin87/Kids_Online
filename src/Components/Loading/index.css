@@ -1,4 +1,4 @@
-.loading_spinner {
+/* .loading_spinner {
   z-index: 9999;
   width: 100vw;
   height: 30vh;
@@ -7,4 +7,16 @@
   justify-content: center;
   position: fixed;
   background-color: white;
+} */
+
+.loading_spinner {
+  z-index: 9999;
+  /* width: 100vw; */
+  /* height: 30vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: fixed; */
+  /* background-color: red; */
+  /* margin: auto; */
 }

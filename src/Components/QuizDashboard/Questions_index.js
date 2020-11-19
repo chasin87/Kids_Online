@@ -258,63 +258,69 @@ export default function QuizQuestions() {
                         {question}
                       </Modal.Title>
                     </Modal.Header>
+                    {Answers.length < 1 ? (
+                      <Loading />
+                    ) : (
+                      <div>
+                        {Answers.map((answer) => {
+                          if (ids === answer.quizId) {
+                            return (
+                              <Modal.Body>
+                                <div key={answer.id}>
+                                  <div className="row">
+                                    <div className="answer_image col-sm-6">
+                                      <img
+                                        className="question_image_answer question_info"
+                                        src={answer.answerImage}
+                                        alt="answerImage"
+                                      />
+                                    </div>
+                                    <div className=" col-sm-6">
+                                      <div className="answer_id">
+                                        ID: {answer.id}
+                                      </div>
+                                      <div className="answer_text">Answer</div>
+                                      <div className="answer_text_value">
+                                        {answer.answer}
+                                      </div>
 
-                    {Answers.map((answer) => {
-                      if (ids === answer.quizId) {
-                        return (
-                          <Modal.Body>
-                            <div key={answer.id}>
-                              <div className="row">
-                                <div className="answer_image col-sm-6">
-                                  <img
-                                    className="question_image_answer question_info"
-                                    src={answer.answerImage}
-                                    alt="answerImage"
+                                      <div className="correct_box">
+                                        <div className="answer_isCorrect">
+                                          Correct
+                                        </div>
+
+                                        {answer.isCorrect ? (
+                                          <div className="answer_isCorrect_value_correct">
+                                            {answer.isCorrect.toString()}
+                                          </div>
+                                        ) : (
+                                          <div className="answer_isCorrect_value_false">
+                                            {answer.isCorrect.toString()}
+                                          </div>
+                                        )}
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <AudioPlayer
+                                    header="Question Sound"
+                                    src={answer.answerSound}
+                                    showJumpControls={false}
+                                    customAdditionalControls={[]}
+                                    showDownloadProgress={false}
+                                    layout="horizontal"
+                                    customVolumeControls={[]}
                                   />
                                 </div>
-                                <div className=" col-sm-6">
-                                  <div className="answer_id">
-                                    ID: {answer.id}
-                                  </div>
-                                  <div className="answer_text">Answer</div>
-                                  <div className="answer_text_value">
-                                    {answer.answer}
-                                  </div>
+                              </Modal.Body>
+                            );
+                          } else {
+                            return false;
+                          }
+                        })}
+                      </div>
+                    )}
 
-                                  <div className="correct_box">
-                                    <div className="answer_isCorrect">
-                                      Correct
-                                    </div>
-
-                                    {answer.isCorrect ? (
-                                      <div className="answer_isCorrect_value_correct">
-                                        {answer.isCorrect.toString()}
-                                      </div>
-                                    ) : (
-                                      <div className="answer_isCorrect_value_false">
-                                        {answer.isCorrect.toString()}
-                                      </div>
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-
-                              <AudioPlayer
-                                header="Question Sound"
-                                src={answer.answerSound}
-                                showJumpControls={false}
-                                customAdditionalControls={[]}
-                                showDownloadProgress={false}
-                                layout="horizontal"
-                                customVolumeControls={[]}
-                              />
-                            </div>
-                          </Modal.Body>
-                        );
-                      } else {
-                        return false;
-                      }
-                    })}
                     <Modal.Footer>
                       {" "}
                       <Button variant="secondary" onClick={handleClose}>
