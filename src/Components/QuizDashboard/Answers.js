@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CustomInput, FormGroup, Input, Label } from "reactstrap";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -224,6 +224,19 @@ function Answers() {
             </Link>
           </div>
         </div>
+        <div className="Answers_Missing">
+          <h5 style={{ color: "#000" }}>Questions without answers</h5>
+          {Quizzes.map((quiz) => {
+            if (quiz.questionComplete === false) {
+              return (
+                <ListGroup>
+                  <ListGroup.Item>{quiz.question}</ListGroup.Item>
+                </ListGroup>
+              );
+            }
+          })}
+        </div>
+
         <div className="question_part">
           <div className="Form_answer">
             {/* Answer1 */}
