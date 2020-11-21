@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Question_index.css";
-import { Card, Accordion, Button, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
@@ -17,15 +17,16 @@ import "react-h5-audio-player/lib/styles.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// import { questions } from "../Quiz";
-
 export default function QuizQuestions() {
+  const Quizzes = useSelector(selectquizzes);
+  const Answers = useSelector(selectanswers);
   const [show, setShow] = useState(false);
   const [ids, setIds] = useState();
   const [question, setQuestion] = useState("");
   const [confirm, setConfirm] = useState(false);
   const [idToDelete, setIdToDelete] = useState();
-
+  const [cat, setCat] = useState("");
+  const [level, setLevel] = useState("");
   const { token } = useSelector(selectUser);
   const history = useHistory();
   if (token === null) {
@@ -34,11 +35,23 @@ export default function QuizQuestions() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({ duration: 2000 });
   }, []);
 
-  const Quizzes = useSelector(selectquizzes);
-  const Answers = useSelector(selectanswers);
+  const filteredQuestions = Quizzes.filter((quiz) => {
+    return (
+      quiz.questionCategory.toLowerCase().includes(cat.toLowerCase()) &&
+      quiz.questionLevel.toString().includes(level.toString())
+    );
+  });
+
+  useEffect(() => {
+    if (cat === "All") {
+      setCat("");
+    } else if (level === "All") {
+      setLevel("");
+    }
+  }, [cat, level]);
 
   const delete_confirm = (id, e) => {
     setConfirm(true);
@@ -75,7 +88,7 @@ export default function QuizQuestions() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="rowws">
       <div className="container_quiz_dashboard">
         <div className="navigation_to_dashboard">
           <div className="back_to">
@@ -117,226 +130,241 @@ export default function QuizQuestions() {
         </div>
 
         <div className="container_title">Quiz Questions</div>
+
+        <div
+          className="row"
+          style={{ margin: "auto", marginTop: "50px", width: "96%" }}
+        >
+          <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
+            <div>
+              {" "}
+              <label>Question Category</label>
+            </div>
+            <div className="input-group mb-3">
+              <select
+                className="custom-select"
+                id="inputGroupSelect02"
+                value={cat}
+                onChange={(e) => setCat(e.target.value)}
+              >
+                <option defaultValue="">All</option>
+                <option value="Rijmen">Rijmen</option>
+                <option value="Rekenen">Rekenen</option>
+                <option value="Kleuren">Kleuren</option>
+              </select>
+              <div className="input-group-append">
+                <label
+                  className="input-group-text"
+                  htmlFor="inputGroupSelect02"
+                >
+                  Category
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
+            <div>
+              {" "}
+              <label>Question Level</label>
+            </div>
+            <div className="input-group mb-3">
+              <select
+                className="custom-select"
+                id="inputGroupSelect02"
+                value={level}
+                onChange={(e) => setLevel(e.target.value)}
+              >
+                <option defaultValue="">All</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <div className="input-group-append">
+                <label
+                  className="input-group-text"
+                  htmlFor="inputGroupSelect02"
+                >
+                  Level
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
         {Quizzes.length < 1 ? (
           <Loading />
         ) : (
-          <div>
-            {Quizzes.map((quest) => {
+          <div
+            className="row"
+            style={{ margin: "auto", marginTop: "50px", width: "96%" }}
+          >
+            {filteredQuestions.map((quest) => {
               return (
-                <div
-                  className="question_part"
-                  key={quest.id}
-                  data-aos="fade-left"
-                >
-                  <Accordion defaultActiveKey="1">
-                    <Card>
-                      <Card.Header>
-                        <div className="id">
-                          {" "}
-                          <p>Id: {quest.id}</p>
+                <div className="col-sm-12 col-md-6 col-xl-4" key={quest.id}>
+                  <div className="card">
+                    <div className="head_card">
+                      <div className="head_card_top"></div>
+                      <div className="head_card_below">
+                        <div className="left-image col-4"></div>
+                        <img
+                          className="card-img-top"
+                          src={quest.questionImage}
+                          alt="Image_answer col-3"
+                        />
+                        <div className="iconDelete col-4 ">
+                          <svg
+                            width="30px"
+                            height="30px"
+                            viewBox="0 0 16 16"
+                            className="bi bi-x"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            onClick={(e) => {
+                              delete_confirm(quest.id, e);
+                            }}
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                            />
+                          </svg>
                         </div>
-                        <div className="category">
-                          <p> Category: {quest.questionCategory}</p>
-                        </div>
-                        <div className="level">
-                          {" "}
-                          <p>level: {quest.questionLevel}</p>
-                        </div>
-                        <div className="question_in_text">
-                          <div className="question_in_text_left col-sm-12 col-md-9 col-lg-9">
-                            <p>Question: {quest.question}</p>
-                          </div>
+                      </div>
+                    </div>
+                    <div className="card-body">
+                      <p className="card-text">{quest.question}</p>
+                      <h5 className="card-title category">
+                        {quest.questionCategory}
+                      </h5>
+                      <div className="level_id">
+                        <h5 className="card-title level">
+                          Level: {quest.questionLevel}
+                        </h5>
+                        <h5 className="card-title id">Id: {quest.id}</h5>
+                      </div>
 
-                          <div className="question_in_text_right col-7 col-sm-5 col-md-3 col-lg-3  ">
-                            <div className="iconn">
-                              <Accordion.Toggle as={"iconArrow"} eventKey="0">
-                                <div className="iconArrow">
-                                  <svg
-                                    width="30px"
-                                    height="30px"
-                                    viewBox="0 0 16 12"
-                                    className="bi bi-caret-down-fill iconArr"
-                                    fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    href="#test"
-                                  >
-                                    <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                                  </svg>
-                                </div>
-                              </Accordion.Toggle>
-                            </div>
-                          </div>
-                        </div>
-                        <Modal centered show={confirm}>
-                          <Modal.Header className="header_modal">
-                            <Modal.Title>Delete question</Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body>
-                            Are you sure you want to delete it?
-                          </Modal.Body>
-                          <Modal.Footer>
-                            <Button
-                              variant="secondary"
-                              onClick={(e) => {
-                                delete_question(quest.id, e);
-                              }}
-                            >
-                              Yes
-                            </Button>
+                      <AudioPlayer
+                        header="Question Sound"
+                        src={quest.questionSound}
+                        showJumpControls={false}
+                        customAdditionalControls={[]}
+                        showDownloadProgress={false}
+                        layout="horizontal"
+                        customVolumeControls={[]}
+                        autoPlay={false}
+                      />
+                      <Button
+                        className="answer_button"
+                        // onClick={showAnswers}
+                        onClick={(id, question) => {
+                          showAnswers();
+                          setIds(quest.id);
+                          setQuestion(quest.question);
+                        }}
+                      >
+                        Answers
+                      </Button>
+                    </div>
 
-                            <Button
-                              variant="secondary"
-                              onClick={() => {
-                                setConfirm(false);
-                              }}
-                            >
-                              No
-                            </Button>
-                          </Modal.Footer>
-                        </Modal>
-                      </Card.Header>
-
-                      <Accordion.Toggle as={"iconArrow"} eventKey="0">
-                        <Accordion.Collapse eventKey="0">
-                          <Card.Body id="test">
-                            <div className="headers_part" id="test">
-                              <div className="head_card">
-                                <div className="col-2"></div>
-                                <img
-                                  className="question_image_format question_info col-8"
-                                  src={quest.questionImage}
-                                  alt="questionImage"
-                                />
-                                <div className="iconDelete col-2 ">
-                                  <svg
-                                    width="40px"
-                                    height="40px"
-                                    viewBox="0 0 16 16"
-                                    className="bi bi-x"
-                                    fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    onClick={(e) => {
-                                      delete_confirm(quest.id, e);
-                                    }}
-                                  >
-                                    <path
-                                      fillRule="evenodd"
-                                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                                    />
-                                  </svg>
-                                </div>
-                              </div>
-                              <div className="question_headers">
-                                Question
-                                <div className="question_info">
-                                  {quest.question}
-                                </div>
-                              </div>
-
-                              <AudioPlayer
-                                header="Question Sound"
-                                src={quest.questionSound}
-                                showJumpControls={false}
-                                customAdditionalControls={[]}
-                                showDownloadProgress={false}
-                                layout="horizontal"
-                                customVolumeControls={[]}
-                              />
-                              <div className="question_footer">
-                                <Button
-                                  className="answer_button"
-                                  // onClick={showAnswers}
-                                  onClick={(id, question) => {
-                                    showAnswers();
-                                    setIds(quest.id);
-                                    setQuestion(quest.question);
-                                  }}
-                                >
-                                  Answers
-                                </Button>
-                              </div>
-                            </div>
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      </Accordion.Toggle>
-                    </Card>
-                  </Accordion>
-
-                  <Modal centered show={show} onHide={handleClose}>
-                    <Modal.Header className="header_modal">
-                      <Modal.Title>
-                        Answers for
-                        <br />
-                        {question}
-                      </Modal.Title>
-                    </Modal.Header>
-                    {Answers.length < 1 ? (
-                      <Loading />
-                    ) : (
-                      <div>
-                        {Answers.map((answer) => {
-                          if (ids === answer.quizId) {
-                            return (
-                              <Modal.Body>
-                                <div key={answer.id}>
-                                  <div className="row">
-                                    <div className="answer_image col-sm-6">
-                                      <img
-                                        className="question_image_answer question_info"
-                                        src={answer.answerImage}
-                                        alt="answerImage"
+                    <div>
+                      <Modal centered show={show} onHide={handleClose}>
+                        <Modal.Header className="header_modal_answer">
+                          <Modal.Title>
+                            Answers for
+                            <br />
+                            {question}
+                          </Modal.Title>
+                        </Modal.Header>
+                        {Answers.length < 1 ? (
+                          <Loading />
+                        ) : (
+                          <div>
+                            {Answers.map((answer) => {
+                              if (ids === answer.quizId) {
+                                return (
+                                  <Modal.Body>
+                                    <div key={answer.id}>
+                                      <div className="row">
+                                        <div className="answer_image col-sm-6">
+                                          <img
+                                            className="question_image_answer question_info"
+                                            src={answer.answerImage}
+                                            alt="answerImage"
+                                          />
+                                        </div>
+                                        <div className=" col-sm-6">
+                                          <div className="answer_id">
+                                            ID: {answer.id}
+                                          </div>
+                                          <div className="answer_text">
+                                            Answer
+                                          </div>
+                                          <div className="answer_text_value">
+                                            {answer.answer}
+                                          </div>
+                                          <div className="correct_box">
+                                            <div className="answer_isCorrect">
+                                              Correct
+                                            </div>
+                                            {answer.isCorrect ? (
+                                              <div className="answer_isCorrect_value_correct">
+                                                {answer.isCorrect.toString()}
+                                              </div>
+                                            ) : (
+                                              <div className="answer_isCorrect_value_false">
+                                                {answer.isCorrect.toString()}
+                                              </div>
+                                            )}
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <AudioPlayer
+                                        header="Question Sound"
+                                        src={answer.answerSound}
+                                        showJumpControls={false}
+                                        customAdditionalControls={[]}
+                                        showDownloadProgress={false}
+                                        layout="horizontal"
+                                        customVolumeControls={[]}
                                       />
                                     </div>
-                                    <div className=" col-sm-6">
-                                      <div className="answer_id">
-                                        ID: {answer.id}
-                                      </div>
-                                      <div className="answer_text">Answer</div>
-                                      <div className="answer_text_value">
-                                        {answer.answer}
-                                      </div>
-
-                                      <div className="correct_box">
-                                        <div className="answer_isCorrect">
-                                          Correct
-                                        </div>
-
-                                        {answer.isCorrect ? (
-                                          <div className="answer_isCorrect_value_correct">
-                                            {answer.isCorrect.toString()}
-                                          </div>
-                                        ) : (
-                                          <div className="answer_isCorrect_value_false">
-                                            {answer.isCorrect.toString()}
-                                          </div>
-                                        )}
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <AudioPlayer
-                                    header="Question Sound"
-                                    src={answer.answerSound}
-                                    showJumpControls={false}
-                                    customAdditionalControls={[]}
-                                    showDownloadProgress={false}
-                                    layout="horizontal"
-                                    customVolumeControls={[]}
-                                  />
-                                </div>
-                              </Modal.Body>
-                            );
-                          } else {
-                            return false;
-                          }
-                        })}
-                      </div>
-                    )}
-
+                                  </Modal.Body>
+                                );
+                              } else {
+                                return false;
+                              }
+                            })}
+                          </div>
+                        )}
+                        <Modal.Footer>
+                          {" "}
+                          <Button variant="secondary" onClick={handleClose}>
+                            Close
+                          </Button>
+                        </Modal.Footer>
+                      </Modal>
+                    </div>
+                  </div>
+                  <Modal centered show={confirm}>
+                    <Modal.Header className="header_modal_answer">
+                      <Modal.Title>Delete question</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Are you sure you want to delete it?</Modal.Body>
                     <Modal.Footer>
-                      {" "}
-                      <Button variant="secondary" onClick={handleClose}>
-                        Close
+                      <Button
+                        variant="secondary"
+                        onClick={(e) => {
+                          delete_question(quest.id, e);
+                        }}
+                      >
+                        Yes
+                      </Button>
+                      <Button
+                        variant="secondary"
+                        onClick={() => {
+                          setConfirm(false);
+                        }}
+                      >
+                        No
                       </Button>
                     </Modal.Footer>
                   </Modal>
