@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Question_index.css";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
@@ -44,6 +44,12 @@ export default function QuizQuestions() {
       quiz.questionLevel.toString().includes(level.toString())
     );
   });
+
+  console.log(
+    Quizzes.map((quiz) => {
+      return quiz.questionComplete;
+    })
+  );
 
   useEffect(() => {
     if (cat === "All") {
@@ -133,13 +139,14 @@ export default function QuizQuestions() {
 
         <div
           className="row"
-          style={{ margin: "auto", marginTop: "50px", width: "96%" }}
+          style={{ margin: "auto", marginTop: "30px", width: "96%" }}
         >
           <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
             <div>
               {" "}
               <label>Question Category</label>
             </div>
+
             <div className="input-group mb-3">
               <select
                 className="custom-select"
@@ -153,12 +160,12 @@ export default function QuizQuestions() {
                 <option value="Kleuren">Kleuren</option>
               </select>
               <div className="input-group-append">
-                <label
+                {/* <label
                   className="input-group-text"
                   htmlFor="inputGroupSelect02"
                 >
                   Category
-                </label>
+                </label> */}
               </div>
             </div>
           </div>
@@ -180,12 +187,12 @@ export default function QuizQuestions() {
                 <option value="3">3</option>
               </select>
               <div className="input-group-append">
-                <label
+                {/* <label
                   className="input-group-text"
                   htmlFor="inputGroupSelect02"
                 >
                   Level
-                </label>
+                </label> */}
               </div>
             </div>
           </div>
@@ -241,6 +248,22 @@ export default function QuizQuestions() {
                         </h5>
                         <h5 className="card-title id">Id: {quest.id}</h5>
                       </div>
+                      <h5 className="complete_question">
+                        <div>
+                          {quest.questionComplete ? (
+                            <Badge variant="success">Question Complete</Badge>
+                          ) : (
+                            <Badge
+                              variant="danger"
+                              onClick={(e) => {
+                                console.log("missing answers", quest.id);
+                              }}
+                            >
+                              Missing Answers
+                            </Badge>
+                          )}
+                        </div>
+                      </h5>
 
                       <AudioPlayer
                         header="Question Sound"
