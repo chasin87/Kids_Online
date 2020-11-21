@@ -33,6 +33,7 @@ export default function Add_Question() {
   if (token === null) {
     history.push("/");
   }
+  const status = false;
 
   const inputChange = (event) => {
     setQuestion(event.target.value);
@@ -74,6 +75,7 @@ export default function Add_Question() {
         data.append("questionSound", sounds);
         data.append("questionCategory", cat);
         data.append("questionLevel", level);
+        data.append("questionComplete", status);
 
         Axios.post("http://localhost:8888/upload", data)
           .then((res) => console.log(res))
