@@ -23,6 +23,9 @@ export default function DashBoard() {
         <Link className="link_add_question" to="/Add_Question">
           <button className="tegels_add_question">Add Question</button>
         </Link>
+        <Link className="link_add_answers" to="/Answers">
+          <button className="tegels_add_answers">Add Answers</button>
+        </Link>
       </div>
     </div>
   );

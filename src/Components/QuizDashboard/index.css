@@ -6,34 +6,14 @@
 .tegels_all {
   display: flex;
   justify-content: center;
+  margin-bottom: 40px;
 }
 
-.tegels_question {
-  width: 200px;
-  height: 200px;
-  background-color: green;
-  font-size: 30px;
-  text-decoration: none;
-  color: white;
-  margin: 10px;
-  border-radius: 5px;
-  text-align: center;
-  border: none;
-}
-
-.tegels_question a {
-  color: white;
-}
-
-.tegels_question a:hover {
-  color: white;
-  text-decoration: none;
-}
-
+.tegels_add_answers,
+.tegels_question,
 .tegels_add_question {
   width: 200px;
   height: 200px;
-  background-color: #3906ee;
   font-size: 30px;
   text-decoration: none;
   color: white;
@@ -41,20 +21,33 @@
   border-radius: 5px;
   text-align: center;
   border: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+  transition-duration: 0.5s;
 }
 
-.tegels_add_question a {
-  color: white;
+.tegels_question {
+  background-color: green;
 }
 
-.tegels_add_question a:hover {
-  color: white;
-  text-decoration: none;
+.tegels_add_question {
+  background-color: #3906ee;
+}
+
+.tegels_add_answers {
+  background-color: #f5b120;
+}
+
+.tegels_add_answers:hover,
+.tegels_question:hover,
+.tegels_add_question:hover {
+  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.64),
+    0 30px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 @media (max-width: 991px) {
   .tegels_add_question,
-  .tegels_question {
+  .tegels_question,
+  .tegels_add_answers {
     width: 100px;
     height: 100px;
     font-size: 20px;
