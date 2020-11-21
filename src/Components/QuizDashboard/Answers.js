@@ -52,7 +52,7 @@ function Answers() {
   };
 
   const checker = () => {
-    setCheckAnswer(true);
+    checkAnswer ? setCheckAnswer(false) : setCheckAnswer(true);
   };
 
   const dispatch = useDispatch();
