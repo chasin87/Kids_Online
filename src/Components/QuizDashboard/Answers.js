@@ -28,7 +28,8 @@ function Answers() {
   const [imageUp, setImageUp] = useState([]);
   const [soundUp, setSoundUp] = useState([]);
   const [progress, setProgress] = useState(0);
-  const [referenceId, setReferenceId] = useState();
+  const [referenceId, setReferenceId] = useState(null);
+  const [working, setWorking] = useState();
 
   const [uploadedText, setUploadedText] = useState(false);
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
@@ -231,13 +232,14 @@ function Answers() {
       </div>
       <div className="Answers_Missing">
         <h5 style={{ color: "#000" }}>Questions without answers</h5>
+        <h6>Please select a question below:</h6>
         {Quizzes.map((quiz) => {
           return quiz.questionComplete ? null : (
             <ListGroup>
               <ListGroup.Item
                 onClick={(e) => {
-                  console.log("missing answers", quiz.id);
                   setReferenceId(quiz.id);
+                  setWorking(quiz.question);
                 }}
               >
                 {quiz.question}
@@ -246,111 +248,125 @@ function Answers() {
           );
         })}
       </div>
-
-      <div className="question_part">
-        <div className="Form_answer">
-          {/* Answer1 */}
-          <Form.Group>
-            <p>Answer {answerCount.length} of 4</p>
-            <label>Answer in text</label>
-            <Input
-              type="text"
-              name="text"
-              id="answer_main"
-              placeholder="Enter your answer in text"
-              onChange={inputChange}
-              value={answer}
-            />
-            <Label check>
+      <div>
+        {working ? (
+          <h5 style={{ fontWeight: "700", color: "green" }}>
+            Working on: {working}{" "}
+          </h5>
+        ) : (
+          <h5 style={{ fontWeight: "700", color: "red" }}>
+            Nothing selected, Please select a question ⤴
+          </h5>
+        )}
+      </div>
+      {defId === null ? (
+        ""
+      ) : (
+        <div className="question_part">
+          <div className="Form_answer">
+            {/* Answer1 */}
+            <Form.Group>
+              <p>Answer {answerCount.length} of 4</p>
+              <label>Answer in text</label>
               <Input
-                type="checkbox"
-                checked={checkAnswer}
-                onClick={checker}
-                unCh
-              />{" "}
-              Correct answer "Check if true"
-            </Label>
+                type="text"
+                name="text"
+                id="answer_main"
+                placeholder="Enter your answer in text"
+                onChange={inputChange}
+                value={answer}
+              />
+              <Label check>
+                <Input
+                  type="checkbox"
+                  checked={checkAnswer}
+                  onClick={checker}
+                  unCh
+                />{" "}
+                Correct answer "Check if true"
+              </Label>
 
-            {/* ImageUpload */}
+              {/* ImageUpload */}
 
-            <div className="imageUpload">
-              <FormGroup>
-                <label>Answer Image</label>
-                <CustomInput
-                  type="file"
-                  id="exampleCustomFileBrowser"
-                  name="customFile"
-                  accept=".png, .jpg, .jpeg"
-                  onChange={handleChange}
-                />
-              </FormGroup>
-              {/* ----- */}
-              <div className="uploaded_text">
-                {uploadedText ? (
-                  <p>
-                    image with file name
-                    <span className="uploaded_file">{` ${imageUp.name} `}</span>
-                    is uploaded.
-                  </p>
-                ) : (
-                  <p></p>
-                )}
-              </div>
-
-              {/* SoundUpload */}
-              <div className="soundUpload ">
+              <div className="imageUpload">
                 <FormGroup>
-                  <label>Answer Sound</label>
+                  <label>Answer Image</label>
                   <CustomInput
                     type="file"
                     id="exampleCustomFileBrowser"
                     name="customFile"
-                    label="Choose sound file..."
-                    accept=".m4a, .mp3"
-                    onChange={handleChangeSound}
+                    accept=".png, .jpg, .jpeg"
+                    onChange={handleChange}
                   />
                 </FormGroup>
-
+                {/* ----- */}
                 <div className="uploaded_text">
-                  {uploadedTextSound ? (
+                  {uploadedText ? (
                     <p>
-                      sound with file name
-                      <span className="uploaded_file">{` ${soundUp.name} `}</span>
+                      image with file name
+                      <span className="uploaded_file">{` ${imageUp.name} `}</span>
                       is uploaded.
                     </p>
                   ) : (
                     <p></p>
                   )}
                 </div>
-              </div>
-            </div>
-          </Form.Group>
 
-          <div className="finals">
-            <LinearProgress
-              variant="determinate"
-              value={progress}
-            ></LinearProgress>
-          </div>
-          <div>
-            <Button onClick={handleUpload} className="button_upload">
-              Upload
-            </Button>
-          </div>
-          <div>
-            <Button
-              type="submit"
-              className="button_upload"
-              variant="primary"
-              onClick={() => {
-                send();
-              }}
-            >
-              Submit
-            </Button>
+                {/* SoundUpload */}
+                <div className="soundUpload ">
+                  <FormGroup>
+                    <label>Answer Sound</label>
+                    <CustomInput
+                      type="file"
+                      id="exampleCustomFileBrowser"
+                      name="customFile"
+                      label="Choose sound file..."
+                      accept=".m4a, .mp3"
+                      onChange={handleChangeSound}
+                    />
+                  </FormGroup>
+
+                  <div className="uploaded_text">
+                    {uploadedTextSound ? (
+                      <p>
+                        sound with file name
+                        <span className="uploaded_file">{` ${soundUp.name} `}</span>
+                        is uploaded.
+                      </p>
+                    ) : (
+                      <p></p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </Form.Group>
+
+            <div className="finals">
+              <LinearProgress
+                variant="determinate"
+                value={progress}
+              ></LinearProgress>
+            </div>
+            <div>
+              <Button onClick={handleUpload} className="button_upload">
+                Upload
+              </Button>
+            </div>
+            <div>
+              <Button
+                type="submit"
+                className="button_upload"
+                variant="primary"
+                onClick={() => {
+                  send();
+                }}
+              >
+                Submit
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   ) : (
     <Redirect to="/QuizQuestions" />

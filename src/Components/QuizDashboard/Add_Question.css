@@ -205,6 +205,10 @@ progress {
   font-weight: 600;
 }
 
+.list-group-item {
+  cursor: pointer;
+}
+
 @media (max-width: 991px) {
   /* .container_quiz_dashboard {
     font-size: 29px;
