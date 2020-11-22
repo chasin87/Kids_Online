@@ -214,6 +214,10 @@ progress {
     width: 90%;
   }
 
+  .Form_answer {
+    width: 90%;
+  }
+
   .button_upload {
     width: 50%;
   }
@@ -225,33 +229,7 @@ progress {
     font-weight: 500;
     width: 160px;
   }
-  /* 
-  .accordion {
-    margin-top: -20px;
+  .Answers_Missing {
+    width: 96%;
   }
-
-  .id {
-    font-size: 25px;
-    margin-left: 0px;
-    width: 100%;
-  }
-
-  .category {
-    font-size: 25px;
-    margin-left: 0px;
-    width: 100%;
-  }
-
-  .question_in_text {
-    font-size: 25px;
-    margin-left: 0px;
-    width: 100%;
-  }
-
-  .card-header {
-    display: inline-block;
-
-    margin-left: auto;
-    margin-right: auto;
-  } */
 }

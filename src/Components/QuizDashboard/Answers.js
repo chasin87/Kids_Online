@@ -11,7 +11,7 @@ import "./Add_Question.css";
 import { Redirect } from "react-router";
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
-
+import { updateStatus } from "../../Store/quizlist/actions";
 import { selectUser } from "../../Store/user/selectors";
 import { useHistory } from "react-router-dom";
 
@@ -22,20 +22,18 @@ function Answers() {
     history.push("/");
   }
   const [answer, setAnswer] = useState("");
-
   const [images, setImages] = useState([]);
-
   const [sounds, setSounds] = useState([]);
-
   const [checkAnswer, setCheckAnswer] = useState(false);
-
   const [imageUp, setImageUp] = useState([]);
   const [soundUp, setSoundUp] = useState([]);
   const [progress, setProgress] = useState(0);
+  const [referenceId, setReferenceId] = useState();
 
   const [uploadedText, setUploadedText] = useState(false);
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
   const [answerCount, setAnswerCount] = useState([1]);
+
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImageUp(e.target.files[0]);
@@ -58,15 +56,12 @@ function Answers() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchQuizList());
+    dispatch(updateStatus());
   }, [dispatch]);
 
   const Quizzes = useSelector(selectquizzes);
 
-  const quizId = Quizzes.map((quiz) => {
-    return quiz.id;
-  });
-
-  const defId = quizId.slice(-1)[0];
+  const defId = referenceId;
 
   //answer text and imageUrl post to Db
   const send = (event) => {
@@ -94,6 +89,10 @@ function Answers() {
       setCheckAnswer(false);
       setUploadedText(false);
       setUploadedTextSound(false);
+
+      if (answerCount.length === 4) {
+        dispatch(updateStatus(defId));
+      }
     }
   };
 
@@ -140,6 +139,13 @@ function Answers() {
     }
   };
 
+  // const delete_question = () => {
+  //   Axios.delete(`http://localhost:8888/upload/${idToDelete}`).then((res) => {
+  //     console.log(res);
+  //     console.log(res.data);
+  //     dispatch(fetchQuizList());
+  //   });
+
   //sound upload to firebase
   const handleUploadSound = () => {
     if (soundUp.length === 0) {
@@ -183,169 +189,172 @@ function Answers() {
     }
   };
 
-  if (answerCount.length < 5) {
-    return (
-      <div className="container_quiz_dashboard">
-        <div className="navigation_to_dashboard">
-          <div className="back_to">
-            <Link className="link_back" to="/QuizQuestions">
-              <svg
-                width="1em"
-                height="1em"
-                viewBox="0 0 16 16"
-                className="bi bi-caret-left"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"
-                />
-              </svg>
-              Back to questions
-            </Link>
-          </div>
-          <div className="next_to">
-            <Link className="link_next" to="/QuizDashboard">
-              Go to dashboard
-              <svg
-                width="1em"
-                height="1em"
-                viewBox="0 0 16 16"
-                className="bi bi-caret-right"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"
-                />
-              </svg>
-            </Link>
-          </div>
-        </div>
-        <div className="Answers_Missing">
-          <h5 style={{ color: "#000" }}>Questions without answers</h5>
-          {Quizzes.map((quiz) => {
-            if (quiz.questionComplete === false) {
-              return (
-                <ListGroup>
-                  <ListGroup.Item>{quiz.question}</ListGroup.Item>
-                </ListGroup>
-              );
-            }
-          })}
-        </div>
-
-        <div className="question_part">
-          <div className="Form_answer">
-            {/* Answer1 */}
-            <Form.Group>
-              <p>Answer {answerCount.length} of 4</p>
-              <label>Answer in text</label>
-              <Input
-                type="text"
-                name="text"
-                id="answer_main"
-                placeholder="Enter your answer in text"
-                onChange={inputChange}
-                value={answer}
+  return answerCount.length < 5 ? (
+    <div className="container_quiz_dashboard">
+      <div className="navigation_to_dashboard">
+        <div className="back_to">
+          <Link className="link_back" to="/QuizQuestions">
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              className="bi bi-caret-left"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"
               />
-              <Label check>
-                <Input
-                  type="checkbox"
-                  checked={checkAnswer}
-                  onClick={checker}
-                  unCh
-                />{" "}
-                Correct answer "Check if true"
-              </Label>
+            </svg>
+            Back to questions
+          </Link>
+        </div>
+        <div className="next_to">
+          <Link className="link_next" to="/QuizDashboard">
+            Go to dashboard
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              className="bi bi-caret-right"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"
+              />
+            </svg>
+          </Link>
+        </div>
+      </div>
+      <div className="Answers_Missing">
+        <h5 style={{ color: "#000" }}>Questions without answers</h5>
+        {Quizzes.map((quiz) => {
+          return quiz.questionComplete ? null : (
+            <ListGroup>
+              <ListGroup.Item
+                onClick={(e) => {
+                  console.log("missing answers", quiz.id);
+                  setReferenceId(quiz.id);
+                }}
+              >
+                {quiz.question}
+              </ListGroup.Item>
+            </ListGroup>
+          );
+        })}
+      </div>
 
-              {/* ImageUpload */}
+      <div className="question_part">
+        <div className="Form_answer">
+          {/* Answer1 */}
+          <Form.Group>
+            <p>Answer {answerCount.length} of 4</p>
+            <label>Answer in text</label>
+            <Input
+              type="text"
+              name="text"
+              id="answer_main"
+              placeholder="Enter your answer in text"
+              onChange={inputChange}
+              value={answer}
+            />
+            <Label check>
+              <Input
+                type="checkbox"
+                checked={checkAnswer}
+                onClick={checker}
+                unCh
+              />{" "}
+              Correct answer "Check if true"
+            </Label>
 
-              <div className="imageUpload">
+            {/* ImageUpload */}
+
+            <div className="imageUpload">
+              <FormGroup>
+                <label>Answer Image</label>
+                <CustomInput
+                  type="file"
+                  id="exampleCustomFileBrowser"
+                  name="customFile"
+                  accept=".png, .jpg, .jpeg"
+                  onChange={handleChange}
+                />
+              </FormGroup>
+              {/* ----- */}
+              <div className="uploaded_text">
+                {uploadedText ? (
+                  <p>
+                    image with file name
+                    <span className="uploaded_file">{` ${imageUp.name} `}</span>
+                    is uploaded.
+                  </p>
+                ) : (
+                  <p></p>
+                )}
+              </div>
+
+              {/* SoundUpload */}
+              <div className="soundUpload ">
                 <FormGroup>
-                  <label>Answer Image</label>
+                  <label>Answer Sound</label>
                   <CustomInput
                     type="file"
                     id="exampleCustomFileBrowser"
                     name="customFile"
-                    accept=".png, .jpg, .jpeg"
-                    onChange={handleChange}
+                    label="Choose sound file..."
+                    accept=".m4a, .mp3"
+                    onChange={handleChangeSound}
                   />
                 </FormGroup>
-                {/* ----- */}
+
                 <div className="uploaded_text">
-                  {uploadedText ? (
+                  {uploadedTextSound ? (
                     <p>
-                      image with file name
-                      <span className="uploaded_file">{` ${imageUp.name} `}</span>
+                      sound with file name
+                      <span className="uploaded_file">{` ${soundUp.name} `}</span>
                       is uploaded.
                     </p>
                   ) : (
                     <p></p>
                   )}
                 </div>
-
-                {/* SoundUpload */}
-                <div className="soundUpload ">
-                  <FormGroup>
-                    <label>Answer Sound</label>
-                    <CustomInput
-                      type="file"
-                      id="exampleCustomFileBrowser"
-                      name="customFile"
-                      label="Choose sound file..."
-                      accept=".m4a, .mp3"
-                      onChange={handleChangeSound}
-                    />
-                  </FormGroup>
-
-                  <div className="uploaded_text">
-                    {uploadedTextSound ? (
-                      <p>
-                        sound with file name
-                        <span className="uploaded_file">{` ${soundUp.name} `}</span>
-                        is uploaded.
-                      </p>
-                    ) : (
-                      <p></p>
-                    )}
-                  </div>
-                </div>
               </div>
-            </Form.Group>
+            </div>
+          </Form.Group>
 
-            <div className="finals">
-              <LinearProgress
-                variant="determinate"
-                value={progress}
-              ></LinearProgress>
-            </div>
-            <div>
-              <Button onClick={handleUpload} className="button_upload">
-                Upload
-              </Button>
-            </div>
-            <div>
-              <Button
-                type="submit"
-                className="button_upload"
-                variant="primary"
-                onClick={() => {
-                  send();
-                }}
-              >
-                Submit
-              </Button>
-            </div>
+          <div className="finals">
+            <LinearProgress
+              variant="determinate"
+              value={progress}
+            ></LinearProgress>
+          </div>
+          <div>
+            <Button onClick={handleUpload} className="button_upload">
+              Upload
+            </Button>
+          </div>
+          <div>
+            <Button
+              type="submit"
+              className="button_upload"
+              variant="primary"
+              onClick={() => {
+                send();
+              }}
+            >
+              Submit
+            </Button>
           </div>
         </div>
       </div>
-    );
-  } else {
-    return <Redirect to="/QuizQuestions" />;
-  }
+    </div>
+  ) : (
+    <Redirect to="/QuizQuestions" />
+  );
 }
 
 export default Answers;

@@ -253,14 +253,16 @@ export default function QuizQuestions() {
                           {quest.questionComplete ? (
                             <Badge variant="success">Question Complete</Badge>
                           ) : (
-                            <Badge
-                              variant="danger"
-                              onClick={(e) => {
-                                console.log("missing answers", quest.id);
-                              }}
-                            >
-                              Missing Answers
-                            </Badge>
+                            <Link to="/answers">
+                              <Badge
+                                variant="danger"
+                                onClick={(e) => {
+                                  console.log("missing answers", quest.id);
+                                }}
+                              >
+                                Missing Answers
+                              </Badge>
+                            </Link>
                           )}
                         </div>
                       </h5>

@@ -21,3 +21,10 @@ export function fetchQuizList() {
     }
   };
 }
+
+export const updateStatus = (id) => {
+  return async (dispatch, getState) => {
+    const response = await axios.patch(`${apiUrl}/upload/${id}`);
+    console.log(response.data);
+  };
+};
