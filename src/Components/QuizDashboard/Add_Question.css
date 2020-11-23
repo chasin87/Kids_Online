@@ -209,6 +209,15 @@ progress {
   cursor: pointer;
 }
 
+.input-quantity {
+  width: 30%;
+  margin: auto;
+}
+.quantity_Label {
+  margin-bottom: 0px;
+  text-decoration: underline;
+}
+
 @media (max-width: 991px) {
   /* .container_quiz_dashboard {
     font-size: 29px;
@@ -233,7 +242,8 @@ progress {
     font-weight: 500;
     width: 160px;
   }
-  .Answers_Missing {
+  .Answers_Missing,
+  .input-quantity {
     width: 96%;
   }
 }

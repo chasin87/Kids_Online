@@ -30,10 +30,11 @@ function Answers() {
   const [progress, setProgress] = useState(0);
   const [referenceId, setReferenceId] = useState(null);
   const [working, setWorking] = useState();
+  const [quantityQuestion, setQuantityQuestion] = useState(2);
 
   const [uploadedText, setUploadedText] = useState(false);
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
-  const [answerCount, setAnswerCount] = useState([1]);
+  const [answerCount, setAnswerCount] = useState(1);
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -55,6 +56,7 @@ function Answers() {
   };
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchQuizList());
     dispatch(updateStatus());
@@ -63,6 +65,8 @@ function Answers() {
   const Quizzes = useSelector(selectquizzes);
 
   const defId = referenceId;
+  console.log("quantityQuestion", quantityQuestion);
+  console.log("answerCount", answerCount);
 
   //answer text and imageUrl post to Db
   const send = (event) => {
@@ -85,13 +89,13 @@ function Answers() {
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
       }
-      setAnswerCount(answerCount + [1]);
+      setAnswerCount(answerCount + 1);
       setAnswer(" ");
       setCheckAnswer(false);
       setUploadedText(false);
       setUploadedTextSound(false);
 
-      if (answerCount.length === 4) {
+      if (answerCount === quantityQuestion) {
         dispatch(updateStatus(defId));
       }
     }
@@ -190,7 +194,7 @@ function Answers() {
     }
   };
 
-  return answerCount.length < 5 ? (
+  return answerCount < quantityQuestion + 1 ? (
     <div className="container_quiz_dashboard">
       <div className="navigation_to_dashboard">
         <div className="back_to">
@@ -235,7 +239,7 @@ function Answers() {
         <h6>Please select a question below:</h6>
         {Quizzes.map((quiz) => {
           return quiz.questionComplete ? null : (
-            <ListGroup>
+            <ListGroup key={quiz.id}>
               <ListGroup.Item
                 onClick={(e) => {
                   setReferenceId(quiz.id);
@@ -259,6 +263,28 @@ function Answers() {
           </h5>
         )}
       </div>
+
+      <div className="dropdown_container">
+        <div>
+          <label className="quantity_Label">
+            Choose the amount of answers that you want to add the question
+          </label>
+        </div>
+
+        <div className="input-quantity">
+          <select
+            className="custom-select"
+            id="inputGroupSelect02"
+            value={quantityQuestion}
+            onChange={(e) => setQuantityQuestion(parseInt(e.target.value))}
+          >
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+      </div>
+
       {defId === null ? (
         ""
       ) : (
@@ -266,7 +292,9 @@ function Answers() {
           <div className="Form_answer">
             {/* Answer1 */}
             <Form.Group>
-              <p>Answer {answerCount.length} of 4</p>
+              <p>
+                Answer {answerCount} of {quantityQuestion}
+              </p>
               <label>Answer in text</label>
               <Input
                 type="text"
@@ -280,8 +308,7 @@ function Answers() {
                 <Input
                   type="checkbox"
                   checked={checkAnswer}
-                  onClick={checker}
-                  unCh
+                  onChange={checker}
                 />{" "}
                 Correct answer "Check if true"
               </Label>
