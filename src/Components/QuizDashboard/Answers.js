@@ -11,6 +11,8 @@ import "./Add_Question.css";
 import { Redirect } from "react-router";
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
+import { selectanswers } from "../../Store/answerlist/selectors";
+import { fetchAnswerList } from "../../Store/answerlist/actions";
 import { updateStatus } from "../../Store/quizlist/actions";
 import { selectUser } from "../../Store/user/selectors";
 import { useHistory } from "react-router-dom";
@@ -28,7 +30,7 @@ function Answers() {
   const [imageUp, setImageUp] = useState([]);
   const [soundUp, setSoundUp] = useState([]);
   const [progress, setProgress] = useState(0);
-  const [referenceId, setReferenceId] = useState(null);
+  const [referenceId, setReferenceId] = useState(0);
   const [working, setWorking] = useState();
   const [quantityQuestion, setQuantityQuestion] = useState(2);
 
@@ -60,13 +62,22 @@ function Answers() {
   useEffect(() => {
     dispatch(fetchQuizList());
     dispatch(updateStatus());
+    dispatch(fetchAnswerList());
   }, [dispatch]);
 
   const Quizzes = useSelector(selectquizzes);
+  const Answers = useSelector(selectanswers);
 
   const defId = referenceId;
-  console.log("quantityQuestion", quantityQuestion);
-  console.log("answerCount", answerCount);
+
+  const answersOfQuestion = Answers.map((ans) => {
+    return ans.quizId;
+  });
+
+  const newNumbers = answersOfQuestion.filter((aoq) => aoq === defId);
+
+  const totalanswers = answerCount + newNumbers.length;
+  console.log(totalanswers);
 
   //answer text and imageUrl post to Db
   const send = (event) => {
@@ -95,7 +106,7 @@ function Answers() {
       setUploadedText(false);
       setUploadedTextSound(false);
 
-      if (answerCount === quantityQuestion) {
+      if (totalanswers === quantityQuestion) {
         dispatch(updateStatus(defId));
       }
     }
@@ -194,7 +205,7 @@ function Answers() {
     }
   };
 
-  return answerCount < quantityQuestion + 1 ? (
+  return totalanswers < quantityQuestion + 1 ? (
     <div className="container_quiz_dashboard">
       <div className="navigation_to_dashboard">
         <div className="back_to">
@@ -256,6 +267,7 @@ function Answers() {
         {working ? (
           <h5 style={{ fontWeight: "700", color: "green" }}>
             Working on: {working}{" "}
+            <h5>This question has {newNumbers.length} answer(s) stored. </h5>
           </h5>
         ) : (
           <h5 style={{ fontWeight: "700", color: "red" }}>
@@ -285,7 +297,7 @@ function Answers() {
         </div>
       </div>
 
-      {defId === null ? (
+      {defId === 0 ? (
         ""
       ) : (
         <div className="question_part">
@@ -293,7 +305,7 @@ function Answers() {
             {/* Answer1 */}
             <Form.Group>
               <p>
-                Answer {answerCount} of {quantityQuestion}
+                Answer {totalanswers} of {quantityQuestion}
               </p>
               <label>Answer in text</label>
               <Input
