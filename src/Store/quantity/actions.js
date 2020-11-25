@@ -17,7 +17,7 @@ export function fetchAnswerQuantity(id, name) {
     const answersOfQuestion = response.data.map((res) => {
       return res.quizId;
     });
-    console.log("id", id);
+
     const son = answersOfQuestion.filter((aoq) => aoq === id);
 
     dispatch(fetchQuantity({ qua: son }, id, name));

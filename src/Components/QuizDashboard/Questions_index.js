@@ -6,6 +6,7 @@ import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
 import { selectanswers } from "../../Store/answerlist/selectors";
 import { fetchAnswerList } from "../../Store/answerlist/actions";
+import { fetchAnswerQuantity } from "../../Store/quantity/actions";
 import Loading from "../Loading";
 import { Link } from "react-router-dom";
 import { selectUser } from "../../Store/user/selectors";
@@ -91,6 +92,7 @@ export default function QuizQuestions() {
 
   useEffect(() => {
     dispatch(fetchAnswerList());
+    dispatch(fetchAnswerQuantity());
   }, [dispatch]);
 
   return (

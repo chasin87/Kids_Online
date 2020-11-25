@@ -40,6 +40,7 @@ function Answers() {
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
   const answerCount = 0;
   const nextquest = 1;
+  let setter = 0;
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -68,7 +69,7 @@ function Answers() {
     dispatch(fetchQuizList());
     dispatch(updateStatus());
     dispatch(fetchAnswerList());
-    // dispatch(fetchAnswerQuantity());
+    dispatch(fetchAnswerQuantity());
   }, [dispatch]);
 
   const Quizzes = useSelector(selectquizzes);
@@ -80,7 +81,7 @@ function Answers() {
 
   const totalanswers = quant;
 
-  const setter = totalanswers[0] + nextquest;
+  setter = totalanswers[0] + nextquest;
 
   const checkAnswers = () => {
     Answers.map((checkAns) => {
@@ -116,7 +117,7 @@ function Answers() {
       setUploadedText(false);
       setUploadedTextSound(false);
       dispatch(fetchAnswerQuantity(defId));
-      if (totalanswers === quantityQuestion) {
+      if (setter === quantityQuestion) {
         dispatch(updateStatus(defId));
       }
     }
@@ -215,7 +216,60 @@ function Answers() {
     }
   };
 
-  return totalanswers < quantityQuestion + 1 ? (
+  const options = () => {
+    if (setter === 1) {
+      return (
+        <select
+          className="custom-select"
+          id="inputGroupSelect02"
+          value={quantityQuestion}
+          onChange={(e) => setQuantityQuestion(parseInt(e.target.value))}
+        >
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      );
+    } else if (setter === 2) {
+      return (
+        <select
+          className="custom-select"
+          id="inputGroupSelect02"
+          value={quantityQuestion}
+          onChange={(e) => setQuantityQuestion(parseInt(e.target.value))}
+        >
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      );
+    } else if (setter === 3) {
+      return (
+        <select
+          className="custom-select"
+          id="inputGroupSelect02"
+          value={quantityQuestion}
+          onChange={(e) => setQuantityQuestion(parseInt(e.target.value))}
+        >
+          <option>3</option>
+          <option>4</option>
+        </select>
+      );
+    } else {
+      return (
+        <select
+          className="custom-select"
+          id="inputGroupSelect02"
+          value={quantityQuestion}
+          onChange={(e) => setQuantityQuestion(parseInt(e.target.value))}
+        >
+          <option>4</option>
+        </select>
+      );
+    }
+  };
+
+  return setter <= quantityQuestion ? (
     <div className="container_quiz_dashboard">
       <div className="navigation_to_dashboard">
         <div className="back_to">
@@ -301,18 +355,7 @@ function Answers() {
           </label>
         </div>
 
-        <div className="input-quantity">
-          <select
-            className="custom-select"
-            id="inputGroupSelect02"
-            value={quantityQuestion}
-            onChange={(e) => setQuantityQuestion(parseInt(e.target.value))}
-          >
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-        </div>
+        <div className="input-quantity">{options()}</div>
       </div>
 
       {defId === 0 ? (
