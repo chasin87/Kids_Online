@@ -218,6 +218,25 @@ progress {
   text-decoration: underline;
 }
 
+.answersCheck {
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
+  width: 50%;
+  margin: auto;
+  padding: 7px;
+  border-radius: 3px;
+  background-color: tomato;
+  color: #fff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  transition-duration: 0.5s;
+}
+
+.answersCheck:hover {
+  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.34),
+    0 30px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
 @media (max-width: 991px) {
   /* .container_quiz_dashboard {
     font-size: 29px;

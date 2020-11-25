@@ -45,11 +45,11 @@ export default function QuizQuestions() {
     );
   });
 
-  console.log(
-    Quizzes.map((quiz) => {
-      return quiz.questionComplete;
-    })
-  );
+  // console.log(
+  //   Quizzes.map((quiz) => {
+  //     return quiz.questionComplete;
+  //   })
+  // );
 
   useEffect(() => {
     if (cat === "All") {
@@ -209,15 +209,8 @@ export default function QuizQuestions() {
                 <div className="col-sm-12 col-md-6 col-xl-4" key={quest.id}>
                   <div className="card">
                     <div className="head_card">
-                      <div className="head_card_top"></div>
-                      <div className="head_card_below">
-                        <div className="left-image col-4"></div>
-                        <img
-                          className="card-img-top"
-                          src={quest.questionImage}
-                          alt="Image_answer col-3"
-                        />
-                        <div className="iconDelete col-4 ">
+                      <div className="head_card_top">
+                        <div className="iconDelete">
                           <svg
                             width="30px"
                             height="30px"
@@ -235,6 +228,15 @@ export default function QuizQuestions() {
                             />
                           </svg>
                         </div>
+                      </div>
+                      <div className="head_card_below">
+                        <div className="left-image col-4"></div>
+
+                        <img
+                          className="card-img-top"
+                          src={quest.questionImage}
+                          alt="Image_answer"
+                        />
                       </div>
                     </div>
                     <div className="card-body">
@@ -257,7 +259,11 @@ export default function QuizQuestions() {
                               <Badge
                                 variant="danger"
                                 onClick={(e) => {
-                                  console.log("missing answers", quest.id);
+                                  console.log(
+                                    "missing answers",
+                                    quest.id,
+                                    quest.question
+                                  );
                                 }}
                               >
                                 Missing Answers

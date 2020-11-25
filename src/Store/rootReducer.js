@@ -3,10 +3,12 @@ import user from "./user/reducer";
 import appState from "./appState/reducer";
 import quizzes from "./quizlist/reducer";
 import answers from "./answerlist/reducer";
+import quant from "./quantity/reducer";
 
 export default combineReducers({
   user,
   appState,
   quizzes,
   answers,
+  quant,
 });

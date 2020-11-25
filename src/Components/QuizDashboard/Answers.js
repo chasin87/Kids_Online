@@ -13,6 +13,8 @@ import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
 import { selectanswers } from "../../Store/answerlist/selectors";
 import { fetchAnswerList } from "../../Store/answerlist/actions";
+import { fetchAnswerQuantity } from "../../Store/quantity/actions";
+import { selectquantity } from "../../Store/quantity/selectors";
 import { updateStatus } from "../../Store/quizlist/actions";
 import { selectUser } from "../../Store/user/selectors";
 import { useHistory } from "react-router-dom";
@@ -32,11 +34,12 @@ function Answers() {
   const [progress, setProgress] = useState(0);
   const [referenceId, setReferenceId] = useState(0);
   const [working, setWorking] = useState();
-  const [quantityQuestion, setQuantityQuestion] = useState(2);
+  const [quantityQuestion, setQuantityQuestion] = useState(4);
 
   const [uploadedText, setUploadedText] = useState(false);
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
-  const [answerCount, setAnswerCount] = useState(1);
+  const answerCount = 0;
+  const nextquest = 1;
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -59,25 +62,31 @@ function Answers() {
 
   const dispatch = useDispatch();
 
+  const defId = referenceId;
+
   useEffect(() => {
     dispatch(fetchQuizList());
     dispatch(updateStatus());
     dispatch(fetchAnswerList());
+    // dispatch(fetchAnswerQuantity());
   }, [dispatch]);
 
   const Quizzes = useSelector(selectquizzes);
   const Answers = useSelector(selectanswers);
-
-  const defId = referenceId;
-
-  const answersOfQuestion = Answers.map((ans) => {
-    return ans.quizId;
+  const Quantity = useSelector(selectquantity);
+  const quant = Quantity.map((quant) => {
+    return quant.qua.length + answerCount;
   });
 
-  const newNumbers = answersOfQuestion.filter((aoq) => aoq === defId);
+  const totalanswers = quant;
 
-  const totalanswers = answerCount + newNumbers.length;
-  console.log(totalanswers);
+  const setter = totalanswers[0] + nextquest;
+
+  const checkAnswers = () => {
+    Answers.map((checkAns) => {
+      return console.log("checkedanswers", checkAns.answer);
+    });
+  };
 
   //answer text and imageUrl post to Db
   const send = (event) => {
@@ -100,12 +109,13 @@ function Answers() {
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
       }
-      setAnswerCount(answerCount + 1);
+      dispatch(fetchAnswerQuantity(defId));
+      // setAnswerCount(answerCount + 1);
       setAnswer(" ");
       setCheckAnswer(false);
       setUploadedText(false);
       setUploadedTextSound(false);
-
+      dispatch(fetchAnswerQuantity(defId));
       if (totalanswers === quantityQuestion) {
         dispatch(updateStatus(defId));
       }
@@ -255,6 +265,7 @@ function Answers() {
                 onClick={(e) => {
                   setReferenceId(quiz.id);
                   setWorking(quiz.question);
+                  dispatch(fetchAnswerQuantity(quiz.id, quiz.question));
                 }}
               >
                 {quiz.question}
@@ -265,16 +276,23 @@ function Answers() {
       </div>
       <div>
         {working ? (
-          <h5 style={{ fontWeight: "700", color: "green" }}>
-            Working on: {working}{" "}
-            <h5>This question has {newNumbers.length} answer(s) stored. </h5>
-          </h5>
+          <div>
+            <h5 style={{ fontWeight: "700", color: "green" }}>
+              Working on: {working}{" "}
+            </h5>
+            <h5 className="answersCheck" onClick={checkAnswers}>
+              {" "}
+              This question has {totalanswers} answer(s) stored. Click to see
+            </h5>
+          </div>
         ) : (
           <h5 style={{ fontWeight: "700", color: "red" }}>
             Nothing selected, Please select a question ⤴
           </h5>
         )}
       </div>
+
+      <div></div>
 
       <div className="dropdown_container">
         <div>
@@ -305,7 +323,7 @@ function Answers() {
             {/* Answer1 */}
             <Form.Group>
               <p>
-                Answer {totalanswers} of {quantityQuestion}
+                Answer {setter} of {quantityQuestion}
               </p>
               <label>Answer in text</label>
               <Input
