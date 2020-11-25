@@ -112,7 +112,7 @@ function Answers() {
       }
       dispatch(fetchAnswerQuantity(defId));
       // setAnswerCount(answerCount + 1);
-      setAnswer(" ");
+      setAnswer("");
       setCheckAnswer(false);
       setUploadedText(false);
       setUploadedTextSound(false);

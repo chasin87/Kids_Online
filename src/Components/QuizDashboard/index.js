@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css";
-
-import { useSelector } from "react-redux";
+import { fetchAnswerQuantity } from "../../Store/quantity/actions";
+import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../Store/user/selectors";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -12,6 +12,12 @@ export default function DashBoard() {
   if (token === null) {
     history.push("/");
   }
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAnswerQuantity());
+  }, [dispatch]);
 
   return (
     <div className="con">
