@@ -29,6 +29,8 @@ export default function QuizQuestions() {
   const [cat, setCat] = useState("");
   const [level, setLevel] = useState("");
   const [questStatus, setQuestStatus] = useState("");
+  const [sortUp, setSortUp] = useState(true);
+
   const { token } = useSelector(selectUser);
   const history = useHistory();
   if (token === null) {
@@ -98,6 +100,14 @@ export default function QuizQuestions() {
     dispatch(fetchAnswerList());
     dispatch(fetchAnswerQuantity());
   }, [dispatch]);
+
+  const sorted = filteredQuestions.sort((a, b) => {
+    if (sortUp === true) {
+      return a.id - b.id;
+    } else {
+      return b.id - a.id;
+    }
+  });
 
   return (
     <div className="rowws">
@@ -229,6 +239,24 @@ export default function QuizQuestions() {
             </div>
           </div>
         </div>
+        <div className="row2">
+          <div className="sort_Up col-sm-12 col-md-3 col-lg-3">
+            <Button
+              className="answer_button shadow-none"
+              onClick={() => setSortUp(true)}
+            >
+              ⬆ Sort Up by ID
+            </Button>
+          </div>
+          <div className="sort_Down col-sm-12 col-md-3 col-lg-3 ">
+            <Button
+              className="answer_button shadow-none"
+              onClick={() => setSortUp(false)}
+            >
+              ⬇ Sort Down by ID
+            </Button>
+          </div>
+        </div>
         {Quizzes.length < 1 ? (
           <Loading />
         ) : (
@@ -236,7 +264,7 @@ export default function QuizQuestions() {
             className="row"
             style={{ margin: "auto", marginTop: "50px", width: "96%" }}
           >
-            {filteredQuestions.map((quest) => {
+            {sorted.map((quest, sort) => {
               return (
                 <div className="col-sm-12 col-md-6 col-xl-4" key={quest.id}>
                   <div className="card">

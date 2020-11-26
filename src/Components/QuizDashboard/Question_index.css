@@ -112,10 +112,6 @@ svg {
   border-bottom: 1px solid tomato;
 }
 
-.answer_button {
-  width: 60%;
-}
-
 .question_image_format {
   margin-top: 20px;
   width: 60%;
@@ -253,6 +249,12 @@ svg {
 .card-text {
   font-size: 25px;
 }
+/* .button {
+  outline: none !important;
+}
+.button:focus {
+  outline: 0 !important;
+} */
 
 .answer_button {
   width: 60%;
@@ -266,6 +268,7 @@ svg {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
+
 .header_modal_answer {
   display: block;
   text-align: center;
@@ -274,10 +277,18 @@ svg {
   background: linear-gradient(100deg, #1f5967, #3906ee) !important;
 }
 
+.row2 {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 991px) {
   .level_id {
     display: inline-block;
     width: 100%;
+  }
+  .row2 {
+    display: inline-flex;
   }
 
   .container_quiz_dashboard {

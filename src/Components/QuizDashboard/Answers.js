@@ -451,14 +451,17 @@ function Answers() {
               ></LinearProgress>
             </div>
             <div>
-              <Button onClick={handleUpload} className="button_upload">
+              <Button
+                onClick={handleUpload}
+                className="button_upload shadow-none"
+              >
                 Upload
               </Button>
             </div>
             <div>
               <Button
                 type="submit"
-                className="button_upload"
+                className="button_upload shadow-none"
                 variant="primary"
                 onClick={() => {
                   send();
