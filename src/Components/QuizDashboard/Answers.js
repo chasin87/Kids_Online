@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CustomInput, FormGroup, Input, Label } from "reactstrap";
-import { Form, Button, ListGroup } from "react-bootstrap";
+import { Form, Button, ListGroup, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -17,6 +17,9 @@ import { fetchAnswerQuantity } from "../../Store/quantity/actions";
 import { selectquantity } from "../../Store/quantity/selectors";
 import { updateStatus } from "../../Store/quizlist/actions";
 import { selectUser } from "../../Store/user/selectors";
+import { fetchAnswerListId } from "../../Store/answerId/actions";
+import { selectanswersid } from "../../Store/answerId/selectors";
+
 import { useHistory } from "react-router-dom";
 
 function Answers() {
@@ -35,9 +38,10 @@ function Answers() {
   const [referenceId, setReferenceId] = useState(0);
   const [working, setWorking] = useState();
   const [quantityQuestion, setQuantityQuestion] = useState(4);
-
+  const [answerId, setAnswerId] = useState([]);
   const [uploadedText, setUploadedText] = useState(false);
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
+  const [show, setShow] = useState(false);
   const answerCount = 0;
   const nextquest = 1;
   let setter = 0;
@@ -72,22 +76,29 @@ function Answers() {
     dispatch(fetchAnswerQuantity());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(fetchAnswerListId(defId));
+  }, [dispatch, defId]);
+
   const Quizzes = useSelector(selectquizzes);
   const Answers = useSelector(selectanswers);
   const Quantity = useSelector(selectquantity);
+  const AnswerId = useSelector(selectanswersid);
   const quant = Quantity.map((quant) => {
     return quant.qua.length + answerCount;
   });
 
+  const checkAnswers = () => {
+    setShow(true);
+  };
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
   const totalanswers = quant;
 
   setter = totalanswers[0] + nextquest;
-
-  const checkAnswers = () => {
-    Answers.map((checkAns) => {
-      return console.log("checkedanswers", checkAns.answer);
-    });
-  };
 
   //answer text and imageUrl post to Db
   const send = (event) => {
@@ -100,6 +111,7 @@ function Answers() {
         } else {
           // const progress = Math.round((100 * event.loaded) / event.total);
           // setProgress(progress);
+
           const data = new FormData();
           data.append("answer", answer);
           data.append("answerImage", images);
@@ -111,8 +123,10 @@ function Answers() {
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
         }
+        dispatch(fetchAnswerList());
         dispatch(fetchAnswerQuantity());
         dispatch(fetchAnswerQuantity(defId));
+        dispatch(fetchAnswerListId(defId));
         // setAnswerCount(answerCount + 1);
         setAnswer("");
         setCheckAnswer(false);
@@ -124,6 +138,7 @@ function Answers() {
         }
       }
     }, 400);
+    dispatch(fetchAnswerList());
   };
 
   //image upload to firebase
@@ -331,6 +346,7 @@ function Answers() {
           );
         })}
       </div>
+
       <div>
         {working ? (
           <div>
@@ -350,7 +366,25 @@ function Answers() {
       </div>
 
       <div></div>
-
+      <div>
+        <Modal centered show={show} onHide={handleClose}>
+          <Modal.Header className="header_modal">
+            <Modal.Title>Answers</Modal.Title>
+          </Modal.Header>
+          {AnswerId.map((ansId) => {
+            return (
+              <Modal.Body>
+                {ansId.answer} - {ansId.isCorrect.toString()}
+              </Modal.Body>
+            );
+          })}
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
       <div className="dropdown_container">
         <div>
           <label className="quantity_Label">
