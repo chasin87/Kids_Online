@@ -28,6 +28,7 @@ export default function QuizQuestions() {
   const [idToDelete, setIdToDelete] = useState();
   const [cat, setCat] = useState("");
   const [level, setLevel] = useState("");
+  const [questStatus, setQuestStatus] = useState("");
   const { token } = useSelector(selectUser);
   const history = useHistory();
   if (token === null) {
@@ -42,7 +43,8 @@ export default function QuizQuestions() {
   const filteredQuestions = Quizzes.filter((quiz) => {
     return (
       quiz.questionCategory.toLowerCase().includes(cat.toLowerCase()) &&
-      quiz.questionLevel.toString().includes(level.toString())
+      quiz.questionLevel.toString().includes(level.toString()) &&
+      quiz.questionComplete.toString().includes(questStatus)
     );
   });
 
@@ -57,8 +59,10 @@ export default function QuizQuestions() {
       setCat("");
     } else if (level === "All") {
       setLevel("");
+    } else if (questStatus === "All") {
+      setQuestStatus("");
     }
-  }, [cat, level]);
+  }, [cat, level, questStatus]);
 
   const delete_confirm = (id, e) => {
     setConfirm(true);
@@ -143,7 +147,7 @@ export default function QuizQuestions() {
           className="row"
           style={{ margin: "auto", marginTop: "30px", width: "96%" }}
         >
-          <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
+          <div className="dropdown_container col-sm-12 col-md-4 col-lg-4">
             <div>
               {" "}
               <label>Question Category</label>
@@ -171,7 +175,7 @@ export default function QuizQuestions() {
               </div>
             </div>
           </div>
-          <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
+          <div className="dropdown_container col-sm-12 col-md-4 col-lg-4">
             <div>
               {" "}
               <label>Question Level</label>
@@ -187,6 +191,32 @@ export default function QuizQuestions() {
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
+              </select>
+              <div className="input-group-append">
+                {/* <label
+                  className="input-group-text"
+                  htmlFor="inputGroupSelect02"
+                >
+                  Level
+                </label> */}
+              </div>
+            </div>
+          </div>
+          <div className="dropdown_container col-sm-12 col-md-4 col-lg-4">
+            <div>
+              {" "}
+              <label>Question Status</label>
+            </div>
+            <div className="input-group mb-3">
+              <select
+                className="custom-select"
+                id="inputGroupSelect02"
+                value={questStatus}
+                onChange={(e) => setQuestStatus(e.target.value)}
+              >
+                <option defaultValue="">All</option>
+                <option value="true">Questions Completed</option>
+                <option value="false">Questions Not Completed</option>
               </select>
               <div className="input-group-append">
                 {/* <label

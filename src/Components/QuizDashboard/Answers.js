@@ -91,36 +91,39 @@ function Answers() {
 
   //answer text and imageUrl post to Db
   const send = (event) => {
-    if (answer === "" || imageUp === " " || soundUp === " ") {
-      return alert("Please fill all questions and upload all files");
-    } else {
-      if (images.length === 0 || sounds.length === 0) {
-        return alert("Please upload all files");
+    setTimeout(() => {
+      if (answer === "" || imageUp === [] || soundUp === []) {
+        return alert("Please fill all fields and upload all files");
       } else {
-        // const progress = Math.round((100 * event.loaded) / event.total);
-        // setProgress(progress);
-        const data = new FormData();
-        data.append("answer", answer);
-        data.append("answerImage", images);
-        data.append("answerSound", sounds);
-        data.append("quizId", defId);
-        data.append("isCorrect", checkAnswer);
+        if (images.length === 0 || sounds.length === 0) {
+          return alert("Please upload all files");
+        } else {
+          // const progress = Math.round((100 * event.loaded) / event.total);
+          // setProgress(progress);
+          const data = new FormData();
+          data.append("answer", answer);
+          data.append("answerImage", images);
+          data.append("answerSound", sounds);
+          data.append("quizId", defId);
+          data.append("isCorrect", checkAnswer);
 
-        Axios.post("http://localhost:8888/answer", data)
-          .then((res) => console.log(res))
-          .catch((err) => console.log(err));
+          Axios.post("http://localhost:8888/answer", data)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
+        }
+        dispatch(fetchAnswerQuantity());
+        dispatch(fetchAnswerQuantity(defId));
+        // setAnswerCount(answerCount + 1);
+        setAnswer("");
+        setCheckAnswer(false);
+        setUploadedText(false);
+        setUploadedTextSound(false);
+
+        if (setter === quantityQuestion) {
+          dispatch(updateStatus(defId));
+        }
       }
-      dispatch(fetchAnswerQuantity(defId));
-      // setAnswerCount(answerCount + 1);
-      setAnswer("");
-      setCheckAnswer(false);
-      setUploadedText(false);
-      setUploadedTextSound(false);
-      dispatch(fetchAnswerQuantity(defId));
-      if (setter === quantityQuestion) {
-        dispatch(updateStatus(defId));
-      }
-    }
+    }, 400);
   };
 
   //image upload to firebase
