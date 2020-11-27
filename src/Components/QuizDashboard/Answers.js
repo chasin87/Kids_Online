@@ -11,7 +11,6 @@ import "./Add_Question.css";
 import { Redirect } from "react-router";
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
-import { selectanswers } from "../../Store/answerlist/selectors";
 import { fetchAnswerList } from "../../Store/answerlist/actions";
 import { fetchAnswerQuantity } from "../../Store/quantity/actions";
 import { selectquantity } from "../../Store/quantity/selectors";
@@ -38,7 +37,7 @@ function Answers() {
   const [referenceId, setReferenceId] = useState(0);
   const [working, setWorking] = useState();
   const [quantityQuestion, setQuantityQuestion] = useState(4);
-  const [answerId, setAnswerId] = useState([]);
+
   const [uploadedText, setUploadedText] = useState(false);
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
   const [show, setShow] = useState(false);
@@ -81,7 +80,7 @@ function Answers() {
   }, [dispatch, defId]);
 
   const Quizzes = useSelector(selectquizzes);
-  const Answers = useSelector(selectanswers);
+
   const Quantity = useSelector(selectquantity);
   const AnswerId = useSelector(selectanswersid);
   const quant = Quantity.map((quant) => {

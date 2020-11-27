@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Add_Question.css";
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import { CustomInput, FormGroup, Input } from "reactstrap";
+import { FormGroup, Input } from "reactstrap";
 import { Form, Button } from "react-bootstrap";
 import { storage, db } from "../../firebase";
 
@@ -12,8 +12,6 @@ import Axios from "axios";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../Store/user/selectors";
 import { useHistory } from "react-router-dom";
-
-// import Answers from "./Answers";
 
 export default function Add_Question() {
   const [question, setQuestion] = useState("");
@@ -43,21 +41,26 @@ export default function Add_Question() {
     setCat(event.target.value);
   };
 
+  const inputRef = useRef(null);
+  const inputRef2 = useRef(null);
+
   const levelChange = (event) => {
     setLevel(event.target.value);
   };
 
-  const handleChange = (e) => {
-    if (e.target.files[0]) {
-      setImageUp(e.target.files[0]);
-    }
+  const handleClose = () => {
+    setShow(false);
+    setQuestion("");
+    setCat("");
+    setLevel(" ");
+    setUploadedText(false);
+    setUploadedTextSound(false);
+    inputRef.current.value = "";
+    setImageUp([]);
+    inputRef2.current.value = "";
+    setSoundUp([]);
   };
-  const handleChangeSound = (e) => {
-    if (e.target.files[0]) {
-      setSoundUp(e.target.files[0]);
-    }
-  };
-  console.log(imageUp);
+
   //quesion text and imageUrl post to Db
   const send = (event) => {
     console.log("this is", event);
@@ -221,6 +224,9 @@ export default function Add_Question() {
           <Button variant="secondary">
             <Link to="/answers">Go to add Answers</Link>
           </Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Add one more question
+          </Button>
         </Modal.Footer>
       </Modal>
       <div className="question_part">
@@ -241,13 +247,17 @@ export default function Add_Question() {
               <div className="imageUpload col-sm-12 col-md-6 col-lg-6">
                 <FormGroup>
                   <label>Question Image</label>
-                  <CustomInput
-                    type="file"
-                    id="exampleCustomFileBrowser"
-                    name="customFile"
-                    accept=".png, .jpg, .jpeg"
-                    onChange={handleChange}
-                  />
+                  <label className="large-label" htmlFor="customFile">
+                    <input
+                      type="file"
+                      id="exampleCustomFileBrowser"
+                      name="customFile"
+                      label="adsd"
+                      accept=".png, .jpg, .jpeg"
+                      onChange={(event) => setImageUp(event.target.files[0])}
+                      ref={inputRef}
+                    />
+                  </label>
                 </FormGroup>
                 {/* ----- */}
                 <div className="uploaded_text">
@@ -261,31 +271,23 @@ export default function Add_Question() {
                     <p></p>
                   )}
                 </div>
-
-                {/* <Button onClick={handleUpload} className="button_upload">
-                Upload
-              </Button> */}
               </div>
 
               {/* SoundUpload */}
               <div className="soundUpload col-sm-12 col-md-6 col-lg-6">
                 <FormGroup>
                   <label>Question Sound</label>
-                  <CustomInput
-                    type="file"
-                    id="exampleCustomFileBrowser"
-                    name="customFile"
-                    label="Choose sound file..."
-                    accept=".m4a, .mp3"
-                    onChange={handleChangeSound}
-                  />
+                  <label className="large-label" htmlFor="customFile">
+                    <input
+                      type="file"
+                      id="exampleCustomFileBrowser"
+                      name="customFile"
+                      accept=".m4a, .mp3"
+                      onChange={(event) => setSoundUp(event.target.files[0])}
+                      ref={inputRef2}
+                    />
+                  </label>
                 </FormGroup>
-                {/* <progress
-                className="imageuplaod__progress"
-                value={progressSound}
-                max="100"
-                
-              /> */}
 
                 <div className="uploaded_text">
                   {uploadedTextSound ? (
@@ -300,11 +302,6 @@ export default function Add_Question() {
                 </div>
               </div>
               <div className="finals">
-                {/* <progress
-                  className="imageuplaod__progress"
-                  value={progress}
-                  max="100"
-                /> */}
                 <LinearProgress
                   variant="determinate"
                   value={progress}
