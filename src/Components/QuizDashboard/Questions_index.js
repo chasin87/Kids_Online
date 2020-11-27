@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
-import "./Question_index.css";
-import { Button, Modal, Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import Axios from "axios";
+import "./Question_index.css";
+
+import Loading from "../Loading";
+
+import { Button, Modal, Badge } from "react-bootstrap";
+
+import { selectUser } from "../../Store/user/selectors";
 import { selectquizzes } from "../../Store/quizlist/selectors";
-import { fetchQuizList } from "../../Store/quizlist/actions";
 import { selectanswers } from "../../Store/answerlist/selectors";
+import { fetchQuizList } from "../../Store/quizlist/actions";
 import { fetchAnswerList } from "../../Store/answerlist/actions";
 import { fetchAnswerQuantity } from "../../Store/quantity/actions";
-import Loading from "../Loading";
-import { Link } from "react-router-dom";
-import { selectUser } from "../../Store/user/selectors";
-import { useHistory } from "react-router-dom";
 
-import Axios from "axios";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function QuizQuestions() {
-  const Quizzes = useSelector(selectquizzes);
-  const Answers = useSelector(selectanswers);
   const [show, setShow] = useState(false);
   const [ids, setIds] = useState();
   const [question, setQuestion] = useState("");
@@ -33,28 +33,18 @@ export default function QuizQuestions() {
 
   const { token } = useSelector(selectUser);
   const history = useHistory();
+
   if (token === null) {
     history.push("/");
   }
+
+  const Quizzes = useSelector(selectquizzes);
+  const Answers = useSelector(selectanswers);
   const dispatch = useDispatch();
 
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
-
-  const filteredQuestions = Quizzes.filter((quiz) => {
-    return (
-      quiz.questionCategory.toLowerCase().includes(cat.toLowerCase()) &&
-      quiz.questionLevel.toString().includes(level.toString()) &&
-      quiz.questionComplete.toString().includes(questStatus)
-    );
-  });
-
-  // console.log(
-  //   Quizzes.map((quiz) => {
-  //     return quiz.questionComplete;
-  //   })
-  // );
 
   useEffect(() => {
     if (cat === "All") {
@@ -66,9 +56,40 @@ export default function QuizQuestions() {
     }
   }, [cat, level, questStatus]);
 
+  useEffect(() => {
+    dispatch(fetchQuizList());
+    dispatch(fetchAnswerList());
+    dispatch(fetchAnswerQuantity());
+  }, [dispatch]);
+
+  const filteredQuestions = Quizzes.filter((quiz) => {
+    return (
+      quiz.questionCategory.toLowerCase().includes(cat.toLowerCase()) &&
+      quiz.questionLevel.toString().includes(level.toString()) &&
+      quiz.questionComplete.toString().includes(questStatus)
+    );
+  });
+
+  const sorted = filteredQuestions.sort((a, b) => {
+    if (sortUp === true) {
+      return a.id - b.id;
+    } else {
+      return b.id - a.id;
+    }
+  });
+
   const delete_confirm = (id, e) => {
     setConfirm(true);
     setIdToDelete(id);
+  };
+
+  const showAnswers = () => {
+    setShow(true);
+  };
+
+  const handleClose = () => {
+    setShow(false);
+    setIds();
   };
 
   const delete_question = () => {
@@ -84,30 +105,6 @@ export default function QuizQuestions() {
     });
     setConfirm(false);
   };
-  const showAnswers = () => {
-    setShow(true);
-  };
-
-  const handleClose = () => {
-    setShow(false);
-    setIds();
-  };
-  useEffect(() => {
-    dispatch(fetchQuizList());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchAnswerList());
-    dispatch(fetchAnswerQuantity());
-  }, [dispatch]);
-
-  const sorted = filteredQuestions.sort((a, b) => {
-    if (sortUp === true) {
-      return a.id - b.id;
-    } else {
-      return b.id - a.id;
-    }
-  });
 
   return (
     <div className="rowws">
@@ -175,14 +172,7 @@ export default function QuizQuestions() {
                 <option value="Rekenen">Rekenen</option>
                 <option value="Kleuren">Kleuren</option>
               </select>
-              <div className="input-group-append">
-                {/* <label
-                  className="input-group-text"
-                  htmlFor="inputGroupSelect02"
-                >
-                  Category
-                </label> */}
-              </div>
+              <div className="input-group-append"></div>
             </div>
           </div>
           <div className="dropdown_container col-sm-12 col-md-4 col-lg-4">
@@ -202,14 +192,7 @@ export default function QuizQuestions() {
                 <option value="2">2</option>
                 <option value="3">3</option>
               </select>
-              <div className="input-group-append">
-                {/* <label
-                  className="input-group-text"
-                  htmlFor="inputGroupSelect02"
-                >
-                  Level
-                </label> */}
-              </div>
+              <div className="input-group-append"></div>
             </div>
           </div>
           <div className="dropdown_container col-sm-12 col-md-4 col-lg-4">
@@ -228,34 +211,29 @@ export default function QuizQuestions() {
                 <option value="true">Questions Completed</option>
                 <option value="false">Questions Not Completed</option>
               </select>
-              <div className="input-group-append">
-                {/* <label
-                  className="input-group-text"
-                  htmlFor="inputGroupSelect02"
-                >
-                  Level
-                </label> */}
-              </div>
+              <div className="input-group-append"></div>
             </div>
           </div>
         </div>
-        <div className="row2">
-          <div className="sort_Up col-sm-12 col-md-3 col-lg-3">
+        <div className="row2" style={{ margin: "auto", marginTop: "30px" }}>
+          <div className=" col-sm-12 col-md-12 col-lg-3"></div>
+          <div className="sort_Up col-sm-12 col-md-12 col-lg-3">
             <Button
-              className="answer_button shadow-none"
+              className="setSortUp shadow-none"
               onClick={() => setSortUp(true)}
             >
               ⬆ Sort Up by ID
             </Button>
           </div>
-          <div className="sort_Down col-sm-12 col-md-3 col-lg-3 ">
+          <div className="sort_Down col-sm-12 col-md-12 col-lg-3 ">
             <Button
-              className="answer_button shadow-none"
+              className="setSortUp shadow-none"
               onClick={() => setSortUp(false)}
             >
               ⬇ Sort Down by ID
             </Button>
-          </div>
+          </div>{" "}
+          <div className=" col-sm-12 col-md-12 col-lg-3"></div>
         </div>
         {Quizzes.length < 1 ? (
           <Loading />
@@ -345,7 +323,6 @@ export default function QuizQuestions() {
                       />
                       <Button
                         className="answer_button"
-                        // onClick={showAnswers}
                         onClick={(id, question) => {
                           showAnswers();
                           setIds(quest.id);

@@ -282,13 +282,34 @@ svg {
   justify-content: center;
 }
 
+.setSortUp {
+  width: 100%;
+}
+.sortUp {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .row2 {
+    display: inline-block !important;
+  }
+}
+
 @media (max-width: 991px) {
   .level_id {
     display: inline-block;
     width: 100%;
   }
+
   .row2 {
-    display: inline-flex;
+    display: inline-block !important;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .setSortUp {
+    width: 60% !important;
+    margin-bottom: 20px !important;
   }
 
   .container_quiz_dashboard {
@@ -316,7 +337,7 @@ svg {
 
   .back_to,
   .next_to {
-    font-size: 15px;
+    font-size: 14.5px;
     display: flex;
     font-weight: 500;
   }

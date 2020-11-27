@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { CustomInput, FormGroup, Input, Label } from "reactstrap";
-import { Form, Button, ListGroup, Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import { storage, db } from "../../firebase";
-import firebase from "firebase";
+import { Link, useHistory } from "react-router-dom";
+import { Redirect } from "react-router";
 import Axios from "axios";
 import "./Add_Question.css";
-import { Redirect } from "react-router";
+
+//DB FIREBASE
+import { storage, db } from "../../firebase";
+import firebase from "firebase";
+
+import { FormGroup, Input, Label } from "reactstrap";
+import { Form, Button, ListGroup, Modal } from "react-bootstrap";
+import { Checkbox, FormControlLabel } from "@material-ui/core";
+import LinearProgress from "@material-ui/core/LinearProgress";
+
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
 import { fetchAnswerList } from "../../Store/answerlist/actions";
@@ -18,8 +23,6 @@ import { updateStatus } from "../../Store/quizlist/actions";
 import { selectUser } from "../../Store/user/selectors";
 import { fetchAnswerListId } from "../../Store/answerId/actions";
 import { selectanswersid } from "../../Store/answerId/selectors";
-
-import { useHistory } from "react-router-dom";
 
 function Answers() {
   const { token } = useSelector(selectUser);
@@ -37,32 +40,9 @@ function Answers() {
   const [referenceId, setReferenceId] = useState(0);
   const [working, setWorking] = useState();
   const [quantityQuestion, setQuantityQuestion] = useState(4);
-
   const [uploadedText, setUploadedText] = useState(false);
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
   const [show, setShow] = useState(false);
-  const answerCount = 0;
-  const nextquest = 1;
-  let setter = 0;
-
-  const handleChange = (e) => {
-    if (e.target.files[0]) {
-      setImageUp(e.target.files[0]);
-    }
-  };
-
-  const handleChangeSound = (e) => {
-    if (e.target.files[0]) {
-      setSoundUp(e.target.files[0]);
-    }
-  };
-  const inputChange = (event) => {
-    setAnswer(event.target.value);
-  };
-
-  const checker = () => {
-    checkAnswer ? setCheckAnswer(false) : setCheckAnswer(true);
-  };
 
   const dispatch = useDispatch();
 
@@ -80,12 +60,23 @@ function Answers() {
   }, [dispatch, defId]);
 
   const Quizzes = useSelector(selectquizzes);
-
   const Quantity = useSelector(selectquantity);
   const AnswerId = useSelector(selectanswersid);
-  const quant = Quantity.map((quant) => {
-    return quant.qua.length + answerCount;
-  });
+
+  const answerCount = 0;
+  const nextquest = 1;
+  let setter = 0;
+
+  const inputRef = useRef(null);
+  const inputRef2 = useRef(null);
+
+  const inputChange = (event) => {
+    setAnswer(event.target.value);
+  };
+
+  const checker = () => {
+    checkAnswer ? setCheckAnswer(false) : setCheckAnswer(true);
+  };
 
   const checkAnswers = () => {
     setShow(true);
@@ -94,6 +85,10 @@ function Answers() {
   const handleClose = () => {
     setShow(false);
   };
+
+  const quant = Quantity.map((quant) => {
+    return quant.qua.length + answerCount;
+  });
 
   const totalanswers = quant;
 
@@ -108,9 +103,6 @@ function Answers() {
         if (images.length === 0 || sounds.length === 0) {
           return alert("Please upload all files");
         } else {
-          // const progress = Math.round((100 * event.loaded) / event.total);
-          // setProgress(progress);
-
           const data = new FormData();
           data.append("answer", answer);
           data.append("answerImage", images);
@@ -126,7 +118,7 @@ function Answers() {
         dispatch(fetchAnswerQuantity());
         dispatch(fetchAnswerQuantity(defId));
         dispatch(fetchAnswerListId(defId));
-        // setAnswerCount(answerCount + 1);
+
         setAnswer("");
         setCheckAnswer(false);
         setUploadedText(false);
@@ -136,8 +128,12 @@ function Answers() {
           dispatch(updateStatus(defId));
         }
       }
-    }, 400);
+    }, 500);
     dispatch(fetchAnswerList());
+    inputRef.current.value = "";
+    setImageUp([]);
+    inputRef2.current.value = "";
+    setSoundUp([]);
   };
 
   //image upload to firebase
@@ -182,13 +178,6 @@ function Answers() {
       );
     }
   };
-
-  // const delete_question = () => {
-  //   Axios.delete(`http://localhost:8888/upload/${idToDelete}`).then((res) => {
-  //     console.log(res);
-  //     console.log(res.data);
-  //     dispatch(fetchQuizList());
-  //   });
 
   //sound upload to firebase
   const handleUploadSound = () => {
@@ -414,26 +403,39 @@ function Answers() {
                 value={answer}
               />
               <Label check>
-                <Input
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checkAnswer}
+                      onChange={checker}
+                    ></Checkbox>
+                  }
+                  label="Correct answer (Check if true)"
+                />
+              </Label>
+              {/* <Input
                   type="checkbox"
                   checked={checkAnswer}
                   onChange={checker}
                 />{" "}
-                Correct answer "Check if true"
-              </Label>
+                Correct answer "Check if true" */}
 
               {/* ImageUpload */}
 
               <div className="imageUpload">
                 <FormGroup>
                   <label>Answer Image</label>
-                  <CustomInput
-                    type="file"
-                    id="exampleCustomFileBrowser"
-                    name="customFile"
-                    accept=".png, .jpg, .jpeg"
-                    onChange={handleChange}
-                  />
+                  <label className="large-label" htmlFor="customFile">
+                    <input
+                      type="file"
+                      id="exampleCustomFileBrowser"
+                      name="customFile"
+                      label="adsd"
+                      accept=".png, .jpg, .jpeg"
+                      onChange={(event) => setImageUp(event.target.files[0])}
+                      ref={inputRef}
+                    />
+                  </label>
                 </FormGroup>
                 {/* ----- */}
                 <div className="uploaded_text">
@@ -452,14 +454,16 @@ function Answers() {
                 <div className="soundUpload ">
                   <FormGroup>
                     <label>Answer Sound</label>
-                    <CustomInput
-                      type="file"
-                      id="exampleCustomFileBrowser"
-                      name="customFile"
-                      label="Choose sound file..."
-                      accept=".m4a, .mp3"
-                      onChange={handleChangeSound}
-                    />
+                    <label className="large-label" htmlFor="customFile">
+                      <input
+                        type="file"
+                        id="exampleCustomFileBrowser"
+                        name="customFile"
+                        accept=".m4a, .mp3"
+                        onChange={(event) => setSoundUp(event.target.files[0])}
+                        ref={inputRef2}
+                      />
+                    </label>
                   </FormGroup>
 
                   <div className="uploaded_text">

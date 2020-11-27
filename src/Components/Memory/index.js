@@ -154,7 +154,11 @@ export default function Flip() {
                 </Modal.Header>
                 <Modal.Body>Woohoo, you won the game!!</Modal.Body>
                 <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
+                  <Button
+                    className="button_Memory"
+                    variant="secondary"
+                    onClick={handleClose}
+                  >
                     Play again
                   </Button>
                 </Modal.Footer>

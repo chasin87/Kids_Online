@@ -1,17 +1,18 @@
 import React, { useState, useRef } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../Store/user/selectors";
+import { Link, useHistory } from "react-router-dom";
+import Axios from "axios";
 import "./Add_Question.css";
-import { Link } from "react-router-dom";
+
+//DB FIREBASE
+import firebase from "firebase";
+import { storage, db } from "../../firebase";
+
 import Modal from "react-bootstrap/Modal";
 import { FormGroup, Input } from "reactstrap";
 import { Form, Button } from "react-bootstrap";
-import { storage, db } from "../../firebase";
-
 import LinearProgress from "@material-ui/core/LinearProgress";
-import firebase from "firebase";
-import Axios from "axios";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../Store/user/selectors";
-import { useHistory } from "react-router-dom";
 
 export default function Add_Question() {
   const [question, setQuestion] = useState("");
@@ -31,6 +32,9 @@ export default function Add_Question() {
   if (token === null) {
     history.push("/");
   }
+
+  const inputRef = useRef(null);
+  const inputRef2 = useRef(null);
   const status = false;
 
   const inputChange = (event) => {
@@ -40,9 +44,6 @@ export default function Add_Question() {
   const catChange = (event) => {
     setCat(event.target.value);
   };
-
-  const inputRef = useRef(null);
-  const inputRef2 = useRef(null);
 
   const levelChange = (event) => {
     setLevel(event.target.value);
@@ -221,12 +222,16 @@ export default function Add_Question() {
         </Modal.Header>
         <Modal.Body>All your text and files are uploaded</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary">
-            <Link to="/answers">Go to add Answers</Link>
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
-            Add one more question
-          </Button>
+          <div className="button_Finish_Question">
+            <Button variant="secondary">
+              <Link to="/answers">Go to add Answers</Link>
+            </Button>
+          </div>
+          <div className="button_Finish_Question">
+            <Button variant="secondary" onClick={handleClose}>
+              Add one more question
+            </Button>
+          </div>
         </Modal.Footer>
       </Modal>
       <div className="question_part">

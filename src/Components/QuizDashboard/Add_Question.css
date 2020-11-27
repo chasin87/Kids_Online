@@ -258,11 +258,9 @@ input[type="file"]::-webkit-file-upload-button {
   border-radius: 2px 0px 0px 2px;
   background: #e9ecef;
   border-right: 1px solid #ced4da;
-  display: none;
 }
 
 #exampleCustomFileBrowser::before {
-  content: "Browse";
   line-height: 2.3;
   border: none;
   padding: 9.5px;
@@ -273,10 +271,18 @@ input[type="file"]::-webkit-file-upload-button {
   margin-right: 3px;
 }
 
+.MuiSvgIcon-root {
+  fill: tomato;
+}
+
 @media (max-width: 991px) {
   /* .container_quiz_dashboard {
     font-size: 29px;
   } */
+
+  .button_Finish_Question {
+    width: 47%;
+  }
 
   .Form {
     width: 90%;
@@ -304,13 +310,10 @@ input[type="file"]::-webkit-file-upload-button {
   .MuiLinearProgress-colorPrimary {
     margin-bottom: 20px;
   }
-
   input {
-    font-size: 19.5px;
+    font-size: 17px;
   }
-
-  #exampleCustomFileBrowser::before {
-    padding-top: 9px;
-    padding-bottom: 11px;
+  .btn:not(:disabled):not(.disabled) {
+    width: 96%;
   }
 }

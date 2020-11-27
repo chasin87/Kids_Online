@@ -266,7 +266,7 @@
 }
 
 .modal-footer {
-  display: block;
+  display: flex;
   text-align: center;
   background: #f5b120;
 }
@@ -276,4 +276,9 @@
   font-weight: 600;
   background: tomato !important;
   border-color: tomato !important;
+}
+
+.button_memory {
+  width: 90%;
+  margin: auto;
 }
