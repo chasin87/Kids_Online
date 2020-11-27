@@ -48,8 +48,9 @@
   .tegels_add_question,
   .tegels_question,
   .tegels_add_answers {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     font-size: 20px;
+    margin: 5px;
   }
 }
