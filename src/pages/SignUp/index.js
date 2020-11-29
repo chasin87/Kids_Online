@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { gebruikerLogin } from "../../Store/gebruiker/actions";
+import { gebruikerRegistratie } from "../../Store/gebruiker/actions";
 import { gebruikerSelectToken } from "../../Store/gebruiker/selectors";
 
 import Button from "@material-ui/core/Button";
@@ -11,6 +11,7 @@ import Box from "@material-ui/core/Box";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import MenuItem from "@material-ui/core/MenuItem";
 import "./index.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,35 +31,65 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function SignUp() {
   const classes = useStyles();
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [level, setLevel] = useState("");
+
+  const levels = [
+    {
+      value: 1,
+      label: "1",
+    },
+    {
+      value: 2,
+      label: "2",
+    },
+    { value: 3, label: "3" },
+  ];
   const dispatch = useDispatch();
   const token = useSelector(gebruikerSelectToken);
   const history = useHistory();
 
   useEffect(() => {
     if (token !== null) {
-      history.push("/quiz");
+      history.push("/");
     }
   }, [token, history]);
 
   function submitForm(event) {
     event.preventDefault();
 
-    dispatch(gebruikerLogin(email, password));
-
+    dispatch(gebruikerRegistratie(userName, email, password, level));
+    setUserName("");
     setEmail("");
     setPassword("");
+    setLevel(null);
   }
 
   return (
     <Container component="main" maxWidth="xs">
-      <div className="title_admin">Gebruiker Login </div>
+      <div className="title_admin">Registreer Gebruiker</div>
       <CssBaseline />
       <div className={classes.paper}>
         <form className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            autoFocus
+            fullWidth
+            placeholder="Voer je Gebruikersnaam in... "
+            id="gebruikersNaam"
+            label="Gebruikersnaam"
+            name="gebruikersnaam"
+            autoComplete="text"
+            value={userName}
+            onChange={(event) => setUserName(event.target.value)}
+            type="text"
+          />
           <TextField
             variant="outlined"
             margin="normal"
@@ -68,11 +99,12 @@ export default function Login() {
             label="Email Adres"
             name="email"
             autoComplete="email"
-            autoFocus
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             type="email"
+            placeholder="Enter your email"
           />
+
           <TextField
             variant="outlined"
             margin="normal"
@@ -85,7 +117,27 @@ export default function Login() {
             autoComplete="current-password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            placeholder="Enter your password"
           />
+
+          <TextField
+            id="level"
+            margin="normal"
+            select
+            required
+            fullWidth
+            label="Niveau"
+            value={level}
+            onChange={(event) => setLevel(event.target.value)}
+            helperText="Selecteer je niveau"
+            variant="outlined"
+          >
+            {levels.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
 
           <Button
             type="submit"
@@ -95,7 +147,7 @@ export default function Login() {
             className={classes.submit}
             onClick={submitForm}
           >
-            Log In
+            Registreer
           </Button>
         </form>
       </div>

@@ -52,7 +52,6 @@ export const gebruikerLogin = (email, password) => {
   };
 };
 
-/////Hierbenden gebleven
 export const gebruikerGetUserWithStoredToken = () => {
   return async (dispatch, getState) => {
     const token = gebruikerSelectToken(getState());
@@ -75,6 +74,33 @@ export const gebruikerGetUserWithStoredToken = () => {
       }
 
       dispatch(gebruikerLogOut());
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const gebruikerRegistratie = (userName, email, password, level) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+    try {
+      const response = await axios.post(`${apiUrl}/signup`, {
+        userName,
+        email,
+        password,
+        level,
+      });
+
+      dispatch(gebruikerLoginSuccess(response.data));
+      dispatch(showMessageWithTimeout("success", true, "account created"));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
       dispatch(appDoneLoading());
     }
   };

@@ -26,7 +26,7 @@ function Navigation() {
         <div className="login_area">
           <ul>
             <li>
-              <a className="register" href="contacts">
+              <a className="register" href="signup">
                 <img className="icon_reg" src={reg} alt="Lock" />
                 Register
               </a>
