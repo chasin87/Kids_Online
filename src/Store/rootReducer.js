@@ -5,6 +5,7 @@ import quizzes from "./quizlist/reducer";
 import answers from "./answerlist/reducer";
 import quant from "./quantity/reducer";
 import answersId from "./answerId/reducer";
+import gebruiker from "./gebruiker/reducer";
 
 export default combineReducers({
   user,
@@ -13,4 +14,5 @@ export default combineReducers({
   answers,
   quant,
   answersId,
+  gebruiker,
 });
