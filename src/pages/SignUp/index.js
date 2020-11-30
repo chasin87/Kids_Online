@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { gebruikerRegistratie } from "../../Store/gebruiker/actions";
 import { gebruikerSelectToken } from "../../Store/gebruiker/selectors";
 
@@ -149,6 +149,19 @@ export default function SignUp() {
           >
             Registreer
           </Button>
+          <div className="signUptext">
+            <Link
+              to="/login"
+              style={{
+                textAlign: "center",
+                color: "#0a0a45",
+                fontSize: "20px",
+                textDecoration: "underline",
+              }}
+            >
+              Heb je al een account?{" "}
+            </Link>
+          </div>
         </form>
       </div>
       <Box mt={8}></Box>

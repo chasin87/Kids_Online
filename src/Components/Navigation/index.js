@@ -20,9 +20,6 @@ import Avatar from "@material-ui/core/Avatar";
 import { deepOrange } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
 
-//images
-import reg from "../../Images/reg.png";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -61,12 +58,13 @@ function Navigation() {
         </div>
         <div className="login_area">
           <ul>
-            <li>
-              <a className="register" href="signup">
-                <img className="icon_reg" src={reg} alt="Lock" />
-                Register
-              </a>
-            </li>
+            {gebruikerToken ? null : (
+              <li>
+                <a className="register" href="signUp">
+                  Register
+                </a>
+              </li>
+            )}
             <li>{gebruikerControls}</li>
             <li>{loginLogoutControls}</li>
           </ul>
@@ -125,11 +123,14 @@ function Navigation() {
 
           <div className="login_area_nav">
             <ul>
-              <li>
-                <a className="register" href="register">
-                  <img className="icon_reg" src={reg} alt="Lock" /> Register
-                </a>
-              </li>
+              {gebruikerToken ? null : (
+                <li>
+                  <a className="register" href="signUp">
+                    Register
+                  </a>
+                </li>
+              )}
+
               <li>{gebruikerControls}</li>
               <li>{loginLogoutControls}</li>
             </ul>
