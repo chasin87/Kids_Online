@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { gebruikerLogin } from "../../Store/gebruiker/actions";
 import { gebruikerSelectToken } from "../../Store/gebruiker/selectors";
 
@@ -15,7 +15,7 @@ import "./index.css";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(1),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -35,14 +35,14 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const token = useSelector(gebruikerSelectToken);
+  const gebruikerToken = useSelector(gebruikerSelectToken);
   const history = useHistory();
 
   useEffect(() => {
-    if (token !== null) {
+    if (gebruikerToken !== null) {
       history.push("/quiz");
     }
-  }, [token, history]);
+  }, [gebruikerToken, history]);
 
   function submitForm(event) {
     event.preventDefault();
@@ -97,6 +97,19 @@ export default function Login() {
           >
             Log In
           </Button>
+          <div className="signUptext">
+            <Link
+              to="/signup"
+              style={{
+                textAlign: "center",
+                color: "#0a0a45",
+                fontSize: "20px",
+                textDecoration: "underline",
+              }}
+            >
+              Aanmelden voor Kids Online
+            </Link>
+          </div>
         </form>
       </div>
       <Box mt={8}></Box>

@@ -2,18 +2,54 @@ import React from "react";
 import "./index.css";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../Store/user/selectors";
-// Bootstrap imports
-import { Navbar } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-//images
-import lock from "../../Images/lock.png";
-import reg from "../../Images/reg.png";
+import { selectGebruiker } from "../../Store/gebruiker/selectors";
+import { gebruikerSelectToken } from "../../Store/gebruiker/selectors";
 
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 
+import GebruikerLoggedIn from "./GebruikerLoggedIn";
+import GebruikerLoggedOut from "./GebruikerLoggedOut";
+
+// Bootstrap imports
+import { Navbar } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+//MaterialUI imports
+import Avatar from "@material-ui/core/Avatar";
+import { deepOrange } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
+
+//images
+import reg from "../../Images/reg.png";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+  orange: {
+    color: theme.palette.getContrastText(deepOrange[500]),
+    backgroundColor: deepOrange[500],
+    margin: "auto",
+  },
+}));
+
 function Navigation() {
   const token = useSelector(selectToken);
+  const gebruikerToken = useSelector(gebruikerSelectToken);
+
+  const gebruiker = useSelector(selectGebruiker);
+
+  const classes = useStyles();
+
+  const gebruikerControls = gebruikerToken ? (
+    <GebruikerLoggedIn />
+  ) : (
+    <GebruikerLoggedOut />
+  );
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
   return (
@@ -31,12 +67,7 @@ function Navigation() {
                 Register
               </a>
             </li>
-            <li>
-              <a className="login" href="login">
-                <img className="icon_lock" src={lock} alt="Lock" />
-                Login
-              </a>
-            </li>
+            <li>{gebruikerControls}</li>
             <li>{loginLogoutControls}</li>
           </ul>
         </div>
@@ -82,6 +113,14 @@ function Navigation() {
                 Quiz Dashboard
               </a>
             ) : null}
+
+            {gebruikerToken ? (
+              <Avatar
+                alt={gebruiker.userName}
+                src="/broken-image.jpg"
+                className={classes.orange}
+              />
+            ) : null}
           </div>
 
           <div className="login_area_nav">
@@ -91,12 +130,7 @@ function Navigation() {
                   <img className="icon_reg" src={reg} alt="Lock" /> Register
                 </a>
               </li>
-              <li>
-                <a className="login" href="login">
-                  <img className="icon_lock" src={lock} alt="Lock" />
-                  Login
-                </a>
-              </li>
+              <li>{gebruikerControls}</li>
               <li>{loginLogoutControls}</li>
             </ul>
           </div>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./index.css";
 
-import { selectUser } from "../../Store/user/selectors";
+import { selectGebruiker } from "../../Store/gebruiker/selectors";
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
 import { Button } from "react-bootstrap";
@@ -11,15 +11,18 @@ import { Button } from "react-bootstrap";
 export default function Quiz() {
   const [quiz, setQuiz] = useState(null);
   const Quizzes = useSelector(selectquizzes);
+  const { userName, email, level } = useSelector(selectGebruiker);
 
   const dispatch = useDispatch();
 
-  const { token } = useSelector(selectUser);
+  const { gebruikerToken } = useSelector(selectGebruiker);
   const history = useHistory();
-
-  if (token === null) {
+  console.log(gebruikerToken);
+  if (gebruikerToken === null) {
     history.push("/login");
   }
+
+  console.log(userName, email, level);
 
   useEffect(() => {
     dispatch(fetchQuizList());
@@ -46,7 +49,7 @@ export default function Quiz() {
         <div className="quiz_single">
           {filteredCategory.map((filter) => {
             return (
-              <div className="catButs">
+              <div className="catButs" key={filter}>
                 <Button className="cat" onClick={(e) => setQuiz(filter)}>
                   {filter}
                 </Button>

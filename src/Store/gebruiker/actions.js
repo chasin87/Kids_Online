@@ -1,7 +1,6 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
 import { gebruikerSelectToken } from "./selectors";
-
 import {
   appLoading,
   appDoneLoading,
@@ -9,20 +8,20 @@ import {
   setMessage,
 } from "../appState/actions";
 
-export const GEBRUIKER_LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const GEBRUIKER_TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
-export const GEBRUIKER_LOG_OUT = "LOG_OUT";
+export const GEBRUIKER_LOGIN_SUCCESS = "GEBRUIKER_LOGIN_SUCCESS";
+export const GEBRUIKER_TOKEN_STILL_VALID = "GEBRUIKER_TOKEN_STILL_VALID";
+export const GEBRUIKER_LOG_OUT = "GEBRUIKER_LOG_OUT";
 
-const gebruikerLoginSuccess = (userWithToken) => {
+const gebruikerLoginSuccess = (gebruikerWithToken) => {
   return {
     type: GEBRUIKER_LOGIN_SUCCESS,
-    payload: userWithToken,
+    payload: gebruikerWithToken,
   };
 };
 
-const gebruikerTokenStillValid = (userWithoutToken) => ({
+const gebruikerTokenStillValid = (gebruikerWithoutToken) => ({
   type: GEBRUIKER_TOKEN_STILL_VALID,
-  payload: userWithoutToken,
+  payload: gebruikerWithoutToken,
 });
 
 export const gebruikerLogOut = () => ({ type: GEBRUIKER_LOG_OUT });
@@ -54,14 +53,16 @@ export const gebruikerLogin = (email, password) => {
 
 export const gebruikerGetUserWithStoredToken = () => {
   return async (dispatch, getState) => {
-    const token = gebruikerSelectToken(getState());
+    const gebruikerToken = gebruikerSelectToken(getState());
 
-    if (token === null) return;
+    if (gebruikerToken === null) {
+      return console.log("TOKEN IS NULL");
+    }
 
     dispatch(appLoading());
     try {
-      const response = await axios.get(`${apiUrl}/me`, {
-        headers: { Authorization: `Bearer ${token}` },
+      const response = await axios.get(`${apiUrl}/meGebruiker`, {
+        headers: { Authorization: `Bearer ${gebruikerToken}` },
       });
 
       dispatch(gebruikerTokenStillValid(response.data));
