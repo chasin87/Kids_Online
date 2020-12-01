@@ -44,6 +44,9 @@
   font-size: 40px !important;
   font-weight: 700;
 }
+.gebruikers_naam {
+  text-transform: uppercase;
+}
 
 @media (max-width: 991px) {
   .cat {

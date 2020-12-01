@@ -5,7 +5,7 @@ import { selectAppLoading } from "./Store/appState/selectors";
 import "./App.css";
 import Navigation from "./Components/Navigation";
 import Home from "./pages/Home/";
-import Kleuren from "./pages/Kleuren/";
+import Colors from "./pages/Kleuren/";
 import TicTacToe from "./pages/TicTacToe/";
 import Memory from "./pages/Memory/";
 import QuizFunc from "./pages/Quiz/";
@@ -18,6 +18,10 @@ import Add_Question from "./Components/QuizDashboard/Add_Question";
 import Answers from "./Components/QuizDashboard/Answers";
 import Login from "./pages/Login/";
 import SignUp from "./pages/SignUp/";
+import QuizGame from "./pages/QuizGame/";
+import Rekenen from "./Components/QuizGame/Rekenen";
+import Rijmen from "./Components/QuizGame/Rijmen";
+import Kleuren from "./Components/QuizGame/Kleuren";
 
 function App() {
   const isLoading = useSelector(selectAppLoading);
@@ -29,7 +33,7 @@ function App() {
       <Switch>
         {isLoading ? <Loading /> : null}
         <Route exact path="/" component={Home} />;
-        <Route path="/kleuren" component={Kleuren} />;
+        <Route path="/colors" component={Colors} />;
         <Route path="/tictactoe" component={TicTacToe} />;
         <Route path="/memory" component={Memory} />;
         <Route path="/Quiz" component={QuizFunc} />;
@@ -40,6 +44,10 @@ function App() {
         <Route path="/Answers" component={Answers} />;
         <Route path="/Login" component={Login} />;
         <Route path="/SignUp" component={SignUp} />;
+        <Route path="/QuizGame" component={QuizGame} />;
+        <Route path="/rekenen" component={Rekenen} />;
+        <Route path="/rijmen" component={Rijmen} />;
+        <Route path="/kleuren" component={Kleuren} />;
       </Switch>
     </div>
   );

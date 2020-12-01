@@ -1,0 +1,37 @@
+.main_Page_Quiz {
+  background-color: #f5b120;
+  padding: 20px 0px;
+  height: 80vh;
+  color: #f43f5a;
+}
+
+.lesson_h2 {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.inhoud_Quiz {
+  text-align: center;
+}
+
+.rekenen Button {
+  background-color: #f43f5a;
+  padding: 20px;
+  width: 30%;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.rekenen Button:hover {
+  background-color: #f77588;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
+}
+
+Button:focus,
+Button:active {
+  outline: none !important;
+  box-shadow: none;
+}
