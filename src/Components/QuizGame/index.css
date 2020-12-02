@@ -1,8 +1,16 @@
 .main_Page_Quiz {
   background-color: #f5b120;
   padding: 20px 0px;
-  height: 80vh;
+  height: 100vh;
   color: #f43f5a;
+}
+
+.inhoud_Quiz {
+  width: 40%;
+  background: #da990e;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
 }
 
 .lesson_h2 {
@@ -10,8 +18,18 @@
   font-weight: 600;
 }
 
-.inhoud_Quiz {
-  text-align: center;
+.begin_Lesson {
+  background-color: #f43f5a;
+  padding: 20px;
+  width: 60% !important;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.quiz_Elements {
+  padding: 20px;
 }
 
 .rekenen Button {
@@ -34,4 +52,60 @@ Button:focus,
 Button:active {
   outline: none !important;
   box-shadow: none;
+}
+
+.question_Image {
+  margin-bottom: 20px;
+}
+
+.question_Image img {
+  width: 30%;
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.question_Image img:hover {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
+}
+
+.question_Image_sound {
+  width: 30%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.question_Image_sound .button_Sound {
+  background-color: #f43f5a !important;
+  width: 100%;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.quiz_answers {
+  width: 90%;
+}
+
+.answer_Image {
+  margin-bottom: 20px;
+}
+
+.answer_Image img {
+  width: 50%;
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.answer_Image img:hover {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
+}
+
+.answer_Image_sound {
+  width: 90%;
+  margin: auto;
+}
+
+.answer_Image_sound .button_Sound {
+  background-color: #f43f5a !important;
+  width: 50%;
+  color: #fff;
+  margin-bottom: 20px;
 }

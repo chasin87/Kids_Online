@@ -16,12 +16,10 @@ export default function Quiz() {
   const { gebruikerToken } = useSelector(selectGebruiker);
 
   const history = useHistory();
-  console.log(gebruikerToken);
+
   if (gebruikerToken === null) {
     history.push("/login");
   }
-
-  console.log("gebruiker", gebruiker);
 
   useEffect(() => {
     dispatch(fetchQuizList());

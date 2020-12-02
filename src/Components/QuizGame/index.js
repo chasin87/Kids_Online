@@ -40,18 +40,21 @@ export default function QuizGameScreen() {
     return loaded
       ? quiz.questionCategory.toLowerCase().includes(lesson.toLowerCase()) &&
           quiz.questionLevel.toString().includes(level.toString())
-      : console.log("false");
+      : null;
   });
 
   console.log(filteredQuestions);
-
+  console.log(lesson);
   return (
     <div className="main_Page_Quiz">
       <div className="inhoud_Quiz">
         <h2 className="lesson_h2">{lesson}</h2>
         <div className="rekenen">
-          <Link className="linkLesson" to={`/${lesson}`}>
-            <Button>Begin {lesson}</Button>
+          <Link
+            className="linkLesson"
+            to={{ pathname: `/${lesson}`, state: lesson }}
+          >
+            <Button className="begin_Lesson">Begin {lesson}</Button>
           </Link>
         </div>
       </div>
