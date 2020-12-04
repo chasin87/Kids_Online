@@ -48,14 +48,16 @@ export default function QuizGameScreen() {
   return (
     <div className="main_Page_Quiz">
       <div className="inhoud_Quiz">
-        <h2 className="lesson_h2">{lesson}</h2>
-        <div className="rekenen">
-          <Link
-            className="linkLesson"
-            to={{ pathname: `/${lesson}`, state: lesson }}
-          >
-            <Button className="begin_Lesson">Begin {lesson}</Button>
-          </Link>
+        <div className="quiz_content">
+          <h2 className="lesson_h2">{lesson}</h2>
+          <div className="rekenen">
+            <Link
+              className="linkLesson"
+              to={{ pathname: `/${lesson}`, state: lesson }}
+            >
+              <Button className="begin_Lesson">Begin {lesson}</Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
