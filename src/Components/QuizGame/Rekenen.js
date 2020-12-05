@@ -29,7 +29,7 @@ export default function Rekenen() {
     history.push("/login");
   }
 
-  const [playRekenen] = useSound(RekenenVraag, { volume: 0.9 });
+  // const [playRekenen] = useSound(RekenenVraag, { volume: 0.9 });
   const [playEntranceSound] = useSound(EntranceSound, { volume: 0.7 });
   const [playCorrectSound] = useSound(CorrectAnswer, { volume: 0.9 });
   const [playFalseSound] = useSound(FalseAnswer, { volume: 0.9 });
@@ -65,11 +65,11 @@ export default function Rekenen() {
     }, 3000);
   }, [dispatch, setter, playEntranceSound]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      playRekenen();
-    }, 7000);
-  }, [playRekenen]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     playRekenen();
+  //   }, 7000);
+  // }, [playRekenen]);
 
   const filteredQuestions = Quizzes.filter((quiz) => {
     return quiz.questionComplete
@@ -105,6 +105,25 @@ export default function Rekenen() {
     }
   };
 
+  //Question Button Sound
+  const playRekenen = (i) => {
+    filteredQuestions.map((filt) => {
+      if (i === filt.id) {
+        let audioTune = new Audio(filt.questionSound);
+        audioTune.play();
+      }
+    });
+
+    // let audioTune = new Audio(filteredQuestions[index].questionSound);
+    // audioTune.play();
+  };
+
+  //Answer Button Sound
+  const player = (index) => {
+    let audioTune = new Audio(Answers[index].answerSound);
+    audioTune.play();
+  };
+
   if (loading) {
     return (
       <div className="loader">
@@ -135,9 +154,10 @@ export default function Rekenen() {
                   <h5>{filteredQuestions[currentQuestion].question}</h5>
                 </div>
                 <div
+                  key={filteredQuestions[currentQuestion].id}
                   className="question_Image_sound"
                   onClick={() => {
-                    playRekenen();
+                    playRekenen(filteredQuestions[currentQuestion].id);
                   }}
                 >
                   <Button className="button_Sound">
@@ -149,7 +169,7 @@ export default function Rekenen() {
                 {Answers.map((ans, index) => {
                   if (ans.quizId === filteredQuestions[currentQuestion].id) {
                     return (
-                      <div className="question_answer col-6">
+                      <div className="question_answer col-6" key={ans.id}>
                         <div className="quiz_answer col-12">
                           <div className="displayer">
                             <div>
@@ -171,9 +191,10 @@ export default function Rekenen() {
                             </div>
 
                             <div
+                              key={index}
                               className="answer_Image_sound"
                               onClick={() => {
-                                "plays();";
+                                player(index);
                               }}
                             >
                               <Button className="button_Sound">
