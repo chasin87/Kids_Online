@@ -184,7 +184,7 @@ li {
     font-size: 4vw;
   }
   .navbar-nav {
-    margin-bottom: 10px;
+    margin-bottom: 5px !important;
   }
 }
 @media (max-width: 600px) {

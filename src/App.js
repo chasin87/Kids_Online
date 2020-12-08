@@ -19,9 +19,7 @@ import Answers from "./Components/QuizDashboard/Answers";
 import Login from "./pages/Login/";
 import SignUp from "./pages/SignUp/";
 import QuizGame from "./pages/QuizGame/";
-import Rekenen from "./Components/QuizGame/Rekenen";
-import Rijmen from "./Components/QuizGame/Rijmen";
-import Kleuren from "./Components/QuizGame/Kleuren";
+import Quiz from "./Components/QuizGame/Quiz";
 
 function App() {
   const isLoading = useSelector(selectAppLoading);
@@ -45,9 +43,7 @@ function App() {
         <Route path="/Login" component={Login} />;
         <Route path="/SignUp" component={SignUp} />;
         <Route path="/QuizGame" component={QuizGame} />;
-        <Route path="/rekenen" component={Rekenen} />;
-        <Route path="/rijmen" component={Rijmen} />;
-        <Route path="/kleuren" component={Kleuren} />;
+        <Route path="/QuizStart" component={Quiz} />;
       </Switch>
     </div>
   );

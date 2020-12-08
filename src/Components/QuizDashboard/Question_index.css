@@ -229,10 +229,11 @@ svg {
 }
 
 .card-img-top {
-  width: 60%;
+  width: 90%;
   height: auto;
   margin: auto;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  background: #fff;
 }
 
 .iconDelete {

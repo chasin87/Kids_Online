@@ -92,7 +92,7 @@ function Navigation() {
             <a className="nav-item nav-link " href="/">
               Home <span className="sr-only"></span>
             </a>
-            <a className="nav-item nav-link" href="Kleuren">
+            <a className="nav-item nav-link" href="colors">
               Colors
             </a>
             <a className="nav-item nav-link" href="TicTacToe">
