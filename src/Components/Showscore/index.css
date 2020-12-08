@@ -1,0 +1,37 @@
+.scoreShower {
+  background: #f8f9fabf;
+  width: 60%;
+  border: 1px solid;
+  padding: 10px;
+  text-align: center;
+  margin: auto;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.mainScore {
+  margin: 20px auto;
+}
+
+.button_showScore {
+  background-color: #f43f5a;
+  padding: 20px;
+  width: 40%;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 5px;
+}
+
+@media (max-width: 991px) {
+  .scoreShower {
+    width: 90%;
+  }
+
+  .button_showScore {
+    width: 80%;
+  }
+}

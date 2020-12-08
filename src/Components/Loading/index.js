@@ -1,13 +1,17 @@
 import React from "react";
-import Spinner from "react-bootstrap/Spinner";
-import "./index.css";
+import { css } from "@emotion/core";
+import BounceLoader from "react-spinners/BounceLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 export default function Loading() {
   return (
-    <div className="loading_spinner">
-      <Spinner animation="border" variant="danger" role="status" size="xl">
-        <span className="sr-only">Loading...</span>
-      </Spinner>
+    <div className="sweet-loading">
+      <BounceLoader css={override} size={150} color={"#f43f5a"} />
     </div>
   );
 }

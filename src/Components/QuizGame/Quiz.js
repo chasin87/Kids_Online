@@ -10,7 +10,7 @@ import { fetchQuizList } from "../../Store/quizlist/actions";
 import { fetchAnswerList } from "../../Store/answerlist/actions";
 
 import Loading from "../Loading";
-import EntranceSound from "../../Sounds/EntranceSound.mp3";
+
 import CorrectAnswer from "../../Sounds/CorrectAnswer.mp3";
 import FalseAnswer from "../../Sounds/FalseAnswer.mp3";
 
@@ -18,6 +18,8 @@ import useSound from "use-sound";
 
 import Button from "@material-ui/core/Button";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
+
+import ShowScore from "../../Components/Showscore";
 
 //MaterialUI imports
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -31,7 +33,6 @@ export default function Quiz() {
     history.push("/login");
   }
 
-  const [playEntranceSound] = useSound(EntranceSound, { volume: 0.7 });
   const [playCorrectSound] = useSound(CorrectAnswer, { volume: 0.9 });
   const [playFalseSound] = useSound(FalseAnswer, { volume: 0.9 });
 
@@ -64,11 +65,13 @@ export default function Quiz() {
     dispatch(fetchAnswerList());
     setLesson(setter);
     setLoaded(true);
+  }, [dispatch, setter]);
+
+  useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-      playEntranceSound();
-    }, 3000);
-  }, [dispatch, setter, playEntranceSound]);
+    }, 2000);
+  }, []);
 
   const filteredQuestions = Quizzes.filter((quiz) => {
     return quiz.questionComplete
@@ -143,6 +146,7 @@ export default function Quiz() {
     return (
       <div className="loader">
         <Loading />
+        <h4 className="loading_Text">Ben je klaar om te beginnen?</h4>
       </div>
     );
   }
@@ -150,12 +154,17 @@ export default function Quiz() {
   return (
     <div className="main_Page_Quiz">
       {showScore ? (
-        <div>
-          <h2>SHOW SCORE</h2>
-          <h2>
-            Je hebt {score} van de {filteredQuestions.length} goed.
-          </h2>
-        </div>
+        // <div>
+        //   <h2>SHOW SCORE</h2>
+        //   <h2>
+        //     Je hebt {score} van de {filteredQuestions.length} goed.
+        //   </h2>
+        // </div>
+        <ShowScore
+          score={score}
+          filteredQuestionsLength={filteredQuestions.length}
+          gebruiker={gebruiker.userName.toUpperCase()}
+        />
       ) : (
         <div className="inhoud_Quiz">
           <div className="score_Bar">

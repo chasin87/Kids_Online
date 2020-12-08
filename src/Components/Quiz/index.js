@@ -6,7 +6,6 @@ import "./index.css";
 import { selectGebruiker } from "../../Store/gebruiker/selectors";
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
-import { Button } from "react-bootstrap";
 
 export default function Quiz() {
   const Quizzes = useSelector(selectquizzes);
@@ -36,22 +35,25 @@ export default function Quiz() {
   );
 
   return (
-    <div className="quiz_Container">
-      <div className="quiz_Category">
-        <div className="quiz_Title">
-          <h2 className="gebruikers_naam">{gebruiker.userName}</h2>
-          <h2>Welkom bij de Quiz van Kids Online</h2>
-        </div>
-        <div className="quiz_single">
-          {filteredCategory.map((filter) => {
-            return (
-              <div className="catButs" key={filter}>
-                <Link to={{ pathname: "/QuizGame", state: { filter } }}>
-                  <Button className="cat">{filter}</Button>
-                </Link>
-              </div>
-            );
-          })}
+    <div style={{ height: "90vh", backgroundColor: "#f8f9fabf" }}>
+      <div className="quiz_Container">
+        <div className="quiz_Category">
+          <div className="quiz_Title">
+            <h2 className="gebruikers_naam">Hi, {gebruiker.userName}</h2>
+            <h2>Welkom bij de Quiz van Kids Online</h2>
+            <h4>Kies een category om te spelen</h4>
+          </div>
+          <div className="quiz_single">
+            {filteredCategory.map((filter) => {
+              return (
+                <div className="catButtons" key={filter}>
+                  <Link to={{ pathname: "/QuizGame", state: { filter } }}>
+                    <button className="categoryButtons">{filter}</button>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

@@ -1,13 +1,39 @@
 .loader {
-  margin-top: 50px;
+  padding-top: 153px;
 }
 
 .main_Page_Quiz {
-  background-color: #724bff;
+  background-color: #f8f9fabf;
   padding: 20px 0px;
-  height: 100%;
+  height: 100vh;
   color: #f43f5a;
   user-select: none;
+}
+
+.prev_Page_Quiz {
+  background-color: #f8f9fabf;
+  padding: 20px 0px;
+  height: 80vh;
+  color: #f43f5a;
+  user-select: none;
+}
+
+.prev_Quiz {
+  background-color: #f8f9fabf;
+  text-align: center;
+  height: 20vh;
+  margin: auto;
+  width: 60%;
+  position: relative;
+  top: 30%;
+  transform: translateY(-50%);
+}
+
+.prev_Content {
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .header_Quiz {
@@ -27,7 +53,7 @@
 
 .answer {
   padding: 0px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
   border-radius: 5px;
 }
@@ -43,6 +69,8 @@
 .lesson_h2 {
   font-size: 50px;
   font-weight: 600;
+  color: #f43f5a;
+  text-align: center;
 }
 .row2 {
   /* display: flex; */
@@ -239,6 +267,10 @@ Button:active {
   height: 10px !important;
 }
 
+.loading_Text {
+  text-align: center;
+}
+
 @media (max-width: 991px) {
   .main_Page_Quiz {
     height: 100%;
@@ -255,8 +287,11 @@ Button:active {
   .gebruikerNaam {
     font-size: 1.2rem;
   }
-}
 
+  .rekenen Button {
+    width: 90% !important;
+  }
+}
 @media (max-width: 767px) {
   .gebruikerNaam {
     font-size: 0.8rem;
@@ -279,5 +314,8 @@ Button:active {
   .answers_Quiz {
     width: 90%;
     margin: auto;
+  }
+  .rekenen Button {
+    width: 90% !important;
   }
 }
