@@ -154,7 +154,7 @@ Button:active {
 }
 
 .quest_image {
-  width: 30%;
+  width: 50%;
 }
 
 .quiz_answers {
@@ -272,7 +272,7 @@ Button:active {
   text-align: center;
 }
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   .main_Page_Quiz {
     height: 100%;
   }
@@ -320,4 +320,4 @@ Button:active {
   .rekenen Button {
     width: 90% !important;
   }
-}
+} */
