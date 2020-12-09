@@ -100,11 +100,19 @@ hr {
   margin-bottom: 0px;
 }
 
+.two_Buttons {
+  display: flex;
+  justify-content: center;
+}
+
 .button_upload {
+  padding: 10px;
+  font-size: 20px;
+  background: tomato;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
   width: 200px;
-  /* margin-top: 10px;
-  margin-bottom: 20px; */
-  margin: 10px auto 20px auto;
 }
 
 progress {
@@ -211,9 +219,22 @@ progress {
   cursor: pointer;
 }
 
+.MuiListItem-root {
+  justify-content: center !important;
+  background: #f8f9fa;
+  border: 1px solid tomato;
+  cursor: pointer;
+}
+
+.MuiListItem-root.Mui-selected {
+  background-color: #8dee96 !important;
+  cursor: pointer;
+}
+
 .input-quantity {
   width: 30%;
   margin: auto;
+  margin-bottom: 20px;
 }
 .quantity_Label {
   margin-bottom: 0px;
@@ -232,6 +253,7 @@ progress {
   color: #fff;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
   transition-duration: 0.5s;
+  margin-bottom: 20px;
 }
 
 .answersCheck:hover {
@@ -293,7 +315,13 @@ input[type="file"]::-webkit-file-upload-button {
   }
 
   .button_upload {
-    width: 50%;
+    padding: 10px;
+    font-size: 20px;
+    background: tomato;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    width: 200px;
   }
 
   .back_to,
@@ -315,5 +343,8 @@ input[type="file"]::-webkit-file-upload-button {
   }
   .btn:not(:disabled):not(.disabled) {
     width: 96%;
+  }
+  .answersCheck {
+    width: 90%;
   }
 }

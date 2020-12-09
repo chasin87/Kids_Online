@@ -23,18 +23,18 @@ export default function Home() {
       <div className="cards">
         <div className="cardd">
           <div className="card_image">
-            <a href="/kleuren">
+            <a href="/Colors">
               <img src={Colors_logo_card} alt="background" />
             </a>
           </div>
-          <div className="card_header">Colors</div>
+          <div className="card_header">Leer de Kleuren</div>
           <div className="card_text">
-            Learn the colors by pressing them, as soon as you press you will
-            hear the color.
+            Leer de kleuren door erop te drukken, zodra je er op drukt, hoor je
+            de kleur.
           </div>
           <div>
-            <a href="/kleuren">
-              <button className="card_button">Play Colors</button>
+            <a href="/colors">
+              <button className="card_button">Speel Kleuren</button>
             </a>
           </div>
         </div>
@@ -45,13 +45,13 @@ export default function Home() {
               <img src={TicTacToe_logo_card} alt="background" />
             </a>
           </div>
-          <div className="card_header">TicTacToe</div>
+          <div className="card_header">Boter kaas en eieren</div>
           <div className="card_text">
-            a game in which two players seek in alternate turns to complete a
-            row, a column, or a diagonal.
+            Een spel waarin twee spelers om de beurt zoeken om een rij, kolom of
+            diagonaal te voltooien.
           </div>
           <a href="/tictactoe">
-            <button className="card_button">Play TicTacToe</button>
+            <button className="card_button">Speel Boter kaas en eieren</button>
           </a>
         </div>
 
@@ -63,11 +63,11 @@ export default function Home() {
           </div>
           <div className="card_header">Memory</div>
           <div className="card_text">
-            Train your brain! Play this game every day. Keep your brain in
-            shape! Find pairs of images.
+            Train je hersenen! Speel dit spel elke dag. Houd je brein in vorm!
+            Zoek de paren van de afbeeldingen.
           </div>
           <a href="/memory">
-            <button className="card_button">Play Memory</button>
+            <button className="card_button">Speel Memory</button>
           </a>
         </div>
       </div>

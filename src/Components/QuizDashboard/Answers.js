@@ -8,9 +8,10 @@ import "./Add_Question.css";
 //DB FIREBASE
 import { storage, db } from "../../firebase";
 import firebase from "firebase";
-
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
 import { FormGroup, Input, Label } from "reactstrap";
-import { Form, Button, ListGroup, Modal } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 import { Checkbox, FormControlLabel } from "@material-ui/core";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
@@ -43,6 +44,8 @@ function Answers() {
   const [uploadedText, setUploadedText] = useState(false);
   const [uploadedTextSound, setUploadedTextSound] = useState(false);
   const [show, setShow] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -127,6 +130,7 @@ function Answers() {
         if (setter === quantityQuestion) {
           dispatch(updateStatus(defId));
         }
+        setVisible(false);
       }
     }, 500);
     dispatch(fetchAnswerList());
@@ -176,13 +180,14 @@ function Answers() {
             });
         }
       );
+      setVisible(true);
     }
   };
 
   //sound upload to firebase
   const handleUploadSound = () => {
     if (soundUp.length === 0) {
-      alert("Please choose a sound file...");
+      alert("Kies een geluidsbestand...");
     } else {
       const uploadTask = storage.ref(`sounds/${soundUp.name}`).put(soundUp);
       uploadTask.on(
@@ -293,12 +298,12 @@ function Answers() {
                 d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"
               />
             </svg>
-            Back to questions
+            Terug naar de vragen
           </Link>
         </div>
         <div className="next_to">
           <Link className="link_next" to="/QuizDashboard">
-            Go to dashboard
+            Ga naar de dashboard
             <svg
               width="1em"
               height="1em"
@@ -316,21 +321,28 @@ function Answers() {
         </div>
       </div>
       <div className="Answers_Missing">
-        <h5 style={{ color: "#000" }}>Questions without answers</h5>
-        <h6>Please select a question below:</h6>
+        <h5 style={{ color: "#000" }}>Vragen zonder antwoorden</h5>
+        <h6>Selecteer hieronder een vraag:</h6>
         {Quizzes.map((quiz) => {
           return quiz.questionComplete ? null : (
-            <ListGroup key={quiz.id}>
-              <ListGroup.Item
+            <List
+              component="nav"
+              aria-label="main mailbox folders"
+              key={quiz.id}
+            >
+              <ListItem
+                key={quiz.id}
+                selected={selectedIndex === quiz.id}
                 onClick={(e) => {
                   setReferenceId(quiz.id);
                   setWorking(quiz.question);
                   dispatch(fetchAnswerQuantity(quiz.id, quiz.question));
+                  setSelectedIndex(quiz.id);
                 }}
               >
                 {quiz.question}
-              </ListGroup.Item>
-            </ListGroup>
+              </ListItem>
+            </List>
           );
         })}
       </div>
@@ -339,16 +351,37 @@ function Answers() {
         {working ? (
           <div>
             <h5 style={{ fontWeight: "700", color: "green" }}>
-              Working on: {working}{" "}
+              U Bewerkt de vraag: {working}{" "}
             </h5>
-            <h5 className="answersCheck" onClick={checkAnswers}>
-              {" "}
-              This question has {totalanswers} answer(s) stored. Click to see
-            </h5>
+            <div className="dropdown_container">
+              <div>
+                <label className="quantity_Label">
+                  Kies het aantal antwoorden dat u aan de vraag wilt toevoegen
+                </label>
+              </div>
+
+              <div className="input-quantity">{options()}</div>
+            </div>
+            <div
+              style={{
+                width: "70%",
+                fontSize: "15px",
+                margin: "auto",
+                color: "#f43f5a",
+                fontWeight: "500",
+              }}
+            >
+              <List>
+                <ListItem onClick={checkAnswers}>
+                  Deze vraag heeft {totalanswers} opgeslagen antwoord(en). Klik
+                  hier om deze te zien.
+                </ListItem>
+              </List>
+            </div>
           </div>
         ) : (
           <h5 style={{ fontWeight: "700", color: "red" }}>
-            Nothing selected, Please select a question ⤴
+            Niets geselecteerd, selecteer een vraag ⤴
           </h5>
         )}
       </div>
@@ -357,7 +390,7 @@ function Answers() {
       <div>
         <Modal centered show={show} onHide={handleClose}>
           <Modal.Header className="header_modal">
-            <Modal.Title>Answers</Modal.Title>
+            <Modal.Title>Antwoorden</Modal.Title>
           </Modal.Header>
           {AnswerId.map((ansId) => {
             return (
@@ -368,19 +401,10 @@ function Answers() {
           })}
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-              Close
+              Ok
             </Button>
           </Modal.Footer>
         </Modal>
-      </div>
-      <div className="dropdown_container">
-        <div>
-          <label className="quantity_Label">
-            Choose the amount of answers that you want to add the question
-          </label>
-        </div>
-
-        <div className="input-quantity">{options()}</div>
       </div>
 
       {defId === 0 ? (
@@ -391,14 +415,14 @@ function Answers() {
             {/* Answer1 */}
             <Form.Group>
               <p>
-                Answer {setter} of {quantityQuestion}
+                Antwoord {setter} van {quantityQuestion}
               </p>
-              <label>Answer in text</label>
+              <label>Antwoord in tekst</label>
               <Input
                 type="text"
                 name="text"
                 id="answer_main"
-                placeholder="Enter your answer in text"
+                placeholder="Typ uw antwoord in tekst"
                 onChange={inputChange}
                 value={answer}
               />
@@ -410,7 +434,7 @@ function Answers() {
                       onChange={checker}
                     ></Checkbox>
                   }
-                  label="Correct answer (Check if true)"
+                  label="Juist antwoord (Vink aan als de antwoord correct is)"
                 />
               </Label>
               {/* <Input
@@ -424,7 +448,7 @@ function Answers() {
 
               <div className="imageUpload">
                 <FormGroup>
-                  <label>Answer Image</label>
+                  <label>Antwoord Afbeelding</label>
                   <label className="large-label" htmlFor="customFile">
                     <input
                       type="file"
@@ -441,9 +465,9 @@ function Answers() {
                 <div className="uploaded_text">
                   {uploadedText ? (
                     <p>
-                      image with file name
+                      Afbeelding met bestandsnaam
                       <span className="uploaded_file">{` ${imageUp.name} `}</span>
-                      is uploaded.
+                      is geüpload.
                     </p>
                   ) : (
                     <p></p>
@@ -453,7 +477,7 @@ function Answers() {
                 {/* SoundUpload */}
                 <div className="soundUpload ">
                   <FormGroup>
-                    <label>Answer Sound</label>
+                    <label>Antwoord Audio</label>
                     <label className="large-label" htmlFor="customFile">
                       <input
                         type="file"
@@ -469,9 +493,9 @@ function Answers() {
                   <div className="uploaded_text">
                     {uploadedTextSound ? (
                       <p>
-                        sound with file name
+                        Audio met bestandsnaam
                         <span className="uploaded_file">{` ${soundUp.name} `}</span>
-                        is uploaded.
+                        is geüpload.
                       </p>
                     ) : (
                       <p></p>
@@ -487,25 +511,30 @@ function Answers() {
                 value={progress}
               ></LinearProgress>
             </div>
-            <div>
-              <Button
-                onClick={handleUpload}
-                className="button_upload shadow-none"
-              >
-                Upload
-              </Button>
-            </div>
-            <div>
-              <Button
-                type="submit"
-                className="button_upload shadow-none"
-                variant="primary"
-                onClick={() => {
-                  send();
-                }}
-              >
-                Submit
-              </Button>
+            <div className="two_Buttons">
+              <div style={{ margin: "20px" }}>
+                <button
+                  onClick={handleUpload}
+                  className="button_upload shadow-none"
+                >
+                  Uploaden
+                </button>
+              </div>
+
+              {visible ? (
+                <div style={{ margin: "20px" }}>
+                  <button
+                    type="submit"
+                    className="button_upload shadow-none"
+                    variant="primary"
+                    onClick={() => {
+                      send();
+                    }}
+                  >
+                    Verzenden
+                  </button>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

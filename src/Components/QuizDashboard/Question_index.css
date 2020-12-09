@@ -290,6 +290,11 @@ svg {
   width: 100%;
 }
 
+.modal-footer {
+  display: flex;
+  justify-content: center !important;
+}
+
 @media (max-width: 768px) {
   .row2 {
     display: inline-block !important;
@@ -372,7 +377,7 @@ svg {
 
   .modal-footer {
     display: flex;
-    justify-content: center;
+    justify-content: center !important;
   }
 
   .btn:not(:disabled):not(.disabled) {

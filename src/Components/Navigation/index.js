@@ -53,7 +53,7 @@ function Navigation() {
     <header>
       <div className="top-bar">
         <div className="information_area">
-          Contact us on 012345678 or
+          Neem contact op via
           <a href="contacts"> info@kidsonline.nl</a>
         </div>
         <div className="login_area">
@@ -61,7 +61,7 @@ function Navigation() {
             {gebruikerToken ? null : (
               <li>
                 <a className="register" href="signUp">
-                  Register
+                  Aanmelden
                 </a>
               </li>
             )}
@@ -74,7 +74,7 @@ function Navigation() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Navbar.Brand className="Title" bg="red" href="/">
           Kids Online
-          <p className="subTitle">Online school for our children</p>
+          <p className="subTitle">Online school voor onze kinderen</p>
         </Navbar.Brand>
         <button
           className="navbar-toggler"
@@ -93,10 +93,10 @@ function Navigation() {
               Home <span className="sr-only"></span>
             </a>
             <a className="nav-item nav-link" href="colors">
-              Colors
+              Leer de Kleuren
             </a>
             <a className="nav-item nav-link" href="TicTacToe">
-              TicTacToe
+              Boter kaas en eieren
             </a>
             <a className="nav-item nav-link" href="Memory">
               Memory
@@ -126,7 +126,7 @@ function Navigation() {
               {gebruikerToken ? null : (
                 <li>
                   <a className="register" href="signUp">
-                    Register
+                    Aanmelden
                   </a>
                 </li>
               )}

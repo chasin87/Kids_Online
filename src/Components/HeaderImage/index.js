@@ -39,7 +39,7 @@ export default function HeaderImage() {
       />
       <div className="header-img">
         <h1 className="header_text">
-          Learn and have fun playing on Kids online
+          Leer met plezier met de spelen op Kids online
           <Link className="linkLesson" to={{ pathname: `/login` }}>
             <div className="headerImage_Button">Speel de Quiz</div>
           </Link>

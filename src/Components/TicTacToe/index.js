@@ -48,12 +48,12 @@ function Board() {
   let status;
   const winner = calculateWinner(boardSquares);
   status = winner
-    ? `Winner is ${winner}`
-    : `Next player: ${xIsNext ? "X" : "O"}`;
+    ? `De winaar is ${winner}`
+    : `${xIsNext ? "X" : "O"} is aan de beurt`;
 
   return (
     <div className="container_ttt">
-      <div className="title_tictactoe">TicTacToe</div>
+      <div className="title_tictactoe">Boter kaas en eieren</div>
       <div className="status">{status}</div>
       <div className="board-row">
         {renderSquare(0)}
@@ -73,7 +73,7 @@ function Board() {
 
       <div className="butts">
         <button className="resetButton" onClick={resetClick}>
-          Reset
+          Speel Opnieuw
         </button>
       </div>
     </div>

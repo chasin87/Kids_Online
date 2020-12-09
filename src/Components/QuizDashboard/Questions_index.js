@@ -125,12 +125,12 @@ export default function QuizQuestions() {
                   d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"
                 />
               </svg>
-              Back to dashboard
+              Terug naar dashboard
             </Link>
           </div>
           <div className="next_to">
             <Link className="link_next" to="/Add_Question">
-              Go to Add Question
+              Nieuwe vraag toeveoegen
               <svg
                 width="1em"
                 height="1em"
@@ -148,7 +148,7 @@ export default function QuizQuestions() {
           </div>
         </div>
 
-        <div className="container_title">Quiz Questions</div>
+        <div className="container_title">Quiz Vragen</div>
 
         <div
           className="row"
@@ -157,7 +157,7 @@ export default function QuizQuestions() {
           <div className="dropdown_container col-sm-12 col-md-4 col-lg-4">
             <div>
               {" "}
-              <label>Question Category</label>
+              <label>Vraag Categorie</label>
             </div>
 
             <div className="input-group mb-3">
@@ -178,7 +178,7 @@ export default function QuizQuestions() {
           <div className="dropdown_container col-sm-12 col-md-4 col-lg-4">
             <div>
               {" "}
-              <label>Question Level</label>
+              <label>Vraag Level</label>
             </div>
             <div className="input-group mb-3">
               <select
@@ -198,7 +198,7 @@ export default function QuizQuestions() {
           <div className="dropdown_container col-sm-12 col-md-4 col-lg-4">
             <div>
               {" "}
-              <label>Question Status</label>
+              <label>Vraag Status</label>
             </div>
             <div className="input-group mb-3">
               <select
@@ -208,8 +208,8 @@ export default function QuizQuestions() {
                 onChange={(e) => setQuestStatus(e.target.value)}
               >
                 <option defaultValue="">All</option>
-                <option value="true">Questions Completed</option>
-                <option value="false">Questions Not Completed</option>
+                <option value="true">Vragen Compleet</option>
+                <option value="false">Vragen Niet Compleet</option>
               </select>
               <div className="input-group-append"></div>
             </div>
@@ -222,7 +222,7 @@ export default function QuizQuestions() {
               className="setSortUp shadow-none"
               onClick={() => setSortUp(true)}
             >
-              ⬆ Sort Up by ID
+              ⬆ Sorteer op eerste ID
             </Button>
           </div>
           <div className="sort_Down col-sm-12 col-md-12 col-lg-3 ">
@@ -230,7 +230,7 @@ export default function QuizQuestions() {
               className="setSortUp shadow-none"
               onClick={() => setSortUp(false)}
             >
-              ⬇ Sort Down by ID
+              ⬇ Sorteer op laatste ID
             </Button>
           </div>{" "}
           <div className=" col-sm-12 col-md-12 col-lg-3"></div>
@@ -291,7 +291,7 @@ export default function QuizQuestions() {
                       <h5 className="complete_question">
                         <div>
                           {quest.questionComplete ? (
-                            <Badge variant="success">Question Complete</Badge>
+                            <Badge variant="success">Vraag Compleet</Badge>
                           ) : (
                             <Link to="/answers">
                               <Badge
@@ -304,7 +304,7 @@ export default function QuizQuestions() {
                                   );
                                 }}
                               >
-                                Missing Answers
+                                Ontbrekende antwoorden
                               </Badge>
                             </Link>
                           )}
@@ -312,7 +312,7 @@ export default function QuizQuestions() {
                       </h5>
 
                       <AudioPlayer
-                        header="Question Sound"
+                        header="Vraag Audio"
                         src={quest.questionSound}
                         showJumpControls={false}
                         customAdditionalControls={[]}
@@ -329,7 +329,7 @@ export default function QuizQuestions() {
                           setQuestion(quest.question);
                         }}
                       >
-                        Answers
+                        Antwoorden
                       </Button>
                     </div>
 
@@ -337,7 +337,7 @@ export default function QuizQuestions() {
                       <Modal centered show={show} onHide={handleClose}>
                         <Modal.Header className="header_modal_answer">
                           <Modal.Title>
-                            Answers for
+                            Antwoorden voor
                             <br />
                             {question}
                           </Modal.Title>
@@ -364,7 +364,7 @@ export default function QuizQuestions() {
                                             ID: {answer.id}
                                           </div>
                                           <div className="answer_text">
-                                            Answer
+                                            Antwoord
                                           </div>
                                           <div className="answer_text_value">
                                             {answer.answer}
@@ -414,9 +414,11 @@ export default function QuizQuestions() {
                   </div>
                   <Modal centered show={confirm}>
                     <Modal.Header className="header_modal_answer">
-                      <Modal.Title>Delete question</Modal.Title>
+                      <Modal.Title>Vraag verwijderen</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Are you sure you want to delete it?</Modal.Body>
+                    <Modal.Body>
+                      Weet u zeker dat u het wilt verwijderen?
+                    </Modal.Body>
                     <Modal.Footer>
                       <Button
                         variant="secondary"
@@ -424,7 +426,7 @@ export default function QuizQuestions() {
                           delete_question(quest.id, e);
                         }}
                       >
-                        Yes
+                        Ja
                       </Button>
                       <Button
                         variant="secondary"
@@ -432,7 +434,7 @@ export default function QuizQuestions() {
                           setConfirm(false);
                         }}
                       >
-                        No
+                        Nee
                       </Button>
                     </Modal.Footer>
                   </Modal>

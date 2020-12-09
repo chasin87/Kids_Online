@@ -64,12 +64,11 @@ export default function Add_Question() {
 
   //quesion text and imageUrl post to Db
   const send = (event) => {
-    console.log("this is", event);
     if (question === "" || imageUp === " " || cat === "" || level === null) {
-      return alert("Please fill all questions and upload all files");
+      return alert("Vul alle vragen in en upload alle bestanden");
     } else {
       if (images.length === 0 || sounds.length === 0) {
-        return alert("Please upload all files");
+        return alert("Upload eerst alle bestanden");
       } else {
         // const progress = Math.round((100 * event.loaded) / event.total);
         // setProgress(progress);
@@ -92,7 +91,7 @@ export default function Add_Question() {
   //image upload to firebase
   const handleUpload = () => {
     if (imageUp.length === 0) {
-      alert("Please choose a image file...");
+      alert("Kies een afbeeldingsbestand ...");
     } else {
       const uploadTask = storage.ref(`images/${imageUp.name}`).put(imageUp);
       uploadTask.on(
@@ -135,7 +134,7 @@ export default function Add_Question() {
   //sound upload to firebase
   const handleUploadSound = () => {
     if (soundUp.length === 0) {
-      alert("Please choose a sound file...");
+      alert("Kies een geluidsbestand ...");
     } else {
       const uploadTask = storage.ref(`sounds/${soundUp.name}`).put(soundUp);
       uploadTask.on(
@@ -193,12 +192,12 @@ export default function Add_Question() {
                 d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"
               />
             </svg>
-            Back to questions
+            Terug naar de vragen
           </Link>
         </div>
         <div className="next_to">
           <Link className="link_next" to="/QuizDashboard">
-            Go to dashboard
+            Ga naar de dashboard
             <svg
               width="1em"
               height="1em"
@@ -215,21 +214,21 @@ export default function Add_Question() {
           </Link>
         </div>
       </div>
-      <div className="container_title">Add Questions</div>
+      <div className="container_title">Nieuwe Vraag</div>
       <Modal centered show={show}>
         <Modal.Header className="header_modal">
-          <Modal.Title>Question Uploaded!</Modal.Title>
+          <Modal.Title>Vraag geüpload!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>All your text and files are uploaded</Modal.Body>
+        <Modal.Body>Al uw tekst en bestanden zijn geüpload</Modal.Body>
         <Modal.Footer>
           <div className="button_Finish_Question">
             <Button variant="secondary">
-              <Link to="/answers">Go to add Answers</Link>
+              <Link to="/answers">Antwoorden toevoegen</Link>
             </Button>
           </div>
           <div className="button_Finish_Question">
             <Button variant="secondary" onClick={handleClose}>
-              Add one more question
+              Nieuwe vraag toevoegen
             </Button>
           </div>
         </Modal.Footer>
@@ -237,12 +236,12 @@ export default function Add_Question() {
       <div className="question_part">
         <div className="Form">
           <Form.Group>
-            <label>Question in text</label>
+            <label>Vraag in tekst</label>
             <Input
               type="text"
               name="text"
               id="question_main"
-              placeholder="Enter your question in text"
+              placeholder="Typ uw vraag in tekst"
               onChange={inputChange}
               value={question}
             />
@@ -251,7 +250,7 @@ export default function Add_Question() {
             <div className="row">
               <div className="imageUpload col-sm-12 col-md-6 col-lg-6">
                 <FormGroup>
-                  <label>Question Image</label>
+                  <label>Vraag Afbeelding</label>
                   <label className="large-label" htmlFor="customFile">
                     <input
                       type="file"
@@ -268,9 +267,9 @@ export default function Add_Question() {
                 <div className="uploaded_text">
                   {uploadedText ? (
                     <p>
-                      image with file name
+                      Afbeelding met bestandsnaam
                       <span className="uploaded_file">{` ${imageUp.name} `}</span>
-                      is uploaded.
+                      is geüpload.
                     </p>
                   ) : (
                     <p></p>
@@ -281,7 +280,7 @@ export default function Add_Question() {
               {/* SoundUpload */}
               <div className="soundUpload col-sm-12 col-md-6 col-lg-6">
                 <FormGroup>
-                  <label>Question Sound</label>
+                  <label>Vraag Audio</label>
                   <label className="large-label" htmlFor="customFile">
                     <input
                       type="file"
@@ -297,9 +296,9 @@ export default function Add_Question() {
                 <div className="uploaded_text">
                   {uploadedTextSound ? (
                     <p>
-                      sound with file name
+                      Audio met file bestandsnaam
                       <span className="uploaded_file">{` ${soundUp.name} `}</span>
-                      is uploaded.
+                      is geüpload.
                     </p>
                   ) : (
                     <p></p>
@@ -316,7 +315,7 @@ export default function Add_Question() {
                   onClick={handleUpload}
                   className="button_upload shadow-none"
                 >
-                  Upload
+                  Uploaden
                 </Button>
               </div>
             </div>
@@ -325,7 +324,7 @@ export default function Add_Question() {
               <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
                 <div>
                   {" "}
-                  <label>Question Category</label>
+                  <label>Vraag Categorie</label>
                 </div>
                 <div className="input-group mb-3">
                   <select
@@ -334,7 +333,7 @@ export default function Add_Question() {
                     value={cat}
                     onChange={catChange}
                   >
-                    <option defaultValue=" ">Category</option>
+                    <option defaultValue=" ">Categorie</option>
                     <option value="Rijmen">Rijmen</option>
                     <option value="Rekenen">Rekenen</option>
                     <option value="Kleuren">Kleuren</option>
@@ -352,7 +351,7 @@ export default function Add_Question() {
               <div className="dropdown_container col-sm-12 col-md-6 col-lg-6">
                 <div>
                   {" "}
-                  <label>Question Level</label>
+                  <label>Vraag Level</label>
                 </div>
                 <div className="input-group mb-3">
                   <select
@@ -385,7 +384,7 @@ export default function Add_Question() {
                 send();
               }}
             >
-              Submit
+              Verzenden
             </Button>
             <hr />
           </Form.Group>

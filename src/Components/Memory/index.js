@@ -9,7 +9,7 @@ export default function Flip() {
   const [matchArray, setMatchArray] = useState([]);
   const [firstCard, setFirstCard] = useState([]);
   const [secondCard, setSecondCard] = useState([]);
-  const [message, setMessage] = useState(["Let's Play, Memory"]);
+  const [message, setMessage] = useState(["Laten we memory spelen"]);
   const [click, setClick] = useState(true);
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(0);
@@ -50,7 +50,7 @@ export default function Flip() {
             array.sort(() => Math.random() - 0.5);
           };
           shuffle(animals);
-          setMessage(["Let's Play, Memory"]);
+          setMessage(["Laten we memory spelen"]);
         }, 300)
       );
     });
@@ -111,7 +111,7 @@ export default function Flip() {
       }
     });
 
-    setMessage(["You've got a match,"]);
+    setMessage(["Je hebt een match"]);
     setCount(count + 1);
     setFirstCard([]);
     setSecondCard([]);
@@ -120,7 +120,7 @@ export default function Flip() {
     setClick(true);
   } else if (set === 1 && JSON.stringify(firstt) !== JSON.stringify(secondd)) {
     setTimeout(() => {
-      setMessage(["oops!, thats not a Match"]);
+      setMessage(["oeps!, dat is geen match"]);
       setFirstCard([]);
       setSecondCard([]);
       setMatchArray([]);
@@ -150,16 +150,17 @@ export default function Flip() {
             <div className="Cards_In">
               <Modal centered show={show} onHide={handleClose}>
                 <Modal.Header>
-                  <Modal.Title>Winner!!</Modal.Title>
+                  <Modal.Title>Winaar!!</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you won the game!!</Modal.Body>
+                <Modal.Body>Woohoo, je hebt gewonnen!!</Modal.Body>
                 <Modal.Footer>
                   <Button
                     className="button_Memory"
                     variant="secondary"
                     onClick={handleClose}
+                    style={{ margin: "auto" }}
                   >
-                    Play again
+                    Speel Opnieuw
                   </Button>
                 </Modal.Footer>
               </Modal>
@@ -198,7 +199,7 @@ export default function Flip() {
               resetClick();
             }}
           >
-            Reset
+            Speel Opnieuw
           </button>
         </div>
       </div>

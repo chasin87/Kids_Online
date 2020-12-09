@@ -11,7 +11,7 @@ import Groen from "../../Sounds/Groen.mp3";
 import Bruin from "../../Sounds/Bruin.mp3";
 import Oranje from "../../Sounds/Oranje.mp3";
 import Paars from "../../Sounds/Paars.mp3";
-import Roos from "../../Sounds/Roos.mp3";
+import Roze from "../../Sounds/Roze.mp3";
 import Wit from "../../Sounds/Wit.mp3";
 import Zwart from "../../Sounds/Zwart.mp3";
 
@@ -26,14 +26,14 @@ export default function ColorBox() {
   const [playBrown] = useSound(Bruin, { volume: 0.25 });
   const [playOrange] = useSound(Oranje, { volume: 0.25 });
   const [playPurple] = useSound(Paars, { volume: 0.25 });
-  const [playPink] = useSound(Roos, { volume: 0.25 });
+  const [playPink] = useSound(Roze, { volume: 0.25 });
   const [playWhite] = useSound(Wit, { volume: 0.25 });
   const [playBlack] = useSound(Zwart, { volume: 0.25 });
 
   return (
     <div>
       <div className="container">
-        <div className="title">Color Box</div>
+        <div className="title">Leer de Kleuren</div>
 
         <div className="game_status"></div>
         <div className="ColorBox">

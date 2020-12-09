@@ -140,7 +140,7 @@
 .resetButton {
   background-color: tomato;
   color: #fff;
-  width: 50%;
+  width: 90%;
   margin: 20px auto;
   border-radius: 5px;
   font-size: 50px;
@@ -159,7 +159,7 @@
   background-color: tomato;
   color: #fff;
   /* padding: 1em; */
-  width: 50%;
+  width: 90%;
   margin-top: 20px;
   border-radius: 5px;
   font-size: 50px;
@@ -174,7 +174,7 @@
 
 @media (max-width: 991px) {
   .container_ttt {
-    max-width: 70%;
+    max-width: 80%;
   }
 
   .board-row {
@@ -187,7 +187,7 @@
   }
 
   .title_tictactoe {
-    width: 70%;
+    width: 90%;
     font-size: 2em;
     text-align: center;
     justify-content: center;
@@ -206,7 +206,7 @@
   }
 
   .resetButton {
-    width: 70%;
+    width: 90%;
     font-size: 2em;
     text-align: center;
     justify-content: center;

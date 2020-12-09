@@ -24,13 +24,13 @@ export default function DashBoard() {
       <p className="title">QUIZ DASHBOARD</p>
       <div className="tegels_all">
         <Link className="link_question" to="/QuizQuestions">
-          <button className="tegels_question">Questions</button>
+          <button className="tegels_question">Vragen</button>
         </Link>
         <Link className="link_add_question" to="/Add_Question">
-          <button className="tegels_add_question">Add Question</button>
+          <button className="tegels_add_question">Nieuwe vraag</button>
         </Link>
         <Link className="link_add_answers" to="/Answers">
-          <button className="tegels_add_answers">Add Answers</button>
+          <button className="tegels_add_answers">Nieuwe Antwoorden</button>
         </Link>
       </div>
     </div>
