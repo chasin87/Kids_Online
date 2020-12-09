@@ -42,7 +42,6 @@ export default function QuizGameScreen() {
     <div className="prev_Page_Quiz">
       <div className="prev_Quiz">
         <div className="prev_Content">
-          <h2 className="lesson_h2">{lesson}</h2>
           {visible ? (
             <div className="rekenen">
               <Link
@@ -53,9 +52,12 @@ export default function QuizGameScreen() {
               </Link>
             </div>
           ) : (
-            <div className="rekenen">
-              <Loading />
-              {loading}
+            <div>
+              <h2 className="lesson_h2">{lesson}</h2>
+              <div className="rekenen">
+                <Loading />
+                {loading}
+              </div>
             </div>
           )}
         </div>

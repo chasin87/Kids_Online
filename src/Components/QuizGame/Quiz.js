@@ -102,13 +102,17 @@ export default function Quiz() {
     } else {
       setClasserFalse(index);
       playFalseSound();
-      setVisible(true);
       setNextProgress(nextProgress + 1);
       const progress = Math.round(
         (nextProgress / filteredQuestions.length) * 100
       );
       setProgress(progress);
       setAnserwerGiven(true);
+      if (nextProgress === filteredQuestions.length) {
+        setVisibleLast(true);
+      } else {
+        setVisible(true);
+      }
     }
   };
 
@@ -145,8 +149,8 @@ export default function Quiz() {
   if (loading) {
     return (
       <div className="loader">
-        <Loading />
         <h4 className="loading_Text">Ben je klaar om te beginnen?</h4>
+        <Loading />
       </div>
     );
   }
@@ -203,29 +207,28 @@ export default function Quiz() {
                     <div
                       className="col-sm-12 col-md-5 col-lg-5 answer"
                       key={index}
-                      style={{ width: "90%" }}
+                      // style={{ width: "90%" }}
                     >
-                      <div>
-                        <img
-                          className={`answer_Image ${
-                            classer === index
-                              ? "answer_Image_Correct"
-                              : classerFalse === index
-                              ? "answer_Image_False"
-                              : "answer_Image"
-                          }`}
-                          src={ans.answerImage}
-                          alt={"answer_Image"}
-                        />
-                      </div>
-                      <div>
-                        <VolumeUpIcon
-                          key={index}
-                          className="answer_Image_sound"
-                          onClick={() => {
-                            player(index);
-                          }}
-                        />
+                      <img
+                        className={`answer_Image ${
+                          classer === index
+                            ? "answer_Image_Correct"
+                            : classerFalse === index
+                            ? "answer_Image_False"
+                            : "answer_Image"
+                        }`}
+                        src={ans.answerImage}
+                        alt={"answer_Image"}
+                      />
+
+                      <div
+                        key={index}
+                        className="answer_Image_sound"
+                        onClick={() => {
+                          player(index);
+                        }}
+                      >
+                        <VolumeUpIcon />
                       </div>
                     </div>
                   );
@@ -244,6 +247,7 @@ export default function Quiz() {
                     <div
                       className="col-sm-12 col-md-5 col-lg-5 answer"
                       key={index}
+                      // style={{ width: "90%" }}
                     >
                       <img
                         // key={index}
