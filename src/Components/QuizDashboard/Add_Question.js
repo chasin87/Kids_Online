@@ -80,7 +80,7 @@ export default function Add_Question() {
         data.append("questionLevel", level);
         data.append("questionComplete", status);
 
-        Axios.post("http://localhost:8888/upload", data)
+        Axios.post("https://kids-online.herokuapp.com/upload", data)
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
         setShow(true);

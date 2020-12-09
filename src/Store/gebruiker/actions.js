@@ -36,7 +36,7 @@ export const gebruikerLogin = (email, password) => {
       });
 
       dispatch(gebruikerLoginSuccess(response.data));
-      dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
+      dispatch(showMessageWithTimeout("success", false, "Welkom terug!", 1500));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -92,7 +92,9 @@ export const gebruikerRegistratie = (userName, email, password, level) => {
       });
 
       dispatch(gebruikerLoginSuccess(response.data));
-      dispatch(showMessageWithTimeout("success", true, "account created"));
+      dispatch(
+        showMessageWithTimeout("success", true, "Registratie Succesvol")
+      );
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

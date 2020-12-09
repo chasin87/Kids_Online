@@ -93,16 +93,20 @@ export default function QuizQuestions() {
   };
 
   const delete_question = () => {
-    Axios.delete(`http://localhost:8888/upload/${idToDelete}`).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      dispatch(fetchQuizList());
-    });
-    Axios.delete(`http://localhost:8888/answer/${idToDelete}`).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      dispatch(fetchAnswerList());
-    });
+    Axios.delete(`https://kids-online.herokuapp.com/upload/${idToDelete}`).then(
+      (res) => {
+        console.log(res);
+        console.log(res.data);
+        dispatch(fetchQuizList());
+      }
+    );
+    Axios.delete(`https://kids-online.herokuapp.com/answer/${idToDelete}`).then(
+      (res) => {
+        console.log(res);
+        console.log(res.data);
+        dispatch(fetchAnswerList());
+      }
+    );
     setConfirm(false);
   };
 

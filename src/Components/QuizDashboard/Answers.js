@@ -113,7 +113,7 @@ function Answers() {
           data.append("quizId", defId);
           data.append("isCorrect", checkAnswer);
 
-          Axios.post("http://localhost:8888/answer", data)
+          Axios.post("https://kids-online.herokuapp.com/answer", data)
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
         }
