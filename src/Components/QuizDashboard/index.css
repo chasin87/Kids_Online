@@ -48,8 +48,8 @@
   .tegels_add_question,
   .tegels_question,
   .tegels_add_answers {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
     font-size: 20px;
     margin: 5px;
   }

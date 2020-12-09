@@ -203,27 +203,29 @@ export default function Quiz() {
                     <div
                       className="col-sm-12 col-md-5 col-lg-5 answer"
                       key={index}
+                      style={{ width: "90%" }}
                     >
-                      <img
-                        className={`answer_Image ${
-                          classer === index
-                            ? "answer_Image_Correct"
-                            : classerFalse === index
-                            ? "answer_Image_False"
-                            : "answer_Image"
-                        }`}
-                        src={ans.answerImage}
-                        alt={"answer_Image"}
-                      />
-
-                      <div
-                        key={index}
-                        className="answer_Image_sound"
-                        onClick={() => {
-                          player(index);
-                        }}
-                      >
-                        <VolumeUpIcon />
+                      <div>
+                        <img
+                          className={`answer_Image ${
+                            classer === index
+                              ? "answer_Image_Correct"
+                              : classerFalse === index
+                              ? "answer_Image_False"
+                              : "answer_Image"
+                          }`}
+                          src={ans.answerImage}
+                          alt={"answer_Image"}
+                        />
+                      </div>
+                      <div>
+                        <VolumeUpIcon
+                          key={index}
+                          className="answer_Image_sound"
+                          onClick={() => {
+                            player(index);
+                          }}
+                        />
                       </div>
                     </div>
                   );

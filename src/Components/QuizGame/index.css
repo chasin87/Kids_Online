@@ -169,6 +169,7 @@ Button:active {
   border-radius: 50%;
   margin-top: 10px;
   margin-bottom: 10px;
+  align-self: flex-start;
 }
 
 .answer_Image img {
@@ -272,18 +273,23 @@ Button:active {
   text-align: center;
 }
 
-/* @media (max-width: 991px) {
+@media (max-width: 991px) {
   .main_Page_Quiz {
     height: 100%;
   }
 
   .inhoud_Quiz {
     width: 90%;
+    margin-top: 2px;
   }
 
   .answer_Image {
-    width: 40%;
+    width: 50%;
     height: auto;
+  }
+  .answer_Image_sound {
+    width: 30%;
+    border-radius: 4px;
   }
 
   .gebruikerNaam {
@@ -296,7 +302,7 @@ Button:active {
 }
 @media (max-width: 767px) {
   .gebruikerNaam {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .answer {
@@ -304,7 +310,8 @@ Button:active {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
   }
   .answer_Image {
-    width: 40%;
+    width: 50%;
+    height: auto;
     margin: 10px auto;
   }
 
@@ -320,4 +327,4 @@ Button:active {
   .rekenen Button {
     width: 90% !important;
   }
-} */
+}
