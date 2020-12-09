@@ -154,12 +154,6 @@ export default function Quiz() {
   return (
     <div className="main_Page_Quiz">
       {showScore ? (
-        // <div>
-        //   <h2>SHOW SCORE</h2>
-        //   <h2>
-        //     Je hebt {score} van de {filteredQuestions.length} goed.
-        //   </h2>
-        // </div>
         <ShowScore
           score={score}
           filteredQuestionsLength={filteredQuestions.length}

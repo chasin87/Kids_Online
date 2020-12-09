@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import bg from "../../Images/bg.png";
 import wolken1 from "../../Images/wolken1.png";
 import wolken2 from "../../Images/wolken2.png";
@@ -39,7 +40,11 @@ export default function HeaderImage() {
       <div className="header-img">
         <h1 className="header_text">
           Learn and have fun playing on Kids online
+          <Link className="linkLesson" to={{ pathname: `/login` }}>
+            <div className="headerImage_Button">Speel de Quiz</div>
+          </Link>
         </h1>
+
         <img src={bg} alt="background" style={{ width: "100%" }} />
       </div>
     </div>
