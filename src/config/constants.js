@@ -3,4 +3,4 @@ export const apiUrl =
 export const DEFAULT_MESSAGE_TIMEOUT = 3000;
 
 // "http://localhost:8888"
-// "https://kids-online.herokuapp.com"
+// "https://kids-online.herokuapp.com "
