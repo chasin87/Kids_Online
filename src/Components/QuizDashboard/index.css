@@ -54,3 +54,15 @@
     margin: 5px;
   }
 }
+
+@media (max-width: 400px) {
+  .tegels_all {
+    flex-direction: column;
+  }
+
+  .link_question,
+  .link_add_question,
+  .link_add_answers {
+    margin: auto;
+  }
+}
