@@ -73,10 +73,25 @@ function Navigation() {
         </div>
       </div>
 
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Navbar.Brand className="Title" bg="red" href="/">
+      <nav
+        className="navbar navbar-expand-lg navbar-light bg-light"
+        style={{
+          display: "inline-grid",
+          width: "100%",
+          textAlign: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Navbar.Brand
+          className="Title"
+          bg="red"
+          href="/"
+          style={{ margin: "0px", width: "100%" }}
+        >
           Kids Online
-          <p className="subTitle">Online school voor onze kinderen</p>
+          <p className="subTitle" style={{ textAlign: "center" }}>
+            Online school voor onze kinderen
+          </p>
         </Navbar.Brand>
         <button
           className="navbar-toggler"
