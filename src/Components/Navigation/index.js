@@ -53,8 +53,10 @@ function Navigation() {
     <header>
       <div className="top-bar">
         <div className="information_area">
-          Neem contact op via
-          <a href="contacts"> info@kidsonline.nl</a>
+          <div>Neem contact op via &nbsp;</div>
+          <div>
+            <a href="contacts"> info@kidsonline.nl</a>
+          </div>
         </div>
         <div className="login_area">
           <ul>
