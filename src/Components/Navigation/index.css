@@ -199,12 +199,30 @@ li {
     width: 100%;
   }
 
+  .navbar-toggler {
+    margin-top: -10px;
+  }
+
   .navbar-light .navbar-nav .nav-link.active {
     font-size: 6vw;
   }
 
   .navbar-light .navbar-nav .nav-link {
     font-size: 6vw;
+  }
+
+  .navbar {
+    padding: 0px;
+  }
+
+  .Title {
+    font-size: 35px !important;
+    margin: 0;
+    vertical-align: middle !important;
+    margin-top: -10px !important;
+    margin-left: 1%;
+    margin-bottom: -1%;
+    /* margin-right: auto; */
   }
 }
 
