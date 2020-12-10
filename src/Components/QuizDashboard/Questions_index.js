@@ -246,7 +246,7 @@ export default function QuizQuestions() {
             className="row"
             style={{ margin: "auto", marginTop: "50px", width: "96%" }}
           >
-            {sorted.map((quest, sort) => {
+            {sorted.map((quest, sort, index) => {
               return (
                 <div className="col-sm-12 col-md-6 col-xl-4" key={quest.id}>
                   <div className="card">
@@ -327,8 +327,8 @@ export default function QuizQuestions() {
                       />
                       <Button
                         className="answer_button"
-                        onClick={(id, question) => {
-                          showAnswers();
+                        onClick={() => {
+                          showAnswers(quest.id);
                           setIds(quest.id);
                           setQuestion(quest.question);
                         }}
@@ -338,82 +338,88 @@ export default function QuizQuestions() {
                     </div>
 
                     <div>
-                      <Modal centered show={show} onHide={handleClose}>
-                        <Modal.Header className="header_modal_answer">
-                          <Modal.Title>
-                            Antwoorden voor
-                            <br />
-                            {question}
-                          </Modal.Title>
-                        </Modal.Header>
-                        {Answers.length < 1 ? (
-                          <Loading />
-                        ) : (
-                          <div>
-                            {Answers.map((answer) => {
-                              if (ids === answer.quizId) {
-                                return (
-                                  <Modal.Body>
-                                    <div key={answer.id}>
-                                      <div className="row">
-                                        <div className="answer_image col-sm-6">
-                                          <img
-                                            className="question_image_answer question_info"
-                                            src={answer.answerImage}
-                                            alt="answerImage"
-                                          />
-                                        </div>
-                                        <div className=" col-sm-6">
-                                          <div className="answer_id">
-                                            ID: {answer.id}
+                      {ids === quest.id ? (
+                        <Modal centered show={show} onHide={handleClose}>
+                          <Modal.Header className="header_modal_answer">
+                            <Modal.Title>
+                              Antwoorden voor
+                              <br />
+                              {question}
+                            </Modal.Title>
+                          </Modal.Header>
+                          {Answers.length < 1 ? (
+                            <Loading />
+                          ) : (
+                            <div>
+                              {Answers.map((answer, index) => {
+                                if (ids === answer.quizId) {
+                                  return (
+                                    <Modal.Body>
+                                      <div key={answer.id}>
+                                        <div className="row">
+                                          <div className="answer_image col-sm-6">
+                                            <img
+                                              className="question_image_answer question_info"
+                                              src={answer.answerImage}
+                                              alt="answerImage"
+                                            />
                                           </div>
-                                          <div className="answer_text">
-                                            Antwoord
-                                          </div>
-                                          <div className="answer_text_value">
-                                            {answer.answer}
-                                          </div>
-                                          <div className="correct_box">
-                                            <div className="answer_isCorrect">
-                                              Correct
+                                          <div className=" col-sm-6">
+                                            <div className="answer_id">
+                                              ID: {answer.id}
                                             </div>
-                                            {answer.isCorrect ? (
-                                              <div className="answer_isCorrect_value_correct">
-                                                {answer.isCorrect.toString()}
+                                            <div className="answer_text">
+                                              Antwoord
+                                            </div>
+                                            <div className="answer_text_value">
+                                              {answer.answer}
+                                            </div>
+                                            <div className="correct_box">
+                                              <div className="answer_isCorrect">
+                                                Correct
                                               </div>
-                                            ) : (
-                                              <div className="answer_isCorrect_value_false">
-                                                {answer.isCorrect.toString()}
-                                              </div>
-                                            )}
+                                              {answer.isCorrect ? (
+                                                <div className="answer_isCorrect_value_correct">
+                                                  {answer.isCorrect === true
+                                                    ? "Goed"
+                                                    : null}
+                                                </div>
+                                              ) : (
+                                                <div className="answer_isCorrect_value_false">
+                                                  {answer.isCorrect === false
+                                                    ? "Fout"
+                                                    : null}
+                                                </div>
+                                              )}
+                                            </div>
                                           </div>
                                         </div>
+                                        <AudioPlayer
+                                          header="Antwoord Audio"
+                                          src={answer.answerSound}
+                                          showJumpControls={false}
+                                          customAdditionalControls={[]}
+                                          showDownloadProgress={false}
+                                          layout="horizontal"
+                                          customVolumeControls={[]}
+                                        />
                                       </div>
-                                      <AudioPlayer
-                                        header="Question Sound"
-                                        src={answer.answerSound}
-                                        showJumpControls={false}
-                                        customAdditionalControls={[]}
-                                        showDownloadProgress={false}
-                                        layout="horizontal"
-                                        customVolumeControls={[]}
-                                      />
-                                    </div>
-                                  </Modal.Body>
-                                );
-                              } else {
-                                return false;
-                              }
-                            })}
-                          </div>
-                        )}
-                        <Modal.Footer>
-                          {" "}
-                          <Button variant="secondary" onClick={handleClose}>
-                            Close
-                          </Button>
-                        </Modal.Footer>
-                      </Modal>
+                                    </Modal.Body>
+                                  );
+                                } else {
+                                  return false;
+                                }
+                              })}
+                            </div>
+                          )}
+                          <Modal.Footer>
+                            {" "}
+                            <Button variant="secondary" onClick={handleClose}>
+                              Sluiten
+                            </Button>
+                          </Modal.Footer>
+                        </Modal>
+                      ) : null}
                     </div>
                   </div>
                   <Modal centered show={confirm}>
@@ -424,22 +430,26 @@ export default function QuizQuestions() {
                       Weet u zeker dat u het wilt verwijderen?
                     </Modal.Body>
                     <Modal.Footer>
-                      <Button
-                        variant="secondary"
-                        onClick={(e) => {
-                          delete_question(quest.id, e);
-                        }}
-                      >
-                        Ja
-                      </Button>
-                      <Button
-                        variant="secondary"
-                        onClick={() => {
-                          setConfirm(false);
-                        }}
-                      >
-                        Nee
-                      </Button>
+                      <div id="delete_Buttons_Modal">
+                        <Button
+                          variant="secondary"
+                          onClick={(e) => {
+                            delete_question(quest.id, e);
+                          }}
+                        >
+                          Ja
+                        </Button>
+                      </div>
+                      <div id="delete_Buttons_Modal">
+                        <Button
+                          variant="secondary"
+                          onClick={() => {
+                            setConfirm(false);
+                          }}
+                        >
+                          Nee
+                        </Button>
+                      </div>
                     </Modal.Footer>
                   </Modal>
                 </div>
