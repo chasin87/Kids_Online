@@ -101,12 +101,11 @@ li {
 .navbar {
   z-index: 1;
   background-color: white !important;
+  padding: 1.8rem;
 }
 
 .navbar-nav a:hover {
-  color: whitesmoke !important;
-  background-color: #1f5967 !important;
-  border-radius: 5px;
+  color: #ff5722 !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -114,7 +113,7 @@ li {
 }
 
 .Title {
-  font-size: 80px !important;
+  font-size: 50px !important;
   font-weight: 600;
   color: #f43f5a !important;
   font-family: "Rajdhani", sans-serif;
@@ -126,7 +125,7 @@ li {
 }
 
 .subTitle {
-  font-size: 19px;
+  font-size: 15px;
   font-family: "Rajdhani", sans-serif;
   color: #1f5967;
   margin-top: -19px;

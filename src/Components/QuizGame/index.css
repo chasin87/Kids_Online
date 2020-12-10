@@ -5,7 +5,7 @@
 .main_Page_Quiz {
   background-color: #f8f9fabf;
   padding: 20px 0px;
-  height: 100vh;
+  height: 110vh;
   color: #f43f5a;
   user-select: none;
 }
@@ -46,7 +46,7 @@
   border-radius: 5px;
   text-align: center;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 40px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
 }
@@ -155,7 +155,7 @@ Button:active {
 }
 
 .quest_image {
-  width: 50%;
+  width: 40%;
 }
 
 .quiz_answers {
