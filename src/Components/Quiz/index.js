@@ -58,7 +58,6 @@ export default function Quiz() {
           ) : (
             <Loading />
           )}
-          )
         </div>
       </div>
     </div>

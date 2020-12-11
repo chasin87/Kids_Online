@@ -38,7 +38,6 @@ export default function Quiz() {
 
   const [lesson, setLesson] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
@@ -66,12 +65,6 @@ export default function Quiz() {
     setLesson(setter);
     setLoaded(true);
   }, [dispatch, setter]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
 
   const filteredQuestions = Quizzes.filter((quiz) => {
     return quiz.questionComplete
@@ -146,166 +139,163 @@ export default function Quiz() {
     audioTune.play();
   };
 
-  if (loading) {
-    return (
-      <div className="loader">
-        <h4 className="loading_Text">Ben je klaar om te beginnen?</h4>
-        <Loading />
-      </div>
-    );
-  }
-
   return (
-    <div className="main_Page_Quiz">
-      {showScore ? (
-        <ShowScore
-          score={score}
-          filteredQuestionsLength={filteredQuestions.length}
-          gebruiker={gebruiker.userName.toUpperCase()}
-        />
-      ) : (
-        <div className="inhoud_Quiz">
-          <div className="score_Bar">
-            <div className="gebruikerNaam">
-              <span style={{ fontWeight: "400" }}>Gebruikersnaam: </span>{" "}
-              {gebruiker.userName.toUpperCase()}
-            </div>
-            <div className="progressBar">
-              <LinearProgress
-                variant="determinate"
-                value={progress}
-              ></LinearProgress>
-            </div>
-          </div>
-          <div className="header_Quiz">
-            <div className="col-sm-12 col-md-12 col-lg-12 question_Card">
-              <img
-                className="quest_image"
-                src={filteredQuestions[currentQuestion].questionImage}
-                alt="question_Image"
-              />
-              <h5>{filteredQuestions[currentQuestion].question}</h5>
-              <div
-                key={filteredQuestions[currentQuestion].id}
-                className="question_Image_sound"
-                onClick={() => {
-                  playRekenen(filteredQuestions[currentQuestion].id);
-                }}
-              >
-                <VolumeUpIcon />
+    <div>
+      {Answers.length > 0 && filteredQuestions.length > 0 ? (
+        <div className="main_Page_Quiz">
+          {showScore ? (
+            <ShowScore
+              score={score}
+              filteredQuestionsLength={filteredQuestions.length}
+              gebruiker={gebruiker.userName.toUpperCase()}
+            />
+          ) : (
+            <div className="inhoud_Quiz">
+              <div className="score_Bar">
+                <div className="gebruikerNaam">
+                  <span style={{ fontWeight: "400" }}>Gebruikersnaam: </span>{" "}
+                  {gebruiker.userName.toUpperCase()}
+                </div>
+                <div className="progressBar">
+                  <LinearProgress
+                    variant="determinate"
+                    value={progress}
+                  ></LinearProgress>
+                </div>
+              </div>
+              <div className="header_Quiz">
+                <div className="col-sm-12 col-md-12 col-lg-12 question_Card">
+                  <img
+                    className="quest_image"
+                    src={filteredQuestions[currentQuestion].questionImage}
+                    alt="question_Image"
+                  />
+                  <h5>{filteredQuestions[currentQuestion].question}</h5>
+                  <div
+                    key={filteredQuestions[currentQuestion].id}
+                    className="question_Image_sound"
+                    onClick={() => {
+                      playRekenen(filteredQuestions[currentQuestion].id);
+                    }}
+                  >
+                    <VolumeUpIcon />
+                  </div>
+                </div>
+              </div>
+              {answerGiven ? (
+                <div
+                  className="row answers_Quiz"
+                  style={{ justifyContent: "space-evenly" }}
+                >
+                  {Answers.map((ans, index) => {
+                    if (ans.quizId === filteredQuestions[currentQuestion].id) {
+                      return (
+                        <div
+                          className="col-sm-12 col-md-5 col-lg-5 answer"
+                          key={index}
+                          // style={{ width: "90%" }}
+                        >
+                          <img
+                            className={`answer_Image ${
+                              classer === index
+                                ? "answer_Image_Correct"
+                                : classerFalse === index
+                                ? "answer_Image_False"
+                                : "answer_Image"
+                            }`}
+                            src={ans.answerImage}
+                            alt={"answer_Image"}
+                          />
+
+                          <div
+                            key={index}
+                            className="answer_Image_sound"
+                            onClick={() => {
+                              player(index);
+                            }}
+                          >
+                            <VolumeUpIcon />
+                          </div>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+              ) : (
+                <div
+                  className="row answers_Quiz"
+                  style={{ justifyContent: "space-evenly" }}
+                >
+                  {Answers.map((ans, index) => {
+                    if (ans.quizId === filteredQuestions[currentQuestion].id) {
+                      return (
+                        <div
+                          className="col-sm-12 col-md-5 col-lg-5 answer"
+                          key={index}
+                          // style={{ width: "90%" }}
+                        >
+                          <img
+                            // key={index}
+                            className={`answer_Image ${
+                              classer === index
+                                ? "answer_Image_Correct"
+                                : classerFalse === index
+                                ? "answer_Image_False"
+                                : "answer_Image"
+                            }`}
+                            src={ans.answerImage}
+                            alt={"answer_Image"}
+                            onClick={() => {
+                              handleAnswerButton(ans.isCorrect, index);
+                            }}
+                          />
+
+                          <div
+                            key={index}
+                            className="answer_Image_sound"
+                            onClick={() => {
+                              player(index);
+                            }}
+                          >
+                            <VolumeUpIcon />
+                          </div>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+              )}
+
+              <div className="footer_Quiz" style={{ margin: "20px" }}>
+                {visibleLast ? (
+                  <Button
+                    className="next_question"
+                    onClick={() => {
+                      handleNextQuestion();
+                    }}
+                    style={{ marginBottom: "20px" }}
+                  >
+                    Einde
+                  </Button>
+                ) : visible ? (
+                  <Button
+                    className="next_question"
+                    onClick={() => {
+                      handleNextQuestion();
+                    }}
+                    style={{ marginBottom: "20px" }}
+                  >
+                    Volgende vraag
+                  </Button>
+                ) : null}
               </div>
             </div>
-          </div>
-          {answerGiven ? (
-            <div
-              className="row answers_Quiz"
-              style={{ justifyContent: "space-evenly" }}
-            >
-              {Answers.map((ans, index) => {
-                if (ans.quizId === filteredQuestions[currentQuestion].id) {
-                  return (
-                    <div
-                      className="col-sm-12 col-md-5 col-lg-5 answer"
-                      key={index}
-                      // style={{ width: "90%" }}
-                    >
-                      <img
-                        className={`answer_Image ${
-                          classer === index
-                            ? "answer_Image_Correct"
-                            : classerFalse === index
-                            ? "answer_Image_False"
-                            : "answer_Image"
-                        }`}
-                        src={ans.answerImage}
-                        alt={"answer_Image"}
-                      />
-
-                      <div
-                        key={index}
-                        className="answer_Image_sound"
-                        onClick={() => {
-                          player(index);
-                        }}
-                      >
-                        <VolumeUpIcon />
-                      </div>
-                    </div>
-                  );
-                }
-                return null;
-              })}
-            </div>
-          ) : (
-            <div
-              className="row answers_Quiz"
-              style={{ justifyContent: "space-evenly" }}
-            >
-              {Answers.map((ans, index) => {
-                if (ans.quizId === filteredQuestions[currentQuestion].id) {
-                  return (
-                    <div
-                      className="col-sm-12 col-md-5 col-lg-5 answer"
-                      key={index}
-                      // style={{ width: "90%" }}
-                    >
-                      <img
-                        // key={index}
-                        className={`answer_Image ${
-                          classer === index
-                            ? "answer_Image_Correct"
-                            : classerFalse === index
-                            ? "answer_Image_False"
-                            : "answer_Image"
-                        }`}
-                        src={ans.answerImage}
-                        alt={"answer_Image"}
-                        onClick={() => {
-                          handleAnswerButton(ans.isCorrect, index);
-                        }}
-                      />
-
-                      <div
-                        key={index}
-                        className="answer_Image_sound"
-                        onClick={() => {
-                          player(index);
-                        }}
-                      >
-                        <VolumeUpIcon />
-                      </div>
-                    </div>
-                  );
-                }
-                return null;
-              })}
-            </div>
           )}
-
-          <div className="footer_Quiz" style={{ margin: "20px" }}>
-            {visibleLast ? (
-              <Button
-                className="next_question"
-                onClick={() => {
-                  handleNextQuestion();
-                }}
-                style={{ marginBottom: "20px" }}
-              >
-                Einde
-              </Button>
-            ) : visible ? (
-              <Button
-                className="next_question"
-                onClick={() => {
-                  handleNextQuestion();
-                }}
-                style={{ marginBottom: "20px" }}
-              >
-                Volgende vraag
-              </Button>
-            ) : null}
-          </div>
         </div>
+      ) : (
+        <Loading />
       )}
     </div>
   );

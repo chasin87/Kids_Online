@@ -31,15 +31,12 @@ export default function Home() {
           <div className="card_header">Leer de Kleuren</div>
           <div className="card_text">
             Leer de kleuren door erop te drukken, zodra je er op drukt, hoor je
-            de kleur.
+            de kleur. Ken jij de kleuren al?
           </div>
-          <div>
-            <div>
-              <a href="/colors">
-                <button className="card_button">Speel Kleuren</button>
-              </a>
-            </div>
-          </div>
+
+          <a href="/colors">
+            <button className="card_button">Speel Kleuren</button>
+          </a>
         </div>
 
         <div className="cardd">

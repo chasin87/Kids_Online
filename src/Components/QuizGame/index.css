@@ -2,6 +2,10 @@
   padding-top: 153px;
 }
 
+.sweet-loading {
+  padding-top: 15px;
+}
+
 .main_Page_Quiz {
   background-color: #f8f9fabf;
   padding: 20px 0px;
@@ -21,7 +25,7 @@
 .prev_Quiz {
   background-color: #f8f9fabf;
   text-align: center;
-  height: 20vh;
+  height: 20rem;
   margin: auto;
   width: 60%;
   position: relative;
