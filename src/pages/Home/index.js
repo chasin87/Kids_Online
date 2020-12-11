@@ -76,7 +76,7 @@ export default function Home() {
 
         <div className="cardd">
           <div className="card_image">
-            <a href="/memory">
+            <a href="/quiz">
               <img src={Quiz} alt="background" />
             </a>
           </div>

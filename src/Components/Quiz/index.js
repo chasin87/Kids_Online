@@ -6,12 +6,12 @@ import "./index.css";
 import { selectGebruiker } from "../../Store/gebruiker/selectors";
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
+import Loading from "../Loading";
 
 export default function Quiz() {
   const Quizzes = useSelector(selectquizzes);
   const gebruiker = useSelector(selectGebruiker);
   const dispatch = useDispatch();
-
   const { gebruikerToken } = useSelector(selectGebruiker);
 
   const history = useHistory();
@@ -43,17 +43,22 @@ export default function Quiz() {
             <h2>Welkom bij de Quiz van Kids Online</h2>
             <h4>Kies een category om te spelen</h4>
           </div>
-          <div className="quiz_single">
-            {filteredCategory.map((filter) => {
-              return (
-                <div className="catButtons" key={filter}>
-                  <Link to={{ pathname: "/QuizGame", state: { filter } }}>
-                    <button className="categoryButtons">{filter}</button>
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
+          {filteredCategory.length > 0 ? (
+            <div className="quiz_single">
+              {filteredCategory.map((filter) => {
+                return (
+                  <div className="catButtons" key={filter}>
+                    <Link to={{ pathname: "/QuizGame", state: { filter } }}>
+                      <button className="categoryButtons">{filter}</button>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <Loading />
+          )}
+          )
         </div>
       </div>
     </div>
