@@ -201,6 +201,9 @@ li {
 
   .navbar-toggler {
     margin-top: -10px;
+    width: 70px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .navbar-light .navbar-nav .nav-link.active {
@@ -212,7 +215,7 @@ li {
   }
 
   .navbar {
-    padding: 0px;
+    padding: 5px 0px;
   }
 
   .Title {
