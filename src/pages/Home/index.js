@@ -4,6 +4,7 @@ import HeaderImage from "../../Components/HeaderImage";
 import Memory_logo_card from "../../Images/Memory_logo_card.png";
 import TicTacToe_logo_card from "../../Images/TicTacToe_logo_card.png";
 import Colors_logo_card from "../../Images/Colors_logo_card.png";
+import Quiz from "../../Images/quiz.png";
 import ReactGA from "react-ga";
 import { createBrowserHistory } from "history";
 
@@ -33,9 +34,11 @@ export default function Home() {
             de kleur.
           </div>
           <div>
-            <a href="/colors">
-              <button className="card_button">Speel Kleuren</button>
-            </a>
+            <div>
+              <a href="/colors">
+                <button className="card_button">Speel Kleuren</button>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -68,6 +71,23 @@ export default function Home() {
           </div>
           <a href="/memory">
             <button className="card_button">Speel Memory</button>
+          </a>
+        </div>
+
+        <div className="cardd">
+          <div className="card_image">
+            <a href="/memory">
+              <img src={Quiz} alt="background" />
+            </a>
+          </div>
+          <div className="card_header">Quiz</div>
+          <div className="card_text">
+            De Quiz heeft verschillende categorien, zo kun je reken opdrachten
+            doen maar ook rijmen. Het is maar net wat je vandaag wilt oefenen.
+          </div>
+
+          <a href="/quiz">
+            <button className="card_button">Speel de Quiz</button>
           </a>
         </div>
       </div>

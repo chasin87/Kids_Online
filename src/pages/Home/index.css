@@ -8,7 +8,7 @@
 }
 
 .cardd {
-  flex: 0 1 calc(33% - 1em);
+  flex: 0 1 calc(25% - 1em);
   border-radius: 10px;
   border: none;
   max-width: 50%;
@@ -38,13 +38,13 @@
 .card_header {
   color: black;
   font-family: "Rajdhani", sans-serif;
-  font-size: 2vw;
+  font-size: 1.5vw;
   font-weight: 600;
 }
 
 .card_text {
   font-family: "Rajdhani", sans-serif;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   margin: 5px;
 }
 
