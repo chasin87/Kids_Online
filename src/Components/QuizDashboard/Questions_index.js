@@ -134,7 +134,7 @@ export default function QuizQuestions() {
           </div>
           <div className="next_to">
             <Link className="link_next" to="/Add_Question">
-              Nieuwe vraag toeveoegen
+              Nieuwe vraag toevoegen
               <svg
                 width="1em"
                 height="1em"
