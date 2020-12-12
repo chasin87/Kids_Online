@@ -30,9 +30,8 @@ export default function Add_Question() {
   const { token } = useSelector(selectUser);
   const history = useHistory();
   if (token === null) {
-    history.push("/");
+    history.push("/admin");
   }
-
   const inputRef = useRef(null);
   const inputRef2 = useRef(null);
   const status = false;

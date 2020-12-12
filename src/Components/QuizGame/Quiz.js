@@ -16,13 +16,12 @@ import FalseAnswer from "../../Sounds/FalseAnswer.mp3";
 
 import useSound from "use-sound";
 
+//UI imports
+import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 
 import ShowScore from "../../Components/Showscore";
-
-//MaterialUI imports
-import LinearProgress from "@material-ui/core/LinearProgress";
 
 import "./index.css";
 
@@ -33,8 +32,8 @@ export default function Quiz() {
     history.push("/login");
   }
 
-  const [playCorrectSound] = useSound(CorrectAnswer, { volume: 0.9 });
-  const [playFalseSound] = useSound(FalseAnswer, { volume: 0.9 });
+  const [playCorrectSound] = useSound(CorrectAnswer, { volume: 0.03 });
+  const [playFalseSound] = useSound(FalseAnswer, { volume: 0.03 });
 
   const [lesson, setLesson] = useState([]);
   const [loaded, setLoaded] = useState(false);

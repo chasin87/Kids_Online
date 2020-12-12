@@ -67,7 +67,7 @@ export default function Admin() {
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="Email"
             name="email"
             autoComplete="email"
             autoFocus
@@ -81,7 +81,7 @@ export default function Admin() {
             required
             fullWidth
             name="password"
-            label="Password"
+            label="Wachtwoord"
             type="password"
             id="password"
             autoComplete="current-password"
@@ -97,7 +97,7 @@ export default function Admin() {
             className={classes.submit}
             onClick={submitForm}
           >
-            Sign In
+            Login
           </Button>
         </form>
       </div>

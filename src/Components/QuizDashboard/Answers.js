@@ -8,6 +8,8 @@ import "./Add_Question.css";
 //DB FIREBASE
 import { storage, db } from "../../firebase";
 import firebase from "firebase";
+
+//Import UI elements
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { FormGroup, Input, Label } from "reactstrap";
@@ -46,7 +48,6 @@ function Answers() {
   const [show, setShow] = useState(false);
   const [visible, setVisible] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-
   const dispatch = useDispatch();
 
   const defId = referenceId;
@@ -381,8 +382,10 @@ function Answers() {
                   </ListItem>
                 ) : (
                   <ListItem onClick={checkAnswers}>
-                    Deze vraag heeft {totalanswers} opgeslagen antwoord(en).
-                    Klik hier om deze te zien.
+                    <div>
+                      Deze vraag heeft <strong>{totalanswers}</strong>{" "}
+                      opgeslagen antwoord(en). Klik hier om deze te zien.
+                    </div>
                   </ListItem>
                 )}
               </List>

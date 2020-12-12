@@ -15,7 +15,7 @@ import EntranceSound from "../../Sounds/EntranceSound.mp3";
 
 export default function QuizGameScreen() {
   const [lesson, setLesson] = useState([]);
-  const [playEntranceSound] = useSound(EntranceSound, { volume: 0.7 });
+  const [playEntranceSound] = useSound(EntranceSound, { volume: 0.03 });
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
 

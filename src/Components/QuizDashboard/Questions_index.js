@@ -35,7 +35,7 @@ export default function QuizQuestions() {
   const history = useHistory();
 
   if (token === null) {
-    history.push("/");
+    history.push("/admin");
   }
 
   const Quizzes = useSelector(selectquizzes);

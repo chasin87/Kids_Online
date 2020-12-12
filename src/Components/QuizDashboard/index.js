@@ -15,7 +15,7 @@ export default function DashBoard() {
 
   const history = useHistory();
   if (token === null) {
-    history.push("/");
+    history.push("/admin");
   }
 
   const dispatch = useDispatch();
