@@ -350,9 +350,9 @@ function Answers() {
       <div>
         {working ? (
           <div>
-            <h5 style={{ fontWeight: "700", color: "green" }}>
+            {/* <h5 style={{ fontWeight: "700", color: "green" }}>
               U Bewerkt de vraag: {working}{" "}
-            </h5>
+            </h5> */}
             <div className="dropdown_container">
               <div>
                 <label className="quantity_Label">
@@ -372,10 +372,19 @@ function Answers() {
               }}
             >
               <List>
-                <ListItem onClick={checkAnswers}>
-                  Deze vraag heeft {totalanswers} opgeslagen antwoord(en). Klik
-                  hier om deze te zien.
-                </ListItem>
+                {totalanswers[0] === 0 ? (
+                  <ListItem onClick={checkAnswers}>
+                    <div>
+                      Deze vraag heeft <strong> geen </strong>
+                      opgeslagen antwoord(en).
+                    </div>
+                  </ListItem>
+                ) : (
+                  <ListItem onClick={checkAnswers}>
+                    Deze vraag heeft {totalanswers} opgeslagen antwoord(en).
+                    Klik hier om deze te zien.
+                  </ListItem>
+                )}
               </List>
             </div>
           </div>
@@ -437,14 +446,6 @@ function Answers() {
                   label="Juist antwoord (Vink aan als de antwoord correct is)"
                 />
               </Label>
-              {/* <Input
-                  type="checkbox"
-                  checked={checkAnswer}
-                  onChange={checker}
-                />{" "}
-                Correct answer "Check if true" */}
-
-              {/* ImageUpload */}
 
               <div className="imageUpload">
                 <FormGroup>

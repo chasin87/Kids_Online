@@ -131,7 +131,7 @@ function Navigation() {
 
             {gebruikerToken ? (
               <Avatar
-                alt={gebruiker.userName}
+                alt={gebruiker.userName.toUpperCase()}
                 src="/broken-image.jpg"
                 className={classes.orange}
               />
