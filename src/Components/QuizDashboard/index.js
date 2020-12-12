@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./index.css";
 import { fetchAnswerQuantity } from "../../Store/quantity/actions";
 import { useSelector, useDispatch } from "react-redux";
