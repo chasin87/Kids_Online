@@ -9,7 +9,6 @@ import { selectanswers } from "../../Store/answerlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
 import { fetchAnswerList } from "../../Store/answerlist/actions";
 
-import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import Loading from "../Loading";
 
@@ -22,7 +21,7 @@ import useSound from "use-sound";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
-
+import ReactHowler from "react-howler";
 import ShowScore from "../../Components/Showscore";
 
 import "./index.css";
@@ -50,6 +49,7 @@ export default function Quiz() {
   const [visibleLast, setVisibleLast] = useState(false);
   const [answerGiven, setAnserwerGiven] = useState(false);
   const [sample, setSample] = useState(false);
+  const [waar, setWaar] = useState(true);
 
   const Quizzes = useSelector(selectquizzes);
   const Answers = useSelector(selectanswers);
@@ -66,6 +66,7 @@ export default function Quiz() {
     dispatch(fetchAnswerList());
     setLesson(setter);
     setLoaded(true);
+    setWaar(true);
   }, [dispatch, setter]);
 
   useEffect(() => {
@@ -76,6 +77,7 @@ export default function Quiz() {
       clearTimeout(timer);
     };
   }, [currentQuestion]);
+  console.log(sample);
 
   const filteredQuestions = Quizzes.filter((quiz) => {
     return quiz.questionComplete
@@ -90,8 +92,7 @@ export default function Quiz() {
     if (Answers[index].isCorrect) {
       setClasser(index);
       playCorrectSound();
-      setSample(false);
-
+      setWaar(false);
       setScore(score + 1);
       setNextProgress(nextProgress + 1);
       const progress = Math.round(
@@ -107,7 +108,7 @@ export default function Quiz() {
     } else {
       setClasserFalse(index);
       playFalseSound();
-      setSample(false);
+      setWaar(false);
       setNextProgress(nextProgress + 1);
       const progress = Math.round(
         (nextProgress / filteredQuestions.length) * 100
@@ -130,8 +131,10 @@ export default function Quiz() {
       setClasser("answer_Image");
       setClasserFalse("answer_Image");
       setAnserwerGiven(false);
+      setWaar(true);
     } else {
       setShowScore(true);
+      setWaar(true);
     }
   };
 
@@ -150,34 +153,6 @@ export default function Quiz() {
   const player = (index) => {
     let audioTune = new Audio(Answers[index].answerSound);
     audioTune.play();
-  };
-
-  const handleFirstPlay = () => {
-    console.log("used");
-  };
-
-  const herro = () => {
-    return (
-      // <ReactAudioPlayer
-      //   src={filteredQuestions[currentQuestion].questionSound}
-      //   autoPlay
-      //   playsInline
-      //   muted={false}
-      //   onPlay={handleFirstPlay()}
-      // />
-
-      <AudioPlayer
-        src={filteredQuestions[currentQuestion].questionSound}
-        showJumpControls={false}
-        customAdditionalControls={[]}
-        showDownloadProgress={false}
-        layout="horizontal"
-        customVolumeControls={[]}
-        autoPlay={true}
-        onPlay={handleFirstPlay()}
-        style={{ display: "none" }}
-      />
-    );
   };
 
   return (
@@ -206,15 +181,10 @@ export default function Quiz() {
               </div>
               <div className="header_Quiz">
                 <div className="col-sm-12 col-md-12 col-lg-12 question_Card">
-                  {sample
-                    ? herro()
-                    : // <audio autoPlay preload="auto" playsinline>
-                      //   <source
-                      //     src={filteredQuestions[currentQuestion].questionSound}
-                      //     type="audio/mpeg"
-                      //   />
-                      // </audio>
-                      null}
+                  <ReactHowler
+                    src={filteredQuestions[currentQuestion].questionSound}
+                    playing={waar}
+                  />
 
                   <img
                     className="quest_image"
