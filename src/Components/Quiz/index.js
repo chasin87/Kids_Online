@@ -8,11 +8,16 @@ import { selectquizzes } from "../../Store/quizlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
 import Loading from "../Loading";
 
+import useSound from "use-sound";
+
+import EntranceSound from "../../Sounds/EntranceSound.mp3";
+
 export default function Quiz() {
   const Quizzes = useSelector(selectquizzes);
   const gebruiker = useSelector(selectGebruiker);
   const dispatch = useDispatch();
   const { gebruikerToken } = useSelector(selectGebruiker);
+  const [playEntranceSound] = useSound(EntranceSound, { volume: 0.07 });
 
   const history = useHistory();
 
@@ -22,7 +27,8 @@ export default function Quiz() {
 
   useEffect(() => {
     dispatch(fetchQuizList());
-  }, [dispatch]);
+    playEntranceSound();
+  }, [dispatch, playEntranceSound]);
 
   //Take all the categorys
   const category = Quizzes.map((quiz) => {

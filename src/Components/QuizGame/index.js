@@ -9,13 +9,9 @@ import { selectGebruiker } from "../../Store/gebruiker/selectors";
 import { Button } from "@material-ui/core";
 import "./index.css";
 
-import useSound from "use-sound";
-
-import EntranceSound from "../../Sounds/EntranceSound.mp3";
-
 export default function QuizGameScreen() {
   const [lesson, setLesson] = useState([]);
-  const [playEntranceSound] = useSound(EntranceSound, { volume: 0.03 });
+
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
 
@@ -29,14 +25,13 @@ export default function QuizGameScreen() {
   let setter = location.state.filter;
 
   useEffect(() => {
-    playEntranceSound();
     setLesson(setter);
 
     setTimeout(() => {
       setVisible(true);
       setLoading(false);
     }, 3000);
-  }, [setter, playEntranceSound]);
+  }, [setter]);
 
   return (
     <div className="prev_Page_Quiz">
