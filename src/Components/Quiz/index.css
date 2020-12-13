@@ -16,6 +16,8 @@
 
 .quiz_single {
   display: flex;
+  width: 70%;
+  margin: auto;
   justify-content: space-evenly;
   margin-top: 20px;
 }
@@ -50,5 +52,19 @@
     width: 120px;
     height: 120px;
     font-size: 20px !important;
+  }
+
+  .quiz_single {
+    width: 90%;
+  }
+}
+
+@media (max-width: 413px) {
+  .quiz_single {
+    flex-direction: column;
+    text-align: center;
+  }
+  .categoryButtons {
+    margin: 10px;
   }
 }

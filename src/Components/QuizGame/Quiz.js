@@ -4,27 +4,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectGebruiker } from "../../Store/gebruiker/selectors";
 import { useHistory } from "react-router-dom";
 
+import ReactHowler from "react-howler";
+import useSound from "use-sound";
+
 import { selectquizzes } from "../../Store/quizlist/selectors";
 import { selectanswers } from "../../Store/answerlist/selectors";
 import { fetchQuizList } from "../../Store/quizlist/actions";
 import { fetchAnswerList } from "../../Store/answerlist/actions";
 
-import "react-h5-audio-player/lib/styles.css";
+import ShowScore from "../../Components/Showscore";
 import Loading from "../Loading";
+import "./index.css";
 
 import CorrectAnswer from "../../Sounds/CorrectAnswer.mp3";
 import FalseAnswer from "../../Sounds/FalseAnswer.mp3";
-
-import useSound from "use-sound";
 
 //UI imports
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
-import ReactHowler from "react-howler";
-import ShowScore from "../../Components/Showscore";
-
-import "./index.css";
 
 export default function Quiz() {
   const { gebruikerToken } = useSelector(selectGebruiker);
@@ -49,7 +47,7 @@ export default function Quiz() {
   const [visibleLast, setVisibleLast] = useState(false);
   const [answerGiven, setAnserwerGiven] = useState(false);
   const [sample, setSample] = useState(false);
-  const [waar, setWaar] = useState(true);
+  const [waar, setWaar] = useState(false);
 
   const Quizzes = useSelector(selectquizzes);
   const Answers = useSelector(selectanswers);
@@ -66,7 +64,9 @@ export default function Quiz() {
     dispatch(fetchAnswerList());
     setLesson(setter);
     setLoaded(true);
-    setWaar(true);
+    setTimeout(() => {
+      setWaar(true);
+    }, 200);
   }, [dispatch, setter]);
 
   useEffect(() => {
@@ -154,9 +154,9 @@ export default function Quiz() {
     let audioTune = new Audio(Answers[index].answerSound);
     audioTune.play();
   };
-
+  console.log(waar);
   return (
-    <div>
+    <div disabled={true}>
       {Answers.length > 0 && filteredQuestions.length > 0 ? (
         <div className="main_Page_Quiz">
           {showScore ? (
@@ -184,6 +184,7 @@ export default function Quiz() {
                   <ReactHowler
                     src={filteredQuestions[currentQuestion].questionSound}
                     playing={waar}
+                    preload={true}
                   />
 
                   <img
