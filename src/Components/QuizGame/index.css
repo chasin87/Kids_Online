@@ -147,6 +147,7 @@ Button:active {
   margin: auto;
   background: #f43f5a;
   color: #fff;
+  cursor: pointer;
 }
 
 .question_Image_sound .button_Sound {
@@ -222,6 +223,7 @@ Button:active {
   background: #f43f5a;
   color: #fff;
   border-radius: 0px 0px 4px 4px;
+  cursor: pointer;
 }
 
 .answer_Image_sound .button_Sound {

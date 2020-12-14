@@ -207,6 +207,7 @@ export default function Flip() {
         {animals.map((ani) => {
           return (
             <img
+              key={ani.id}
               className="NonImages"
               src={require(`./images/${ani.name}.png`)}
               alt="AnimalNonImages"

@@ -47,7 +47,8 @@ export default function Quiz() {
   const [visibleLast, setVisibleLast] = useState(false);
   const [answerGiven, setAnserwerGiven] = useState(false);
   const [sample, setSample] = useState(false);
-  const [waar, setWaar] = useState(false);
+  const [waar, setWaar] = useState(true);
+  const [zicht, setZicht] = useState(false);
 
   const Quizzes = useSelector(selectquizzes);
   const Answers = useSelector(selectanswers);
@@ -64,9 +65,7 @@ export default function Quiz() {
     dispatch(fetchAnswerList());
     setLesson(setter);
     setLoaded(true);
-    setTimeout(() => {
-      setWaar(true);
-    }, 200);
+    setZicht(true);
   }, [dispatch, setter]);
 
   useEffect(() => {
@@ -155,8 +154,9 @@ export default function Quiz() {
     audioTune.play();
   };
   console.log(waar);
+
   return (
-    <div disabled={true}>
+    <div>
       {Answers.length > 0 && filteredQuestions.length > 0 ? (
         <div className="main_Page_Quiz">
           {showScore ? (
@@ -181,11 +181,13 @@ export default function Quiz() {
               </div>
               <div className="header_Quiz">
                 <div className="col-sm-12 col-md-12 col-lg-12 question_Card">
-                  <ReactHowler
-                    src={filteredQuestions[currentQuestion].questionSound}
-                    playing={waar}
-                    preload={true}
-                  />
+                  {zicht ? (
+                    <ReactHowler
+                      src={filteredQuestions[currentQuestion].questionSound}
+                      playing={waar}
+                      preload={true}
+                    />
+                  ) : null}
 
                   <img
                     className="quest_image"
