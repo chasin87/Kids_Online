@@ -55,7 +55,10 @@ function Navigation() {
         <div className="information_area">
           <div>Neem contact op via &nbsp;</div>
           <div>
-            <a href="contact"> info@kidsonline.nl</a>
+            <a href="mailto:yasinyuksek87@gmail.com">
+              {" "}
+              yasinyuksek87@gmail.com
+            </a>
           </div>
         </div>
         <div className="login_area">
