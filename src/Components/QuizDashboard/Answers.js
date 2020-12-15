@@ -55,6 +55,7 @@ function Answers() {
   useEffect(() => {
     dispatch(fetchQuizList());
     dispatch(fetchAnswerList());
+    dispatch(updateStatus());
     dispatch(fetchAnswerQuantity());
   }, [dispatch]);
 
