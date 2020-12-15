@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectGebruiker } from "../../Store/gebruiker/selectors";
 import { useHistory } from "react-router-dom";
 
-import ReactHowler from "react-howler";
 import useSound from "use-sound";
 
 import { selectquizzes } from "../../Store/quizlist/selectors";
@@ -46,9 +45,6 @@ export default function Quiz() {
   const [nextProgress, setNextProgress] = useState(1);
   const [visibleLast, setVisibleLast] = useState(false);
   const [answerGiven, setAnserwerGiven] = useState(false);
-  const [sample, setSample] = useState(false);
-  const [waar, setWaar] = useState(true);
-  const [zicht, setZicht] = useState(false);
 
   const Quizzes = useSelector(selectquizzes);
   const Answers = useSelector(selectanswers);
@@ -65,18 +61,7 @@ export default function Quiz() {
     dispatch(fetchAnswerList());
     setLesson(setter);
     setLoaded(true);
-    setZicht(true);
   }, [dispatch, setter]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSample(true);
-    }, 1000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [currentQuestion]);
-  console.log(sample);
 
   const filteredQuestions = Quizzes.filter((quiz) => {
     return quiz.questionComplete
@@ -91,7 +76,6 @@ export default function Quiz() {
     if (Answers[index].isCorrect) {
       setClasser(index);
       playCorrectSound();
-      setWaar(false);
       setScore(score + 1);
       setNextProgress(nextProgress + 1);
       const progress = Math.round(
@@ -107,7 +91,6 @@ export default function Quiz() {
     } else {
       setClasserFalse(index);
       playFalseSound();
-      setWaar(false);
       setNextProgress(nextProgress + 1);
       const progress = Math.round(
         (nextProgress / filteredQuestions.length) * 100
@@ -130,10 +113,8 @@ export default function Quiz() {
       setClasser("answer_Image");
       setClasserFalse("answer_Image");
       setAnserwerGiven(false);
-      setWaar(true);
     } else {
       setShowScore(true);
-      setWaar(true);
     }
   };
 
@@ -153,7 +134,6 @@ export default function Quiz() {
     let audioTune = new Audio(Answers[index].answerSound);
     audioTune.play();
   };
-  console.log(waar);
 
   return (
     <div>
@@ -181,14 +161,6 @@ export default function Quiz() {
               </div>
               <div className="header_Quiz">
                 <div className="col-sm-12 col-md-12 col-lg-12 question_Card">
-                  {zicht ? (
-                    <ReactHowler
-                      src={filteredQuestions[currentQuestion].questionSound}
-                      playing={waar}
-                      preload={true}
-                    />
-                  ) : null}
-
                   <img
                     className="quest_image"
                     src={filteredQuestions[currentQuestion].questionImage}
