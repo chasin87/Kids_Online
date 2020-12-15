@@ -54,7 +54,6 @@ function Answers() {
 
   useEffect(() => {
     dispatch(fetchQuizList());
-    dispatch(updateStatus());
     dispatch(fetchAnswerList());
     dispatch(fetchAnswerQuantity());
   }, [dispatch]);
@@ -130,6 +129,8 @@ function Answers() {
 
         if (setter === quantityQuestion) {
           dispatch(updateStatus(defId));
+        } else {
+          return null;
         }
         setVisible(false);
       }
@@ -406,7 +407,7 @@ function Answers() {
           </Modal.Header>
           {AnswerId.map((ansId) => {
             return (
-              <Modal.Body>
+              <Modal.Body key={ansId.id}>
                 {ansId.answer} - {ansId.isCorrect.toString()}
               </Modal.Body>
             );

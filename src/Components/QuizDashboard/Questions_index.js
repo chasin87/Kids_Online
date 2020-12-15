@@ -354,7 +354,7 @@ export default function QuizQuestions() {
                               {Answers.map((answer, index) => {
                                 if (ids === answer.quizId) {
                                   return (
-                                    <Modal.Body>
+                                    <Modal.Body key={answer.id}>
                                       <div key={answer.id}>
                                         <div className="row">
                                           <div className="answer_image col-sm-6">
