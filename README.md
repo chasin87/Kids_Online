@@ -75,85 +75,85 @@ The server of this project is built with Express on Node.js connected to Postgre
 ### Screenshots
 
 <p align="center">
-<img src="src/ScreenShot/home-1.png" width="600" height="334">
+<img src="src/ScreenShot/home-1.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/home-2.png" width="600" height="334">
+<img src="src/ScreenShot/home-2.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/home-3.png" width="600" height="334">
+<img src="src/ScreenShot/home-3.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/colors.png" width="600" height="334">
+<img src="src/ScreenShot/colors.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/tictactoe.png" width="600" height="334">
+<img src="src/ScreenShot/tictactoe.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/Memory.png" width="600" height="334">
+<img src="src/ScreenShot/Memory.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/register.png" width="600" height="334">
+<img src="src/ScreenShot/register.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/userLogin.png" width="600" height="334">
+<img src="src/ScreenShot/userLogin.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/adminLogin.png" width="600" height="334">
+<img src="src/ScreenShot/adminLogin.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/quizDashboard.png" width="600" height="334">
+<img src="src/ScreenShot/quizDashboard.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/quizQuestions-1.png" width="600" height="334">
+<img src="src/ScreenShot/quizQuestions-1.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/quizQuestions-2.png" width="600" height="334">
+<img src="src/ScreenShot/quizQuestions-2.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/quizAnswers.png" width="600" height="334">
+<img src="src/ScreenShot/quizAnswers.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/newQuestion.png" width="600" height="334">
+<img src="src/ScreenShot/newQuestion.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/answerPage-1.png" width="600" height="334">
+<img src="src/ScreenShot/answerPage-1.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/answerPage-2.png" width="600" height="334">
+<img src="src/ScreenShot/answerPage-2.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/quizMenu.png" width="600" height="334">
+<img src="src/ScreenShot/quizMenu.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/quiz-1.png" width="600" height="334">
+<img src="src/ScreenShot/quiz-1.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/quiz-2.png" width="600" height="334">
+<img src="src/ScreenShot/quiz-2.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/quiz-3.png" width="600" height="334">
+<img src="src/ScreenShot/quiz-3.png" width="80%" height="80%">
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/quizEnd.png" width="600" height="334">
+<img src="src/ScreenShot/quizEnd.png" width="80%" height="80%">
 </p>
