@@ -95,7 +95,7 @@ The server of this project is built with Express on Node.js connected to Postgre
 </p>
 
 <p align="center">
-<img src="src/ScreenShot/Memory.png" width="80%" height="80%">
+<img src="src/ScreenShot/memory.png" width="80%" height="80%">
 </p>
 
 <p align="center">
