@@ -2,10 +2,6 @@
 
 Kids Online is an application where children can play an easy game and participate in a Quiz set up by the admin panel.
 
-## Link to the app [Kids Online](https://kids-online.netlify.app/).
-
-## Link to the backend repo [Kids Online Backend](https://github.com/chasin87/Kids_Online_be).
-
 ## Table of contents:
 
 - **[App demo](#app-demo)**
@@ -14,52 +10,15 @@ Kids Online is an application where children can play an easy game and participa
 - **[User stories](#user-stories)**
 - **[Instalation](#instalation)**
 - **[Server repo](#server-repo)**
+- **[Screenshots](#screenshots)**
 
 ### App Demo:
 
-#### Link to the [YouTube promotion Kids Online] (https://youtu.be/TVZDm3VbKPM)
+#### Link to the app [Kids Online](https://kids-online.netlify.app/).
 
-![](src/ScreenShot/home-1.png)
+#### Video promotion Kids Online
 
-![](src/ScreenShot/home-2.png)
-
-![](src/ScreenShot/home-3.png)
-
-![](src/ScreenShot/colors.png)
-
-![](src/ScreenShot/tictactoe.png)
-
-![](src/ScreenShot/memory.png)
-
-![](src/ScreenShot/register.png)
-
-![](src/ScreenShot/userLogin.png)
-
-![](src/ScreenShot/adminLogin.png)
-
-![](src/ScreenShot/quizDashboard.png)
-
-![](src/ScreenShot/quizQuestions-1.png)
-
-![](src/ScreenShot/quizQuestions-2.png)
-
-![](src/ScreenShot/quizAnswers.png)
-
-![](src/ScreenShot/newQuestion.png)
-
-![](src/ScreenShot/answerPage-1.png)
-
-![](src/ScreenShot/answerPage-2.png)
-
-![](src/ScreenShot/quizMenu.png)
-
-![](src/ScreenShot/quiz-1.png)
-
-![](src/ScreenShot/quiz-2.png)
-
-![](src/ScreenShot/quiz-3.png)
-
-![](src/ScreenShot/quizEnd.png)
+[![Kids Online](src/ScreenShot/YoutubeAfbeelding.png)](https://www.youtube.com/watch?v=TVZDm3VbKPM&feature=youtu.be "YouTube promotion Kids Online")
 
 ### Goals for this project
 
@@ -108,3 +67,47 @@ The goal of this project is to build a full-stack app by using technologies I've
 The server of this project is built with Express on Node.js connected to Postgres database.
 
 [Click here to view server repo](https://github.com/chasin87/Kids_Online_be)
+
+### Screenshots
+
+![](src/ScreenShot/home-1.png)
+
+![](src/ScreenShot/home-2.png)
+
+![](src/ScreenShot/home-3.png)
+
+![](src/ScreenShot/colors.png)
+
+![](src/ScreenShot/tictactoe.png)
+
+![](src/ScreenShot/memory.png)
+
+![](src/ScreenShot/register.png)
+
+![](src/ScreenShot/userLogin.png)
+
+![](src/ScreenShot/adminLogin.png)
+
+![](src/ScreenShot/quizDashboard.png)
+
+![](src/ScreenShot/quizQuestions-1.png)
+
+![](src/ScreenShot/quizQuestions-2.png)
+
+![](src/ScreenShot/quizAnswers.png)
+
+![](src/ScreenShot/newQuestion.png)
+
+![](src/ScreenShot/answerPage-1.png)
+
+![](src/ScreenShot/answerPage-2.png)
+
+![](src/ScreenShot/quizMenu.png)
+
+![](src/ScreenShot/quiz-1.png)
+
+![](src/ScreenShot/quiz-2.png)
+
+![](src/ScreenShot/quiz-3.png)
+
+![](src/ScreenShot/quizEnd.png)
